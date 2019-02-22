@@ -36,11 +36,13 @@
             android:layout_marginEnd="@dimen/margin_registration_edit_text"
             android:autofillHints="phone"
             android:background="@null"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
             android:ems="10"
+            android:text="+91"
             android:maxLength="13"
             android:hint="@string/verify_enter_mobile"
             android:inputType="phone"
-            android:textAlignment="center"
             style="@style/InputEditText"
             tools:targetApi="o" />
 
@@ -50,6 +52,9 @@
             android:layout_gravity="center"
             android:inputType="number"
             app:itemCount="4"
+            android:cursorVisible="true"
+            android:hint="Enter OTP Here"
+            android:id="@+id/otp_view"
             app:viewType="none"
             android:visibility="gone"/>
 
@@ -82,11 +87,13 @@
         style="@style/CustomButtonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/verify_confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_verify_info"
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/view_verify_confirm"
