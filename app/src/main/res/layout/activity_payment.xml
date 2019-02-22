@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/iv_payment_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/payment_ic_wallet"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_payment_paytm"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:elevation="1dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_paytm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_payment_icon" />
+
+    <View
+        android:id="@+id/view_payment_paytm"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:background="@drawable/payment_background_wallet"
+        app:layout_constraintBottom_toBottomOf="@id/iv_payment_paytm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_payment_paytm" />
+
+    <ImageView
+        android:id="@+id/iv_payment_bhim"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:elevation="1dp"
+        android:src="@drawable/ic_paytm"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@id/iv_payment_paytm"
+        app:layout_constraintStart_toStartOf="@id/iv_payment_paytm"
+        app:layout_constraintTop_toBottomOf="@id/iv_payment_paytm" />
+
+    <View
+        android:id="@+id/view_payment_bhim"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:background="@drawable/payment_background_wallet"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_payment_bhim"
+        app:layout_constraintBottom_toBottomOf="@id/iv_payment_bhim"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_payment_bhim"/>
+
+    <ImageView
+        android:id="@+id/iv_payment_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/payment_ic_card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_payment_card"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:background="@drawable/payment_background_wallet"
+        app:layout_constraintStart_toStartOf="@id/iv_payment_card"
+        app:layout_constraintTop_toTopOf="@id/iv_payment_card"
+        app:layout_constraintBottom_toBottomOf="@id/iv_payment_card"
+        app:layout_constraintEnd_toEndOf="@id/iv_payment_card"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/payment_new_card"
+        app:backgroundTint="@android:color/white"
+        android:textColor="?attr/colorAccent"
+        app:cornerRadius="10dp"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        app:layout_constraintStart_toStartOf="@id/iv_payment_card"
+        app:layout_constraintEnd_toEndOf="@id/iv_payment_card"
+        app:layout_constraintTop_toBottomOf="@id/iv_payment_card"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

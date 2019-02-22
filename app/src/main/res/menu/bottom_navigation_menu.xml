@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_bank"
+        android:icon="@drawable/patient_ic_bank"
+        android:title="@string/patient_navigation_bank"/>
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/patient_ic_profile"
+        android:title="@string/patient_profile" />
+
+</menu>

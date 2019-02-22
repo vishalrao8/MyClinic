@@ -188,7 +188,7 @@
     <View
         android:id="@+id/view_registration_fill"
         style="@style/CustomButton"
-        android:background="@drawable/all_ripple_blue"
+        android:background="@drawable/all_ripple_button"
         app:layout_constraintBottom_toBottomOf="@id/tv_registration_fill"
         app:layout_constraintEnd_toEndOf="@id/tv_registration_fill"
         app:layout_constraintStart_toStartOf="@id/tv_registration_fill"

@@ -64,7 +64,7 @@
         <item name="android:textColor">@color/colorSubText</item>
     </style>
 
-    <style name="InputCardView" parent="CardView.Light">
+    <style name="InputCardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardElevation">5dp</item>
         <item name="cardCornerRadius">5dp</item>
         <item name="android:layout_height">56dp</item>
@@ -82,6 +82,17 @@
     <style name="CardBorder">
         <item name="android:layout_width">4dp</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/colorAccentBlue</item>
+        <item name="android:background">?attr/colorPrimary</item>
     </style>
+
+    <style name="NavigationActiveItemText" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/grand_hotel</item>
+    </style>
+
+    <style name="EmergencyButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="android:textColor">@color/colorAccentRed</item>
+        <item name="iconTint">@color/colorAccentRed</item>
+        <item name="rippleColor">@color/colorAccentRed</item>
+    </style>
+
 </resources>

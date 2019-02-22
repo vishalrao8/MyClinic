@@ -32,4 +32,12 @@
     <string name="registration_issue">Issue</string>
     <string name="registration_fill">Fill</string>
 
+    <!-- PatientActivity -->
+    <string name="patient_navigation_bank">bank</string>
+    <string name="patient_profile">profile</string>
+    <string name="patient_tab_government">Government</string>
+    <string name="patient_tab_private">Private</string>
+    <string name="patient_hi">Hi XYZ,</string>
+    <string name="payment_new_card">Add new card</string>
+
 </resources>

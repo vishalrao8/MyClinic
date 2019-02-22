@@ -34,13 +34,12 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_welcome_emergency"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/default_margin"
         android:text="@string/welcome_emergency"
-        android:textColor="@color/colorAccentRed"
         app:icon="@drawable/welcome_ic_call_emergency"
+        style="@style/EmergencyButton"
+        android:layout_marginBottom="@dimen/default_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
