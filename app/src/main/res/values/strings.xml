@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">MyClinic</string>
+
+    <!-- WelcomeActivity -->
+    <string name="welcome_hi">Hi</string>
+    <string name="welcome_greetings">Thanks for giving us a chance to serve you,\nLet us know how can we help</string>
+    <string name="welcome_emergency">Emergency</string>
+    <string name="welcome_medical_kit">Medical Kit</string>
+    <string name="welcome_stem_cell">Stem Cell</string>
+
+    <!-- MedicalKitActivity -->
+    <string name="mk_just_a_few">Just few steps away</string>
+    <string name="mk_doctor">I\'m a Doctor</string>
+    <string name="mk_supplier">I\'m a Supplier</string>
+    <string name="mk_patient">I\'m a Patient</string>
+    <string name="mk_vendor">I\'m a Vendor</string>
+    <string name="mk_let_us_know">Let us know about yourself</string>
+
+    <!-- VerifyActivity -->
+    <string name="verify_verify_me">Verify Me</string>
+    <string name="verify_enter_mobile">Enter mobile number</string>
+    <string name="verify_info">Enter mobile number to get a verification code</string>
+    <string name="verify_confirm">Confirm</string>
+
+    <!-- RegistrationActivity -->
+    <string name="registration_title">About Me</string>
+    <string name="registration_enter_name">Name</string>
+    <string name="registration_street_address">Street Address</string>
+    <string name="registration_city">City</string>
+    <string name="registration_state">State</string>
+    <string name="registration_zip_code">Zip Code</string>
+    <string name="registration_issue">Issue</string>
+    <string name="registration_fill">Fill</string>
+
+</resources>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WelcomeActivity">
+
+    <TextView
+        android:id="@+id/tv_mk_just_a_few"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="@string/mk_just_a_few"
+        android:textSize="48sp"
+        style="@style/TitleText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_mk_greetings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_half"
+        android:lineSpacingExtra="8sp"
+        android:text="@string/mk_let_us_know"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:textColor="@color/colorSubText"
+        app:layout_constraintEnd_toEndOf="@id/tv_mk_just_a_few"
+        app:layout_constraintStart_toStartOf="@id/tv_mk_just_a_few"
+        app:layout_constraintTop_toBottomOf="@id/tv_mk_just_a_few" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_mk_emergency"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/welcome_emergency"
+        android:textColor="@color/colorAccentRed"
+        app:icon="@drawable/welcome_ic_call_emergency"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_mk_medical"
+        style="@style/CustomIcon"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/mk_ic_doctor"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_mk_doctor"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/tv_mk_doctor" />
+
+    <TextView
+        android:id="@+id/tv_mk_doctor"
+        style="@style/CustomButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/mk_doctor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_mk_doctor"
+        style="@style/CustomButton"
+        android:background="@drawable/all_ripple_red"
+        app:layout_constraintBottom_toBottomOf="@id/tv_mk_doctor"
+        app:layout_constraintEnd_toEndOf="@id/tv_mk_doctor"
+        app:layout_constraintStart_toStartOf="@id/tv_mk_doctor"
+        app:layout_constraintTop_toTopOf="@id/tv_mk_doctor" />
+
+    <ImageView
+        android:id="@+id/iv_mk_stem"
+        style="@style/CustomIcon"
+        android:src="@drawable/mk_ic_truck"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_mk_supplier"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/tv_mk_supplier" />
+
+    <TextView
+        android:id="@+id/tv_mk_supplier"
+        style="@style/CustomButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/mk_supplier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_mk_doctor" />
+
+    <View
+        android:id="@+id/view_mk_supplier"
+        style="@style/CustomButton"
+        android:background="@drawable/all_ripple_green"
+        app:layout_constraintBottom_toBottomOf="@id/tv_mk_supplier"
+        app:layout_constraintEnd_toEndOf="@id/tv_mk_supplier"
+        app:layout_constraintStart_toStartOf="@id/tv_mk_supplier"
+        app:layout_constraintTop_toTopOf="@id/tv_mk_supplier" />
+
+    <ImageView
+        android:id="@+id/iv_mk_patient"
+        style="@style/CustomIcon"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/mk_ic_patient"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_mk_patient"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/tv_mk_patient" />
+
+    <TextView
+        android:id="@+id/tv_mk_patient"
+        style="@style/CustomButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/mk_patient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_mk_supplier" />
+
+    <View
+        android:id="@+id/view_mk_patient"
+        style="@style/CustomButton"
+        android:background="@drawable/all_ripple_blue"
+        app:layout_constraintBottom_toBottomOf="@id/tv_mk_patient"
+        app:layout_constraintEnd_toEndOf="@id/tv_mk_patient"
+        app:layout_constraintStart_toStartOf="@id/tv_mk_patient"
+        app:layout_constraintTop_toTopOf="@id/tv_mk_patient" />
+
+    <ImageView
+        android:id="@+id/iv_mk_vendor"
+        style="@style/CustomIcon"
+        android:src="@drawable/mk_ic_vendor"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_mk_vendor"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/tv_mk_vendor" />
+
+    <TextView
+        android:id="@+id/tv_mk_vendor"
+        style="@style/CustomButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/mk_vendor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_mk_patient" />
+
+    <View
+        android:id="@+id/view_mk_vendor"
+        style="@style/CustomButton"
+        android:background="@drawable/all_ripple_brown"
+        app:layout_constraintBottom_toBottomOf="@id/tv_mk_vendor"
+        app:layout_constraintEnd_toEndOf="@id/view_mk_supplier"
+        app:layout_constraintStart_toStartOf="@id/tv_mk_vendor"
+        app:layout_constraintTop_toTopOf="@id/tv_mk_vendor" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="144dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="294dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_margin_half">8dp</dimen>
+    <dimen name="margin_registration_card_view">32dp</dimen>
+    <dimen name="margin_registration_edit_text">12dp</dimen>
+</resources>

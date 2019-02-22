@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WelcomeActivity">
+
+    <TextView
+        android:id="@+id/tv_welcome_hi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="@string/welcome_hi"
+        android:textSize="68sp"
+        style="@style/TitleText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_welcome_greetings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_half"
+        android:lineSpacingExtra="8sp"
+        android:text="@string/welcome_greetings"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:textColor="@color/colorSubText"
+        app:layout_constraintEnd_toEndOf="@id/tv_welcome_hi"
+        app:layout_constraintStart_toStartOf="@id/tv_welcome_hi"
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome_hi" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_welcome_emergency"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/welcome_emergency"
+        android:textColor="@color/colorAccentRed"
+        app:icon="@drawable/welcome_ic_call_emergency"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_welcome_medical"
+        style="@style/CustomIcon"
+        android:src="@drawable/welcome_ic_medical_kit"
+        app:layout_constraintBottom_toBottomOf="@+id/view_welcome_medical"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/view_welcome_medical" />
+
+    <TextView
+        android:id="@+id/tv_welcome_medical"
+        style="@style/CustomButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_medical_kit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_welcome_medical"
+        style="@style/CustomButton"
+        android:background="@drawable/all_ripple_red"
+        app:layout_constraintBottom_toBottomOf="@id/tv_welcome_medical"
+        app:layout_constraintEnd_toEndOf="@id/tv_welcome_medical"
+        app:layout_constraintStart_toStartOf="@id/tv_welcome_medical"
+        app:layout_constraintTop_toTopOf="@id/tv_welcome_medical" />
+
+    <ImageView
+        android:id="@+id/iv_welcome_stem"
+        style="@style/CustomIcon"
+        android:src="@drawable/welcome_ic_bank"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_welcome_stem"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/tv_welcome_stem" />
+
+    <TextView
+        android:id="@+id/tv_welcome_stem"
+        style="@style/CustomButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_stem_cell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome_medical" />
+
+    <View
+        style="@style/CustomButton"
+        android:background="@drawable/all_ripple_green"
+        app:layout_constraintBottom_toBottomOf="@id/tv_welcome_stem"
+        app:layout_constraintEnd_toEndOf="@id/tv_welcome_stem"
+        app:layout_constraintStart_toStartOf="@id/tv_welcome_stem"
+        app:layout_constraintTop_toTopOf="@id/tv_welcome_stem" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="153dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="160dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

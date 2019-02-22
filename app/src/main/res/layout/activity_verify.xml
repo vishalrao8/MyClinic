@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_verify_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/verify_verify_me"
+        android:textSize="48sp"
+        style="@style/TitleText"
+        android:layout_marginTop="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_verify_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="60dp"
+        style="@style/InputCardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_verify_title">
+
+        <EditText
+            android:id="@+id/et_verify_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin_registration_edit_text"
+            android:layout_marginEnd="@dimen/margin_registration_edit_text"
+            android:autofillHints="phone"
+            android:background="@null"
+            android:ems="10"
+            android:maxLength="13"
+            android:hint="@string/verify_enter_mobile"
+            android:inputType="phone"
+            android:textAlignment="center"
+            style="@style/InputEditText"
+            tools:targetApi="o" />
+
+        <com.mukesh.OtpView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:inputType="number"
+            app:itemCount="4"
+            app:viewType="none"
+            android:visibility="gone"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/iv_verify_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/verify_ic_info_black"
+        app:layout_constraintBottom_toBottomOf="@id/tv_verify_info"
+        app:layout_constraintEnd_toStartOf="@+id/tv_verify_info"
+        app:layout_constraintTop_toTopOf="@id/tv_verify_info" />
+
+    <TextView
+        android:id="@+id/tv_verify_info"
+        style="@style/InfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/verify_info"
+        app:layout_constraintEnd_toEndOf="@+id/cv_verify_phone"
+        app:layout_constraintStart_toStartOf="@+id/cv_verify_phone"
+        app:layout_constraintTop_toBottomOf="@id/cv_verify_phone" />
+
+    <TextView
+        android:id="@+id/tv_verify_confirm"
+        style="@style/CustomButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/verify_confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_verify_confirm"
+        style="@style/CustomButton"
+        android:background="@drawable/all_ripple_blue"
+        app:layout_constraintBottom_toBottomOf="@id/tv_verify_confirm"
+        app:layout_constraintEnd_toEndOf="@id/tv_verify_confirm"
+        app:layout_constraintStart_toStartOf="@id/tv_verify_confirm"
+        app:layout_constraintTop_toTopOf="@id/tv_verify_confirm" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_verify_emergency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_emergency"
+        android:textColor="@color/colorAccentRed"
+        app:icon="@drawable/welcome_ic_call_emergency"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_marginBottom="@dimen/default_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

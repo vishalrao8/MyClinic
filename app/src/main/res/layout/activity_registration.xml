@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/tv_registration_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registration_title"
+        style="@style/TitleText"
+        android:layout_marginTop="70dp"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_registration_name"
+        android:layout_width="0dp"
+        android:layout_marginStart="@dimen/margin_registration_card_view"
+        android:layout_marginTop="@dimen/margin_registration_card_view"
+        android:layout_marginEnd="@dimen/margin_registration_card_view"
+        style="@style/InputCardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_registration_title">
+
+        <View
+            style="@style/CardBorder"/>
+
+        <EditText
+            android:id="@+id/et_registration_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="name"
+            android:hint="@string/registration_enter_name"
+            android:inputType="textPersonName"
+            style="@style/InputEditText"
+            tools:targetApi="o" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_registration_street"
+        style="@style/InputCardView"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="@id/cv_registration_name"
+        app:layout_constraintStart_toStartOf="@+id/cv_registration_name"
+        app:layout_constraintTop_toBottomOf="@id/cv_registration_name">
+
+        <View
+            style="@style/CardBorder"/>
+
+        <EditText
+            android:id="@+id/et_registration_street"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="address"
+            android:hint="@string/registration_street_address"
+            android:inputType="text"
+            style="@style/InputEditText"
+            tools:targetApi="o" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_registration_city"
+        style="@style/InputCardView"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="@id/cv_registration_street"
+        app:layout_constraintStart_toStartOf="@+id/cv_registration_street"
+        app:layout_constraintTop_toBottomOf="@id/cv_registration_street">
+
+        <View
+            style="@style/CardBorder"/>
+
+        <EditText
+            android:id="@+id/et_registration_city"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="address"
+            android:hint="@string/registration_city"
+            android:inputType="text"
+            style="@style/InputEditText"
+            tools:targetApi="o" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_registration_state"
+        style="@style/InputCardView"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="@id/cv_registration_city"
+        app:layout_constraintStart_toStartOf="@+id/cv_registration_city"
+        app:layout_constraintTop_toBottomOf="@id/cv_registration_city">
+
+        <View
+            style="@style/CardBorder"/>
+
+        <EditText
+            android:id="@+id/et_registration_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="address"
+            android:hint="@string/registration_state"
+            android:inputType="text"
+            style="@style/InputEditText"
+            tools:targetApi="o" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_registration_zip"
+        style="@style/InputCardView"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="@id/cv_registration_state"
+        app:layout_constraintStart_toStartOf="@+id/cv_registration_state"
+        app:layout_constraintTop_toBottomOf="@id/cv_registration_state">
+
+        <View
+            style="@style/CardBorder"/>
+
+        <EditText
+            android:id="@+id/et_registration_zip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="address"
+            android:hint="@string/registration_zip_code"
+            android:inputType="number"
+            android:maxLength="6"
+            style="@style/InputEditText"
+            tools:targetApi="o" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_registration_issue"
+        style="@style/InputCardView"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="@id/cv_registration_zip"
+        app:layout_constraintStart_toStartOf="@+id/cv_registration_zip"
+        app:layout_constraintTop_toBottomOf="@id/cv_registration_zip">
+
+        <View
+            style="@style/CardBorder"/>
+
+        <EditText
+            android:id="@+id/et_registration_issue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="text"
+            android:hint="@string/registration_issue"
+            android:inputType="textMultiLine"
+            style="@style/InputEditText"
+            tools:targetApi="o" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_registration_fill"
+        style="@style/CustomButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registration_fill"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="@dimen/default_margin"
+        app:layout_constraintTop_toBottomOf="@id/cv_registration_issue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <View
+        android:id="@+id/view_registration_fill"
+        style="@style/CustomButton"
+        android:background="@drawable/all_ripple_blue"
+        app:layout_constraintBottom_toBottomOf="@id/tv_registration_fill"
+        app:layout_constraintEnd_toEndOf="@id/tv_registration_fill"
+        app:layout_constraintStart_toStartOf="@id/tv_registration_fill"
+        app:layout_constraintTop_toTopOf="@id/tv_registration_fill" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
