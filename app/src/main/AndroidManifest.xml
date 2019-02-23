@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.unitedcreation.myclinic">
 
     <application
@@ -8,16 +9,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".VerifyActivity"></activity>
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".WelcomeActivity">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".ui.HomeActivity"
+            android:label="@string/title_activity_home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.VerifyActivity" />
+        <activity android:name=".ui.RegistrationActivity">
+
+        </activity>
+        <activity android:name=".ui.WelcomeActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

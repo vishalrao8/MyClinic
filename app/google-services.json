@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "392412317800",
-    "firebase_url": "https://keepmehappy-ed6f0.firebaseio.com",
-    "project_id": "keepmehappy-ed6f0",
-    "storage_bucket": "keepmehappy-ed6f0.appspot.com"
+    "project_number": "730986917802",
+    "firebase_url": "https://myclinic-4da60.firebaseio.com",
+    "project_id": "myclinic-4da60",
+    "storage_bucket": "myclinic-4da60.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:392412317800:android:a5b1181c4e6dbc7e",
+        "mobilesdk_app_id": "1:730986917802:android:a5b1181c4e6dbc7e",
         "android_client_info": {
           "package_name": "com.unitedcreation.myclinic"
         }
       },
       "oauth_client": [
         {
-          "client_id": "392412317800-8p5fhphc77glr350p46o7mkk4cj2e8u6.apps.googleusercontent.com",
+          "client_id": "730986917802-vkf3g9503t2sk8j5iquel7aeq0v5g8kq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.unitedcreation.myclinic",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "392412317800-2s4vbm47hmd935gq214sttsnfp6g8tnd.apps.googleusercontent.com",
+          "client_id": "730986917802-khkcp0qqbssi59siaqv00kakgilmurv8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC-CklECGoP6IkaROgX0j3jclbUSwLhlZE"
+          "current_key": "AIzaSyD6xC_lnZjzCzDMiKXoFHbbQims4HL8Y6c"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "392412317800-2s4vbm47hmd935gq214sttsnfp6g8tnd.apps.googleusercontent.com",
+              "client_id": "730986917802-khkcp0qqbssi59siaqv00kakgilmurv8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
