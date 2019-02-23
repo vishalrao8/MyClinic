@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <fragment
+        android:id="@+id/fragment_maps_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MapsActivity" />
+
+    <include
+        android:id="@+id/layout_maps_sheet"
+        layout="@layout/partial_maps_sheet"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_maps_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/maps_ic_payment"
+        app:backgroundTint="@android:color/white"
+        android:layout_marginEnd="@dimen/default_margin"
+        app:layout_anchor="@id/layout_maps_sheet"
+        app:layout_anchorGravity="end|top"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
