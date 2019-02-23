@@ -31,6 +31,9 @@
     <string name="registration_zip_code">Zip Code</string>
     <string name="registration_issue">Issue</string>
     <string name="registration_fill">Fill</string>
+    <string name="registration_qualification">Qualification</string>
+    <string name="registration_licence">Licence number</string>
+    <string name="registration_variable">Variable</string>
 
     <!-- PatientActivity -->
     <string name="patient_navigation_bank">bank</string>
@@ -42,5 +45,13 @@
     <string name="payment_share_description">To get exclusive discount</string>
     <string name="payment_share">Share Now</string>
     <string name="payment_know_more"><u>Know More</u></string>
+
+    <!-- MapsActivity -->
+    <string name="maps_bank_name">Bank Name</string>
+    <string name="maps_title_activity">Maps</string>
+    <string name="maps_pay_now">Pay Now</string>
+    <string name="maps_call">call</string>
+    <string name="maps_website">Website</string>
+    <string name="maps_visit">Visit</string>
 
 </resources>
