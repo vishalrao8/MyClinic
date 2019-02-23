@@ -1,6 +1,7 @@
 package com.unitedcreation.myclinic;
 
 import androidx.appcompat.app.AppCompatActivity;
+import durdinapps.rxfirebase2.RxFirebaseAuth;
 
 import android.os.Bundle;
 
@@ -10,5 +11,6 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
     }
 }
