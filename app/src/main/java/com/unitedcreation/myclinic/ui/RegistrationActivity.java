@@ -33,13 +33,16 @@ import static com.unitedcreation.myclinic.utils.StringUtils.VENDOR;
 import static com.unitedcreation.myclinic.utils.StringUtils.ZIP;
 import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
 
+import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
+import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
+
 public class RegistrationActivity extends AppCompatActivity {
     //Database Child Variable
     static String child="";
 
     //Edit TExts
 
-    @BindView(R.id.et_registration_issue)
+    @BindView(R.id.et_registration_variable)
     EditText mVariable_et;
 
     @BindView(R.id.et_registration_name)
@@ -62,12 +65,12 @@ public class RegistrationActivity extends AppCompatActivity {
     TextView mFill_tv;
 
     //Card View
-    @BindView(R.id.cv_registration_issue)
+    @BindView(R.id.cv_registration_variable)
     CardView mVariable_cv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration_patient);
+        setContentView(R.layout.activity_registration);
         switchTheme(this, getIntent().getIntExtra(PROFILE_EXTRA, 0));
         ButterKnife.bind(this);
         switch (getIntent().getIntExtra(PROFILE_EXTRA, 0)){
@@ -116,6 +119,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
             }
         });
+
+        switchTheme(this, getIntent().getIntExtra(PROFILE_EXTRA, 0));
+        setContentView(R.layout.activity_registration);
+
+
 
     }
 }

@@ -149,25 +149,50 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_registration_issue"
+        android:id="@+id/cv_registration_variable"
         style="@style/InputCardView"
         android:layout_width="0dp"
         android:layout_marginTop="@dimen/default_margin"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/cv_registration_zip"
         app:layout_constraintStart_toStartOf="@+id/cv_registration_zip"
         app:layout_constraintTop_toBottomOf="@id/cv_registration_zip">
 
-        <View
-            style="@style/CardBorder"/>
+        <View style="@style/CardBorder" />
 
         <EditText
-            android:id="@+id/et_registration_issue"
+            android:id="@+id/et_registration_variable"
+            style="@style/InputEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:autofillHints="text"
-            android:hint="@string/registration_issue"
+            android:hint="@string/registration_variable"
             android:inputType="textMultiLine"
+            tools:targetApi="o" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_registration_licence"
+        style="@style/InputCardView"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/default_margin"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/cv_registration_variable"
+        app:layout_constraintStart_toStartOf="@id/cv_registration_variable"
+        app:layout_constraintTop_toBottomOf="@id/cv_registration_variable">
+
+        <View style="@style/CardBorder" />
+
+        <EditText
+            android:id="@+id/et_registration_licence"
             style="@style/InputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="qualification"
+            android:hint="@string/registration_licence"
+            android:inputType="textMultiLine"
+            android:visibility="visible"
             tools:targetApi="o" />
 
     </androidx.cardview.widget.CardView>
@@ -180,7 +205,7 @@
         android:text="@string/registration_fill"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="@dimen/default_margin"
-        app:layout_constraintTop_toBottomOf="@id/cv_registration_issue"
+        app:layout_constraintTop_toBottomOf="@id/cv_registration_licence"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
