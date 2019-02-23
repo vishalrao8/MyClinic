@@ -11,13 +11,7 @@ import android.view.View;
 
 import com.unitedcreation.myclinic.R;
 
-import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR_EXTRA;
-import static com.unitedcreation.myclinic.utils.StringUtils.POSITION_EXTRA;
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
-import static com.unitedcreation.myclinic.utils.StringUtils.PATIENT_EXTRA;
-import static com.unitedcreation.myclinic.utils.StringUtils.STEM_EXTRA;
-import static com.unitedcreation.myclinic.utils.StringUtils.SUPPLIER_EXTRA;
-import static com.unitedcreation.myclinic.utils.StringUtils.VENDOR_EXTRA;
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -90,11 +84,10 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    public void moveToVerification (String profile, int position) {
+    public void moveToVerification (int position) {
 
         Intent intent = new Intent(this, VerifyActivity.class);
-        intent.putExtra(PROFILE_EXTRA, profile);
-        intent.putExtra(POSITION_EXTRA, position);
+        intent.putExtra(PROFILE_EXTRA, position);
         startActivity(intent);
 
     }
@@ -113,15 +106,15 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
         switch (v.getId()) {
 
-            case R.id.view_mk_doctor: moveToVerification(DOCTOR_EXTRA, 1); break;
+            case R.id.view_mk_doctor: moveToVerification(1); break;
 
-            case R.id.view_mk_patient: moveToVerification(PATIENT_EXTRA, 2); break;
+            case R.id.view_mk_patient: moveToVerification(2); break;
 
-            case R.id.view_mk_supplier: moveToVerification(SUPPLIER_EXTRA, 3); break;
+            case R.id.view_mk_supplier: moveToVerification(3); break;
 
-            case R.id.view_mk_vendor: moveToVerification(VENDOR_EXTRA, 4); break;
+            case R.id.view_mk_vendor: moveToVerification(4); break;
 
-            default: moveToVerification(STEM_EXTRA, 0);
+            default: moveToVerification(0);
 
         }
     }

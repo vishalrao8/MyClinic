@@ -3,7 +3,6 @@ package com.unitedcreation.myclinic.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,12 +10,8 @@ import android.widget.TextView;
 import com.mukesh.OtpView;
 import com.unitedcreation.myclinic.R;
 
-import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR_EXTRA;
-import static com.unitedcreation.myclinic.utils.StringUtils.PATIENT_EXTRA;
-import static com.unitedcreation.myclinic.utils.StringUtils.POSITION_EXTRA;
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
-import static com.unitedcreation.myclinic.utils.StringUtils.SUPPLIER_EXTRA;
-import static com.unitedcreation.myclinic.utils.StringUtils.VENDOR_EXTRA;
+import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
 
 public class VerifyActivity extends AppCompatActivity {
 
@@ -28,7 +23,7 @@ public class VerifyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        switchTheme();
+        switchTheme(this, getIntent().getIntExtra(PROFILE_EXTRA, 0));
         setContentView(R.layout.activity_verify);
 
         ButterKnife.bind(this);
@@ -69,27 +64,5 @@ public class VerifyActivity extends AppCompatActivity {
                 }
             }
         });*/
-    }
-
-    private void switchTheme() {
-
-        Intent intent = getIntent();
-
-        int position = intent.getIntExtra(POSITION_EXTRA, 0);
-
-        switch (position) {
-
-            case 1: setTheme(R.style.Red); break;
-
-            case 2: setTheme(R.style.Blue); break;
-
-            case 3: setTheme(R.style.Green); break;
-
-            case 4: setTheme(R.style.Brown); break;
-
-            default: setTheme(R.style.Green);
-
-        }
-
     }
 }
