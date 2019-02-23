@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/payment_ic_wallet"
+        android:elevation="5dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,9 +22,9 @@
         android:id="@+id/iv_payment_paytm"
         android:layout_width="70dp"
         android:layout_height="30dp"
-        android:elevation="1dp"
         android:layout_marginTop="32dp"
-        android:src="@drawable/ic_paytm"
+        android:elevation="1dp"
+        android:src="@drawable/payment_ic_paytm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_payment_icon" />
@@ -33,7 +35,9 @@
         android:layout_height="36dp"
         android:layout_marginStart="70dp"
         android:layout_marginEnd="70dp"
-        android:background="@drawable/payment_background_wallet"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/payment_selector_option"
         app:layout_constraintBottom_toBottomOf="@id/iv_payment_paytm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,11 +45,11 @@
 
     <ImageView
         android:id="@+id/iv_payment_bhim"
-        android:layout_width="70dp"
+        android:layout_width="120dp"
         android:layout_height="30dp"
-        android:elevation="1dp"
-        android:src="@drawable/ic_paytm"
         android:layout_marginTop="24dp"
+        android:elevation="1dp"
+        android:src="@drawable/payment_ic_bhim"
         app:layout_constraintEnd_toEndOf="@id/iv_payment_paytm"
         app:layout_constraintStart_toStartOf="@id/iv_payment_paytm"
         app:layout_constraintTop_toBottomOf="@id/iv_payment_paytm" />
@@ -54,7 +58,9 @@
         android:id="@+id/view_payment_bhim"
         android:layout_width="0dp"
         android:layout_height="36dp"
-        android:background="@drawable/payment_background_wallet"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/payment_selector_option"
         android:layout_marginStart="70dp"
         android:layout_marginEnd="70dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +69,7 @@
         app:layout_constraintBottom_toBottomOf="@id/iv_payment_bhim"/>
 
     <View
+        android:id="@+id/divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="@color/colorDivider"
@@ -75,12 +82,12 @@
         android:id="@+id/iv_payment_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:src="@drawable/payment_ic_card"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintVertical_bias="0.25" />
 
     <View
         android:id="@+id/view_payment_card"
@@ -103,5 +110,41 @@
         app:layout_constraintStart_toStartOf="@id/iv_payment_card"
         app:layout_constraintEnd_toEndOf="@id/iv_payment_card"
         app:layout_constraintTop_toBottomOf="@id/iv_payment_card"/>
+
+    <TextView
+        android:id="@+id/tv_payment_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/payment_share"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_payment_share_des"/>
+
+    <TextView
+        android:id="@+id/tv_payment_share_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/payment_share_description"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:textColor="@color/colorSubText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_payment_know_more"
+        app:layout_constraintStart_toStartOf="@+id/tv_payment_share" />
+
+    <TextView
+        android:id="@+id/tv_payment_know_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/payment_know_more"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:textColor="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/tv_payment_share"
+        app:layout_constraintStart_toEndOf="@+id/tv_payment_share_des"
+        app:layout_constraintTop_toTopOf="@+id/tv_payment_share_des" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

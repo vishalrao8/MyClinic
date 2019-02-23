@@ -36,8 +36,6 @@
             android:layout_marginEnd="@dimen/margin_registration_edit_text"
             android:autofillHints="phone"
             android:background="@null"
-            android:paddingEnd="8dp"
-            android:paddingStart="8dp"
             android:ems="10"
             android:text="+91"
             android:maxLength="13"
@@ -47,16 +45,16 @@
             tools:targetApi="o" />
 
         <com.mukesh.OtpView
+            android:id="@+id/otp_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:inputType="number"
-            app:itemCount="4"
             android:cursorVisible="true"
             android:hint="Enter OTP Here"
-            android:id="@+id/otp_view"
-            app:viewType="none"
-            android:visibility="gone"/>
+            android:inputType="number"
+            android:visibility="gone"
+            app:itemCount="4"
+            app:viewType="none" />
 
     </androidx.cardview.widget.CardView>
 

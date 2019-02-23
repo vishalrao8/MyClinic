@@ -10,25 +10,25 @@
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
     </style>
 
-    <style name="Patient" parent="AppTheme">
+    <style name="Blue" parent="AppTheme">
         <item name="colorPrimary">@color/colorAccentBlue</item>
         <item name="colorPrimaryDark">@color/colorAccentBlueGradient</item>
         <item name="colorAccent">@color/colorAccentBlue</item>
     </style>
 
-    <style name="Vendor" parent="AppTheme">
+    <style name="Brown" parent="AppTheme">
         <item name="colorPrimary">@color/colorAccentBrown</item>
         <item name="colorPrimaryDark">@color/colorAccentBrownGradient</item>
         <item name="colorAccent">@color/colorAccentBrown</item>
     </style>
 
-    <style name="Doctor" parent="AppTheme">
+    <style name="Red" parent="AppTheme">
         <item name="colorPrimary">@color/colorAccentRed</item>
         <item name="colorPrimaryDark">@color/colorAccentRedGradient</item>
         <item name="colorAccent">@color/colorAccentRed</item>
     </style>
 
-    <style name="Supplier" parent="AppTheme">
+    <style name="Green" parent="AppTheme">
         <item name="colorPrimary">@color/colorAccentGreen</item>
         <item name="colorPrimaryDark">@color/colorAccentGreenGradient</item>
         <item name="colorAccent">@color/colorAccentGreen</item>

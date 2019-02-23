@@ -39,5 +39,8 @@
     <string name="patient_tab_private">Private</string>
     <string name="patient_hi">Hi XYZ,</string>
     <string name="payment_new_card">Add new card</string>
+    <string name="payment_share_description">To get exclusive discount</string>
+    <string name="payment_share">Share Now</string>
+    <string name="payment_know_more"><u>Know More</u></string>
 
 </resources>
