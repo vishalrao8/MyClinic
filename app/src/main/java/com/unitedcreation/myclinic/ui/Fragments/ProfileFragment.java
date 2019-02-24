@@ -1,13 +1,17 @@
 package com.unitedcreation.myclinic.ui.Fragments;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.unitedcreation.myclinic.R;
+import com.unitedcreation.myclinic.SQLiteDatabase.DataContract;
 import com.unitedcreation.myclinic.SQLiteDatabase.DataTableHelper;
 
 import androidx.annotation.NonNull;
@@ -15,7 +19,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class ProfileFragment extends Fragment {
-    private TextView mName,mProfileName,mAge,mAddress,mState,mVARName,mVARValue,mLogout;
+    private TextView mName,mProfileName,mAge,mAddress,mState;
+    Button mLogout;
     DataTableHelper dataTableHelper;
     @Nullable
     @Override
@@ -26,15 +31,13 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);/*
-        mAddress=view.findViewById(R.id.profile_address);
-        mAge=view.findViewById(R.id.profile_age);
-        mName=view.findViewById(R.id.profile_name);
+        super.onViewCreated(view, savedInstanceState);
+        mAddress=view.findViewById(R.id.tv_patient_address);
+        mAge=view.findViewById(R.id.tv_patient_age);
+        mName=view.findViewById(R.id.tv_patient_name);
         mProfileName=view.findViewById(R.id.tv_patient_profile);
-        mState=view.findViewById(R.id.profile_state);
-        mVARName=view.findViewById(R.id.profile_var_name);
-        mLogout=view.findViewById(R.id.tv_profile_logout);
-        mVARValue=view.findViewById(R.id.profile_var_value);
+        mState=view.findViewById(R.id.tv_patient_city);
+        mLogout=view.findViewById(R.id.patient_logout_button);
 
         Cursor cursor=dataTableHelper.getAllData();
         if(cursor.moveToNext()){
@@ -43,14 +46,6 @@ public class ProfileFragment extends Fragment {
             mProfileName.setText("Hi ,"+cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME)));
             mAge.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_AGE)));
             mAddress.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_ADDRESS)));
-            if(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_ISSUE))!=null){
-                mVARValue.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_ISSUE)));
-                mVARName.setText("Issue : ");
-            }
-            else if(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_LICENCE))!=null){
-                mVARValue.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_LICENCE)));
-                mVARName.setText("Licence : ");
-            }
 
         }
         mLogout.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +56,6 @@ public class ProfileFragment extends Fragment {
                 Log.i("LOGOUT","LOGOUT");
                 getActivity().finishAndRemoveTask();
             }
-        });*/
+        });
     }
 }

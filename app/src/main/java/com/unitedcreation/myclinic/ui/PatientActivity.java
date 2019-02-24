@@ -1,66 +1,71 @@
 package com.unitedcreation.myclinic.ui;
 
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.unitedcreation.myclinic.R;
-import com.unitedcreation.myclinic.ui.Fragments.BankFragment;
-import com.unitedcreation.myclinic.ui.Fragments.ProfileFragment;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-import android.view.MenuItem;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class PatientActivity extends AppCompatActivity {
+import com.unitedcreation.myclinic.Adapters.PatientRecyclerAdapter;
+import com.unitedcreation.myclinic.R;
+import com.unitedcreation.myclinic.SQLiteDatabase.DataContract;
+import com.unitedcreation.myclinic.SQLiteDatabase.DataTableHelper;
 
-    private TextView mTextMessage;
+import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
+import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
+
+public class PatientActivity extends AppCompatActivity {
+    @BindView(R.id.mpatient_logout_button)
+    ImageButton mLogout;
+
+    @BindView(R.id.tv_mpatient_profile)
+    TextView mName;
+
+    @BindView(R.id.tv_mpatient_age)
+    TextView mAge;
+
+    @BindView(R.id.patient_rv)
+    RecyclerView patient_rv;
+    DataTableHelper dataTableHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
+        dataTableHelper=new DataTableHelper(this);
+        switchTheme(this, 2);
         setContentView(R.layout.activity_patient);
+        ButterKnife.bind(this);
+        super.onCreate(savedInstanceState);
 
-        // load the store fragment by default
-        loadFragment(new BankFragment());
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        patient_rv.setLayoutManager(layoutManager);
 
-    }
+        PatientRecyclerAdapter adapter=new PatientRecyclerAdapter();
+        patient_rv.setAdapter(adapter);
+        Cursor cursor=dataTableHelper.getAllData();
+        if(cursor.moveToNext()){
+            mName.setText("Hi ,"+cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME)));
+            mAge.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_AGE)));
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = item -> {
-
-                Fragment fragment=null;
-
-                switch (item.getItemId()) {
-
-                    case R.id.navigation_bank: fragment = new BankFragment(); break;
-
-                    case R.id.navigation_profile: fragment = new ProfileFragment();
-
-                }
-
-                if(fragment!=null){
-
-                    loadFragment(fragment);
-                    return true;
-
-                }
-                return false;
-            };
+        }
 
 
-    private void loadFragment(Fragment fragment) {
-
-        // load fragment
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        mLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // FirebaseAuth.getInstance().signOut();
+                dataTableHelper.deleteData();
+                Log.i("LOGOUT","LOGOUT");
+                finishAndRemoveTask();
+            }
+        });
     }
 }

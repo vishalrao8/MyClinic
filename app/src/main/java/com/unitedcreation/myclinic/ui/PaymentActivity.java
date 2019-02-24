@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.unitedcreation.myclinic.R;
@@ -19,6 +20,9 @@ public class PaymentActivity extends AppCompatActivity {
     View mPaytmPayment,mBhimPayment;
     FragmentTransaction ft;
     Fragment prev;
+    DialogFragment dialogFragment;
+    TextView mPaySucess;
+    ImageView mClose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +33,35 @@ public class PaymentActivity extends AppCompatActivity {
         mShare=findViewById(R.id.tv_payment_share);
         ft = getFragmentManager().beginTransaction();
         prev = getFragmentManager().findFragmentByTag("dialog");
+        dialogFragment = new MyCustomDialogFragment();
+        mClose=dialogFragment.getDialog().findViewById(R.id.iv_share_close);
+        mClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogFragment.dismiss();
+                finish();
+            }
+        });
 
         mBhimPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+                dialogFragment.show(getSupportFragmentManager(), "dialog");
             }
         });
 
         mPaytmPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+                dialogFragment.show(getSupportFragmentManager(), "dialog");
             }
         });
         mShare.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +72,8 @@ public class PaymentActivity extends AppCompatActivity {
                     ft.remove(prev);
                 }
                 ft.addToBackStack(null);
-
-                DialogFragment dialogFragment = new MyCustomDialogFragment();
+                mPaySucess=dialogFragment.getDialog().findViewById(R.id.tv_payment_sucess);
+                mPaySucess.setText("");
                 dialogFragment.show(getSupportFragmentManager(), "dialog");
             }
         });

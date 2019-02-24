@@ -17,12 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.SupplierActivity"></activity>
+        <activity android:name=".ui.VendorActivity" />
+        <activity android:name=".ui.PatientActivity" />
         <activity
             android:name=".ui.DoctorActivity"
             android:theme="@style/Red" />
         <activity android:name=".ui.PaymentActivity" />
         <activity
-            android:name=".ui.PatientActivity"
+            android:name=".ui.StemActivity"
             android:theme="@style/Blue" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

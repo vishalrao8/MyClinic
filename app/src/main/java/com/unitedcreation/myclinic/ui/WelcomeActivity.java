@@ -56,7 +56,23 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         Cursor cursor=dataTableHelper.getAllData();
         if(cursor.getCount()!=0){
             cursor.moveToNext();
-            moveToHome(cursor.getInt(cursor.getColumnIndex(DataContract.DataTable.P_ID)));
+            switch (cursor.getInt(cursor.getColumnIndex(DataContract.DataTable.P_ID))){
+                case 0:
+                   moveToHome();
+                    break;
+                case 1:
+                    moveToDoctorHome();
+                    break;
+                case 2:
+                    moveToPatientHome();
+                    break;
+                case 3:
+                    moveToSupplierHome();
+                    break;
+                case 4:
+                    moveToVendorHome();
+            }
+
         }
 
         medicalKitButton.setOnClickListener(v -> flipLayouts());
@@ -128,10 +144,39 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
         }
     }
-    public void moveToHome(int id){
-        Intent intent = new Intent(WelcomeActivity.this, PatientActivity.class);
+    public void moveToHome(){
+        Intent intent = new Intent(WelcomeActivity.this, StemActivity.class);
+        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra(PROFILE_EXTRA, id);
         startActivity(intent);
+        finish();
+    }
+    public void moveToDoctorHome(){
+        Intent intent = new Intent(WelcomeActivity.this, DoctorActivity.class);
+        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+    public void moveToPatientHome(){
+        Intent intent = new Intent(WelcomeActivity.this, PatientActivity.class);
+        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+    public void moveToVendorHome(){
+        Intent intent = new Intent(WelcomeActivity.this, VendorActivity.class);
+        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+    public void moveToSupplierHome(){
+        Intent intent = new Intent(WelcomeActivity.this, SupplierActivity.class);
+        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }
