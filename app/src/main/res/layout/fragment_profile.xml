@@ -145,6 +145,74 @@
         app:layout_constraintTop_toTopOf="@+id/tv_patient_zip_label"
         tools:text="110049" />
 
+    <TextView
+        android:id="@+id/tv_patient_age_label"
+        style="@style/ProfileLabelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/all_age"
+        android:textColor="@color/colorSubText"
+        app:layout_constraintStart_toStartOf="@+id/tv_patient_zip_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_patient_zip_label" />
+
+    <TextView
+        android:id="@+id/tv_patient_age"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_patient_age_label"
+        app:layout_constraintStart_toEndOf="@+id/tv_patient_age_label"
+        app:layout_constraintTop_toTopOf="@+id/tv_patient_age_label"
+        tools:text="21" />
+
+    <TextView
+        android:id="@+id/tv_patient_qualification_label"
+        style="@style/ProfileLabelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/doctor_qualification"
+        android:textColor="@color/colorSubText"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/tv_patient_age_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_patient_age_label" />
+
+    <TextView
+        android:id="@+id/tv_patient_qualification"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_patient_qualification_label"
+        app:layout_constraintStart_toEndOf="@+id/tv_patient_qualification_label"
+        app:layout_constraintTop_toTopOf="@+id/tv_patient_qualification_label"
+        tools:text="MCom" />
+
+    <TextView
+        android:id="@+id/tv_patient_licence_label"
+        style="@style/ProfileLabelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/doctor_licence"
+        android:textColor="@color/colorSubText"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/tv_patient_qualification_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_patient_qualification_label" />
+
+    <TextView
+        android:id="@+id/tv_patient_licence"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_patient_licence_label"
+        app:layout_constraintStart_toEndOf="@+id/tv_patient_licence_label"
+        app:layout_constraintTop_toTopOf="@+id/tv_patient_licence_label"
+        tools:text="1234" />
+
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
