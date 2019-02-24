@@ -95,4 +95,9 @@
         <item name="rippleColor">@color/colorAccentRed</item>
     </style>
 
+    <style name="Widget.Design.TabLayout" parent="Base.Widget.Design.TabLayout">
+        <item name="tabGravity">center</item>
+        <item name="tabMode">fixed</item>
+    </style>
+
 </resources>
