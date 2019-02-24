@@ -69,6 +69,17 @@
     <string name="all_city">City:</string>
     <string name="all_zip_code">Zip Code:</string>
     <string name="all_age">Age:</string>
+
+    <!-- ShareActivity -->
+    <string name="share_title">Share</string>
+    <string name="share_cashback_title">Get up to 50% cashback</string>
+    <string name="share_info">On every download by your referral</string>
+    <string name="share_t_c_apply"><u>T&amp;C Apply</u></string>
+
+    <!-- DoctorActivity -->
+    <string name="doctor_today">Today</string>
+    <string name="doctor_past">Past</string>
+    <string name="doctor_empty_list">Everyone is fit today</string>
     <string name="doctor_qualification">Qualification:</string>
     <string name="doctor_licence">Licence:</string>
 

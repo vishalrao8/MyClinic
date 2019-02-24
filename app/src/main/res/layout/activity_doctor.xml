@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_doctor_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/all_gradient_profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_patient_profile"
+                android:layout_width="156dp"
+                android:layout_height="156dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="@dimen/default_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/doctor_ic_doctor"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_patient_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:fontFamily="@font/grand_hotel"
+                android:text="@string/patient_hi"
+                android:textColor="@android:color/white"
+                android:textSize="34sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_patient_profile" />
+
+
+            <TextView
+                android:id="@+id/tv_patient_qualification_label"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin_half"
+                android:text="@string/doctor_qualification"
+                android:textColor="@color/colorPayNow"
+                app:layout_constraintStart_toStartOf="@+id/tv_patient_profile"
+                app:layout_constraintTop_toBottomOf="@+id/tv_patient_profile" />
+
+            <TextView
+                android:id="@+id/tv_patient_qualification"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin_half"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_patient_qualification_label"
+                app:layout_constraintStart_toEndOf="@+id/tv_patient_qualification_label"
+                tools:text="MCom" />
+
+            <TextView
+                android:id="@+id/tv_patient_licence_label"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin_half"
+                android:text="@string/doctor_licence"
+                android:textColor="@color/colorPayNow"
+                app:layout_constraintStart_toStartOf="@+id/tv_patient_qualification_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_patient_qualification_label" />
+
+            <TextView
+                android:id="@+id/tv_patient_licence"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin_half"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_patient_licence_label"
+                app:layout_constraintStart_toEndOf="@+id/tv_patient_licence_label"
+                tools:text="1234" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs_doctor"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:elevation="4dp"
+        android:background="@drawable/doctor_background_tabs"
+        app:layout_anchor="@id/cv_doctor_profile"
+        app:tabIndicatorFullWidth="false"
+        android:minHeight="?actionBarSize"
+        app:tabMode="fixed"
+        app:layout_anchorGravity="bottom|center">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/item_doctor_today"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:text="@string/doctor_today" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/item_doctor_past"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:text="@string/doctor_past" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="34dp"
+        android:elevation="4dp"
+        app:layout_anchor="@id/tabs_doctor"
+        app:layout_anchorGravity="center"
+        android:background="@color/colorDivider" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_doctor_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200dp"
+        app:layout_anchor="@id/cv_doctor_profile"
+        app:layout_anchorGravity="bottom"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

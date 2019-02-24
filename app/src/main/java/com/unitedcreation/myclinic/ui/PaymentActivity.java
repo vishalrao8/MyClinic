@@ -14,10 +14,12 @@ import android.widget.TextView;
 import com.unitedcreation.myclinic.R;
 
 public class PaymentActivity extends AppCompatActivity {
+
     TextView mShare;
     View mPaytmPayment,mBhimPayment;
     FragmentTransaction ft;
     Fragment prev;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,11 +58,14 @@ public class PaymentActivity extends AppCompatActivity {
         });
     }
     public static class MyCustomDialogFragment extends DialogFragment {
-        Boolean state=false;
+
+        Boolean state = false;
         public MyCustomDialogFragment(){}
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View v = inflater.inflate(R.layout.fragment_share, container, false);
+
+            View v = inflater.inflate(R.layout.activity_share, container, false);
 
             // Do all the stuff to initialize your custom view
 
