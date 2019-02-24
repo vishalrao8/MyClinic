@@ -1,14 +1,12 @@
 package com.unitedcreation.myclinic.ui.Fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.unitedcreation.myclinic.R;
-import com.unitedcreation.myclinic.utils.Adapters.HospitalRecyclerAdapter;
+import com.unitedcreation.myclinic.Adapters.HospitalRecyclerAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,7 +26,7 @@ public class CommonFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_common,container,false);
+        View view=inflater.inflate(R.layout.fragment_bank_category,container,false);
          mRecyclerView = (RecyclerView) view.findViewById(R.id.common_rv);
          switch (text){
              case "government":

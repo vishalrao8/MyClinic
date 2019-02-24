@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.utils.Adapters;
+package com.unitedcreation.myclinic.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +19,7 @@ public class HospitalRecyclerAdapter extends RecyclerView.Adapter <HospitalRecyc
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.bank_details_card,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bank,parent,false));
     }
 
     @Override

@@ -37,7 +37,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/patient_ic_boy" />
+                app:srcCompat="@drawable/patient_ic_boy"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/tv_patient_profile"
@@ -55,190 +56,105 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center|start"
-            android:layout_weight="1"
-            android:text="Name : "
-            android:layout_marginEnd="16dp"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center|start"
-            android:layout_weight="5"
-            android:text="Profile Name"
-            android:id="@+id/profile_name"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center|start"
-            android:layout_weight="1"
-            android:text="Age : "
-            android:layout_marginEnd="16dp"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center|start"
-            android:layout_weight="5"
-            android:id="@+id/profile_age"
-            android:text="Profile Age"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center|start"
-            android:layout_weight="1.25"
-            android:layout_marginEnd="16dp"
-            android:text="Address : "
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center|start"
-            android:id="@+id/profile_address"
-            android:layout_weight="5"
-            android:text="Profile Street Address"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center|start"
-            android:layout_weight="1"
-            android:text="State : "
-            android:layout_marginEnd="16dp"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center|start"
-            android:id="@+id/profile_state"
-            android:layout_weight="5"
-            android:text="Profile State"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:gravity="center|start"
-            android:layout_weight="1.25"
-            android:id="@+id/profile_var_name"
-            android:text="VAR : "
-            android:layout_marginEnd="16dp"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center|start"
-            android:layout_weight="5"
-            android:id="@+id/profile_var_value"
-            android:text="VAR"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
     <TextView
-        android:id="@+id/tv_profile_logout"
-        style="@style/CustomButtonText"
-        android:layout_width="match_parent"
+        android:id="@+id/tv_patient_name_label"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/all_name"
+        android:textColor="@color/colorSubText"
+        style="@style/ProfileLabelText"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/materialCardView"/>
 
-    <View
-        android:id="@+id/view_profile_logout"
-        style="@style/CustomButton"
-        android:background="@drawable/all_ripple_button"
-        app:layout_constraintBottom_toBottomOf="@id/tv_profile_logout"
-        app:layout_constraintEnd_toEndOf="@id/tv_profile_logout"
-        app:layout_constraintStart_toStartOf="@id/tv_profile_logout"
-        app:layout_constraintTop_toTopOf="@id/tv_profile_logout" />
+    <TextView
+        android:id="@+id/tv_patient_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Vishal"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_marginStart="@dimen/default_margin"
+        app:layout_constraintStart_toEndOf="@id/tv_patient_name_label"
+        app:layout_constraintTop_toTopOf="@id/tv_patient_name_label"
+        app:layout_constraintBottom_toBottomOf="@id/tv_patient_name_label"/>
+
+    <TextView
+        android:id="@+id/tv_patient_address_label"
+        style="@style/ProfileLabelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/all_address"
+        android:textColor="@color/colorSubText"
+        app:layout_constraintStart_toStartOf="@+id/tv_patient_name_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_patient_name_label" />
+
+    <TextView
+        android:id="@+id/tv_patient_address"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_patient_address_label"
+        app:layout_constraintStart_toEndOf="@+id/tv_patient_address_label"
+        app:layout_constraintTop_toTopOf="@+id/tv_patient_address_label"
+        tools:text="House No M-15, Andrews Ganj" />
+
+    <TextView
+        android:id="@+id/tv_patient_city_label"
+        style="@style/ProfileLabelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/all_city"
+        android:textColor="@color/colorSubText"
+        app:layout_constraintStart_toStartOf="@+id/tv_patient_address_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_patient_address_label" />
+
+    <TextView
+        android:id="@+id/tv_patient_city"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_patient_city_label"
+        app:layout_constraintStart_toEndOf="@+id/tv_patient_city_label"
+        app:layout_constraintTop_toTopOf="@+id/tv_patient_city_label"
+        tools:text="New Delhi" />
+
+    <TextView
+        android:id="@+id/tv_patient_zip_label"
+        style="@style/ProfileLabelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/all_zip_code"
+        android:textColor="@color/colorSubText"
+        app:layout_constraintStart_toStartOf="@+id/tv_patient_city_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_patient_city_label" />
+
+    <TextView
+        android:id="@+id/tv_patient_zip"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_patient_zip_label"
+        app:layout_constraintStart_toEndOf="@+id/tv_patient_zip_label"
+        app:layout_constraintTop_toTopOf="@+id/tv_patient_zip_label"
+        tools:text="110049" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/all_logout"
+        android:textColor="?attr/colorPrimary"
+        app:rippleColor="?attr/colorPrimary"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_marginBottom="@dimen/default_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

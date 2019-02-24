@@ -14,25 +14,27 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 public class BankFragment extends Fragment {
-    String tabTitles[]={"Government","Private","Private","Private"};
+
+    private String tabTitles[] = {"Government", "Private"};
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view =inflater.inflate(R.layout.fragment_bank,container,false);
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabs_patient_bank);
-        tabLayout.addTab(tabLayout.newTab().setText("Government"));
-        tabLayout.addTab(tabLayout.newTab().setText("Private"));
-        final ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        View view = inflater.inflate(R.layout.fragment_bank, container, false);
+        TabLayout tabLayout = view.findViewById(R.id.tabs_patient_bank);
+
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.patient_tab_government)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.patient_tab_private)));
+
+        final ViewPager viewPager = view.findViewById(R.id.viewpager_patient_bank);
         viewPager.setAdapter(new PagerAdapter(getFragmentManager(), tabLayout.getTabCount()));
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
@@ -54,11 +56,8 @@ public class BankFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
     public class PagerAdapter extends FragmentStatePagerAdapter {
+
         int mNumOfTabs;
 
         public PagerAdapter(FragmentManager fm, int NumOfTabs) {
@@ -70,12 +69,13 @@ public class BankFragment extends Fragment {
         public Fragment getItem(int position) {
 
             switch (position) {
-                case 0:
-                    return new CommonFragment(StringUtils.GOVERNMENT);
-                case 1:
-                    return new CommonFragment(StringUtils.PRIVATE);
-                default:
-                    return null;
+
+                case 0: return new CommonFragment(StringUtils.GOVERNMENT);
+
+                case 1: return new CommonFragment(StringUtils.PRIVATE);
+
+                default: return null;
+
             }
         }
 
@@ -84,6 +84,7 @@ public class BankFragment extends Fragment {
             return mNumOfTabs;
         }
         // overriding getPageTitle()
+
         @Override
         public CharSequence getPageTitle(int position) {
             return tabTitles[position];

@@ -59,7 +59,7 @@ public class DataTableHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public void deletedata(){
+    public void deleteData(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + DataContract.DataTable.TABLE_NAME);
         db.close();

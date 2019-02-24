@@ -2,7 +2,6 @@ package com.unitedcreation.myclinic.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -19,7 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.SQLiteDatabase.DataTableHelper;
-import com.unitedcreation.myclinic.utils.StringUtils;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.AGE;
 import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;
@@ -32,12 +30,8 @@ import static com.unitedcreation.myclinic.utils.StringUtils.STREET;
 import static com.unitedcreation.myclinic.utils.StringUtils.SUPPLIER;
 import static com.unitedcreation.myclinic.utils.StringUtils.USERS;
 import static com.unitedcreation.myclinic.utils.StringUtils.USER_ID;
-import static com.unitedcreation.myclinic.utils.StringUtils.VAR;
 import static com.unitedcreation.myclinic.utils.StringUtils.VENDOR;
 import static com.unitedcreation.myclinic.utils.StringUtils.ZIP;
-import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
-
-import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
 import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -207,7 +201,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
     public void moveToHome(){
-        Intent intent = new Intent(RegistrationActivity.this, HomeActivity.class);
+        Intent intent = new Intent(RegistrationActivity.this, PatientActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

@@ -129,7 +129,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
     public void moveToHome(int id){
-        Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
+        Intent intent = new Intent(WelcomeActivity.this, PatientActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra(PROFILE_EXTRA, id);
         startActivity(intent);

@@ -59,5 +59,12 @@
     <string name="maps_visit">Visit</string>
     <string name="maps_rating_3_5">3.5</string>
     <string name="maps_rating_5">/5</string>
+    <string name="patient_clinic_name">Clinic Name</string>
+    <string name="patient_near_me">Near Me</string>
+    <string name="all_logout">Logout</string>
+    <string name="all_name">Name:</string>
+    <string name="all_address">Address:</string>
+    <string name="all_city">City:</string>
+    <string name="all_zip_code">Zip Code:</string>
 
 </resources>

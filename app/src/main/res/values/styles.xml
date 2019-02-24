@@ -100,4 +100,8 @@
         <item name="tabMode">fixed</item>
     </style>
 
+    <style name="ProfileLabelText" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/colorSubText</item>
+    </style>
+
 </resources>

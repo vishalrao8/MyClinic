@@ -1,9 +1,6 @@
 package com.unitedcreation.myclinic.ui.Fragments;
 
-import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +8,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.unitedcreation.myclinic.R;
-import com.unitedcreation.myclinic.SQLiteDatabase.DataContract;
 import com.unitedcreation.myclinic.SQLiteDatabase.DataTableHelper;
-import com.unitedcreation.myclinic.ui.HomeActivity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +26,7 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        super.onViewCreated(view, savedInstanceState);/*
         mAddress=view.findViewById(R.id.profile_address);
         mAge=view.findViewById(R.id.profile_age);
         mName=view.findViewById(R.id.profile_name);
@@ -62,10 +57,10 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                // FirebaseAuth.getInstance().signOut();
-                dataTableHelper.deletedata();
+                dataTableHelper.deleteData();
                 Log.i("LOGOUT","LOGOUT");
                 getActivity().finishAndRemoveTask();
             }
-        });
+        });*/
     }
 }

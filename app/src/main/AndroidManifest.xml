@@ -17,16 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.PaymentActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.PaymentActivity"/>
         <activity
-            android:name=".ui.HomeActivity"
-            android:label="@string/title_activity_home" />
+            android:name=".ui.PatientActivity"
+            android:theme="@style/Blue" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -40,11 +35,15 @@
         -->
         <activity
             android:name=".ui.MapsActivity"
-            android:label="@string/maps_title_activity"></activity>
+            android:label="@string/maps_title_activity" />
         <activity android:name=".ui.VerifyActivity" />
         <activity android:name=".ui.RegistrationActivity" />
         <activity android:name=".ui.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data
