@@ -54,7 +54,7 @@
             android:hint="Enter OTP Here"
             android:inputType="number"
             android:visibility="gone"
-            app:itemCount="4"
+            app:itemCount="6"
             app:viewType="none" />
 
     </androidx.cardview.widget.CardView>
