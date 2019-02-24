@@ -72,7 +72,7 @@
         <View
             android:id="@+id/top_maps_collapsed"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:background="@drawable/maps_background_sheet_top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -225,6 +225,7 @@
         app:layout_constraintBottom_toBottomOf="@id/tv_maps_navigate"/>
 
     <View
+        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorDivider"
@@ -232,5 +233,48 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_maps_call" />
+
+    <TextView
+        android:id="@+id/tv_maps_rating"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/maps_rating_3_5"
+        app:layout_constraintBottom_toBottomOf="@id/ratingBar"
+        app:layout_constraintTop_toTopOf="@id/ratingBar"
+        app:layout_constraintEnd_toStartOf="@+id/tv_maps_rating_total" />
+
+    <TextView
+        android:id="@+id/tv_maps_rating_total"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="3dp"
+        android:text="@string/maps_rating_5"
+        android:textColor="@color/colorSubText"
+        app:layout_constraintBottom_toBottomOf="@id/tv_maps_rating"
+        app:layout_constraintEnd_toStartOf="@+id/ratingBar" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@android:style/Widget.Material.Light.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_maps_rating" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

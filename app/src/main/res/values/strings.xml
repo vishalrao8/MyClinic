@@ -53,5 +53,7 @@
     <string name="maps_call">call</string>
     <string name="maps_website">Website</string>
     <string name="maps_visit">Visit</string>
+    <string name="maps_rating_3_5">3.5</string>
+    <string name="maps_rating_5">/5</string>
 
 </resources>
