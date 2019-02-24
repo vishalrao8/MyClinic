@@ -20,6 +20,7 @@ public class StringUtils {
     public static final String STATE = "state";
     public static final String ZIP = "ZIP";
     public static final String VAR = "variable";
+    public static final String AGE = "age";
 
     public static final String BANKS = "banks";
     public static final String PRIVATE = "private";

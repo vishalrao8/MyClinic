@@ -63,13 +63,13 @@
         android:textAlignment="center"
         android:layout_margin="16dp"
         android:textSize="23sp"
-        android:nestedScrollingEnabled="false"
         android:fontFamily="@font/grand_hotel"
         android:text="Near Me"
         android:id="@+id/text_common"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/common_rv"
+        android:nestedScrollingEnabled="false"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

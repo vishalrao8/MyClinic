@@ -6,11 +6,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 
 
 import com.unitedcreation.myclinic.R;
+import com.unitedcreation.myclinic.SQLiteDatabase.DataContract;
+import com.unitedcreation.myclinic.SQLiteDatabase.DataTableHelper;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
 
@@ -49,6 +52,12 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_welcome);
 
         ButterKnife.bind(this);
+        DataTableHelper dataTableHelper=new DataTableHelper(this);
+        Cursor cursor=dataTableHelper.getAllData();
+        if(cursor.getCount()!=0){
+            cursor.moveToNext();
+            moveToHome(cursor.getInt(cursor.getColumnIndex(DataContract.DataTable.P_ID)));
+        }
 
         medicalKitButton.setOnClickListener(v -> flipLayouts());
 
@@ -118,5 +127,11 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             default: moveToVerification(0);
 
         }
+    }
+    public void moveToHome(int id){
+        Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.putExtra(PROFILE_EXTRA, id);
+        startActivity(intent);
     }
 }

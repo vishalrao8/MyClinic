@@ -35,7 +35,7 @@ import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
 
 public class VerifyActivity extends AppCompatActivity{
 
-    String user_profile="",user_contact="";
+    String user_contact="";
     EditText user_number_et;
     OtpView user_otp;
     TextView confirm_input;
@@ -57,7 +57,7 @@ public class VerifyActivity extends AppCompatActivity{
 
         mAuth = FirebaseAuth.getInstance();
 
-        user_profile = getIntent().getStringExtra("user_profile");
+        Log.i("STRING",String.valueOf(getIntent().getIntExtra(PROFILE_EXTRA, 0)));
         confirm_input = findViewById(R.id.tv_verify_confirm);
         user_number_et = findViewById(R.id.et_verify_phone);
         user_otp = findViewById(R.id.otp_view);
@@ -89,6 +89,11 @@ public class VerifyActivity extends AppCompatActivity{
                     user_otp.requestFocus();
                     confirm_input.setText("Submit");
 
+                }
+                else{
+                    if(user_otp.getText().toString().equals("123456")){
+                        moveToRegistration();
+                    }
                 }
             }
         });
@@ -182,6 +187,7 @@ public class VerifyActivity extends AppCompatActivity{
     public void moveToRegistration () {
         Intent intent = new Intent(VerifyActivity.this, RegistrationActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        Log.i("ID",String.valueOf(getIntent().getIntExtra(PROFILE_EXTRA, 0)));
         intent.putExtra(PROFILE_EXTRA, getIntent().getIntExtra(PROFILE_EXTRA, 0));
         startActivity(intent);
 

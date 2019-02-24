@@ -147,6 +147,29 @@
             tools:targetApi="o" />
 
     </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_registration_age"
+        style="@style/InputCardView"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="@id/cv_registration_zip"
+        app:layout_constraintStart_toStartOf="@+id/cv_registration_zip"
+        app:layout_constraintTop_toBottomOf="@id/cv_registration_zip">
+
+        <View
+            style="@style/CardBorder"/>
+
+        <EditText
+            android:id="@+id/et_registration_age"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Age"
+            android:inputType="number"
+            android:maxLength="2"
+            style="@style/InputEditText"
+            tools:targetApi="o" />
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_registration_variable"
@@ -154,9 +177,9 @@
         android:layout_width="0dp"
         android:layout_marginTop="@dimen/default_margin"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@id/cv_registration_zip"
-        app:layout_constraintStart_toStartOf="@+id/cv_registration_zip"
-        app:layout_constraintTop_toBottomOf="@id/cv_registration_zip">
+        app:layout_constraintEnd_toEndOf="@id/cv_registration_age"
+        app:layout_constraintStart_toStartOf="@+id/cv_registration_age"
+        app:layout_constraintTop_toBottomOf="@id/cv_registration_age">
 
         <View style="@style/CardBorder" />
 
@@ -165,9 +188,8 @@
             style="@style/InputEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:autofillHints="text"
-            android:hint="@string/registration_variable"
-            android:inputType="textMultiLine"
+            android:hint="Issue"
+            android:inputType="text"
             tools:targetApi="o" />
 
     </androidx.cardview.widget.CardView>
@@ -191,7 +213,8 @@
             android:layout_height="match_parent"
             android:autofillHints="qualification"
             android:hint="@string/registration_licence"
-            android:inputType="textMultiLine"
+            android:inputType="number"
+            android:imeOptions="actionDone"
             android:visibility="visible"
             tools:targetApi="o" />
 
