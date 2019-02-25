@@ -21,61 +21,61 @@ public class PaymentActivity extends AppCompatActivity {
     FragmentTransaction ft;
     Fragment prev;
     DialogFragment dialogFragment;
-    TextView mPaySucess;
+    TextView mPaySuccess;
     ImageView mClose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-        mBhimPayment=findViewById(R.id.view_payment_bhim);
-        mPaytmPayment=findViewById(R.id.view_payment_paytm);
-        mShare=findViewById(R.id.tv_payment_share);
+
+        mBhimPayment = findViewById(R.id.view_payment_bhim);
+        mPaytmPayment = findViewById(R.id.view_payment_paytm);
+        mShare = findViewById(R.id.tv_payment_share);
         ft = getFragmentManager().beginTransaction();
         prev = getFragmentManager().findFragmentByTag("dialog");
+
         dialogFragment = new MyCustomDialogFragment();
-        mClose=dialogFragment.getDialog().findViewById(R.id.iv_share_close);
-        mClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogFragment.dismiss();
-                finish();
-            }
+        mClose = dialogFragment.getDialog().findViewById(R.id.iv_share_close);
+        mClose.setOnClickListener(v -> {
+
+            dialogFragment.dismiss();
+            finish();
+
         });
 
-        mBhimPayment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (prev != null) {
-                    ft.remove(prev);
-                }
-                ft.addToBackStack(null);
-                dialogFragment.show(getSupportFragmentManager(), "dialog");
+        mBhimPayment.setOnClickListener(v -> {
+
+            if (prev != null) {
+                ft.remove(prev);
             }
+
+            ft.addToBackStack(null);
+            dialogFragment.show(getSupportFragmentManager(), "dialog");
+
         });
 
-        mPaytmPayment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (prev != null) {
-                    ft.remove(prev);
-                }
-                ft.addToBackStack(null);
-                dialogFragment.show(getSupportFragmentManager(), "dialog");
-            }
-        });
-        mShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mPaytmPayment.setOnClickListener(v -> {
 
-                if (prev != null) {
-                    ft.remove(prev);
-                }
-                ft.addToBackStack(null);
-                mPaySucess=dialogFragment.getDialog().findViewById(R.id.tv_payment_sucess);
-                mPaySucess.setText("");
-                dialogFragment.show(getSupportFragmentManager(), "dialog");
+            if (prev != null) {
+                ft.remove(prev);
             }
+            ft.addToBackStack(null);
+            dialogFragment.show(getSupportFragmentManager(), "dialog");
+
+        });
+
+        mShare.setOnClickListener(v -> {
+
+            if (prev != null) {
+                ft.remove(prev);
+            }
+            ft.addToBackStack(null);
+
+            mPaySuccess =dialogFragment.getDialog().findViewById(R.id.tv_payment_sucess);
+            mPaySuccess.setText("");
+            dialogFragment.show(getSupportFragmentManager(), "dialog");
+
         });
     }
     public static class MyCustomDialogFragment extends DialogFragment {

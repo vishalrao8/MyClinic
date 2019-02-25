@@ -12,14 +12,14 @@ import android.view.View;
 
 
 import com.unitedcreation.myclinic.R;
-import com.unitedcreation.myclinic.SQLiteDatabase.DataContract;
-import com.unitedcreation.myclinic.SQLiteDatabase.DataTableHelper;
+import com.unitedcreation.myclinic.database.DataContract;
+import com.unitedcreation.myclinic.database.DataTableHelper;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Boolean isLayoutOneVisible = true;
+    private boolean isLayoutOneVisible = true;
 
     @BindView(R.id.view_welcome_medical)
     View medicalKitButton;

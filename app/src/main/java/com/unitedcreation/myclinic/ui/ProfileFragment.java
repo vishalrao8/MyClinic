@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui.Fragments;
+package com.unitedcreation.myclinic.ui;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -9,14 +9,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.unitedcreation.myclinic.R;
-import com.unitedcreation.myclinic.SQLiteDatabase.DataContract;
-import com.unitedcreation.myclinic.SQLiteDatabase.DataTableHelper;
+import com.unitedcreation.myclinic.database.DataContract;
+import com.unitedcreation.myclinic.database.DataTableHelper;
+
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import static com.unitedcreation.myclinic.utils.ViewUtils.moveToHome;
 
 public class ProfileFragment extends Fragment {
     private TextView mName,mProfileName,mAge,mAddress,mState;
@@ -43,19 +46,18 @@ public class ProfileFragment extends Fragment {
         if(cursor.moveToNext()){
             mName.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME)));
             mState.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_STATE)));
-            mProfileName.setText("Hi ,"+cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME)));
+            mProfileName.setText("Hi " + cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME)) + ",");
             mAge.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_AGE)));
             mAddress.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_ADDRESS)));
 
         }
-        mLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // FirebaseAuth.getInstance().signOut();
-                dataTableHelper.deleteData();
-                Log.i("LOGOUT","LOGOUT");
-                getActivity().finishAndRemoveTask();
-            }
+        mLogout.setOnClickListener(v -> {
+
+           // FirebaseAuth.getInstance().signOut();
+            dataTableHelper.deleteData();
+            Log.i("LOGOUT","LOGOUT");
+            moveToHome(getActivity());
+            Objects.requireNonNull(getActivity()).finish();
         });
     }
 }

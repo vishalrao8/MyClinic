@@ -16,8 +16,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.unitedcreation.myclinic.R;
-import com.unitedcreation.myclinic.SQLiteDatabase.DataTableHelper;
-import com.unitedcreation.myclinic.model.Supplier;
+import com.unitedcreation.myclinic.database.DataTableHelper;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.AGE;
 import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;

@@ -16,28 +16,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.SupplierActivity"></activity>
-        <activity android:name=".ui.VendorActivity" />
-        <activity android:name=".ui.PatientActivity" />
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity
+            android:name=".ui.SupplierActivity"
+            android:theme="@style/Green" />
+        <activity
+            android:name=".ui.VendorActivity"
+            android:theme="@style/Brown" />
+        <activity
+            android:name=".ui.PatientActivity"
+            android:theme="@style/Blue" />
         <activity
             android:name=".ui.DoctorActivity"
             android:theme="@style/Red" />
         <activity android:name=".ui.PaymentActivity" />
         <activity
             android:name=".ui.StemActivity"
-            android:theme="@style/Blue" />
+            android:theme="@style/Green" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
              Note that the API key is linked to the encryption key used to sign the APK.
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-             <meta-data
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.-->
+        <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        -->
         <activity
             android:name=".ui.MapsActivity"
             android:label="@string/maps_title_activity" />

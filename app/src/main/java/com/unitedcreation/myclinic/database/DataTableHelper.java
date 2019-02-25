@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.SQLiteDatabase;
+package com.unitedcreation.myclinic.database;
 
 import android.content.ContentValues;
 import android.content.Context;

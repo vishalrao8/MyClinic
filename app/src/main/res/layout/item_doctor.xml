@@ -3,14 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="@dimen/default_margin_half"
+    android:layout_marginTop="@dimen/default_margin"
+    android:layout_marginStart="@dimen/default_margin"
+    android:layout_marginEnd="@dimen/default_margin"
     android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/patient_ic_boy"
+        android:src="@drawable/all_ic_boy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,17 +23,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Hospital Name"
+        android:text="@string/patient_hospital_name"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/doctor_patient_time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/patient_timing"
+        android:layout_marginTop="4dp"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        app:layout_constraintStart_toStartOf="@+id/doctor_patient_name"
+        app:layout_constraintTop_toBottomOf="@+id/doctor_patient_name" />
+
+    <TextView
         android:id="@+id/doctor_patient_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="@+id/doctor_patient_name"
-        app:layout_constraintTop_toBottomOf="@+id/doctor_patient_name" />
+        android:layout_marginStart="@dimen/default_margin_half"
+        android:textColor="@android:color/black"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        app:layout_constraintBottom_toBottomOf="@id/doctor_patient_time_label"
+        app:layout_constraintStart_toEndOf="@id/doctor_patient_time_label"
+        tools:text="12:00 - 5:50 PM" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

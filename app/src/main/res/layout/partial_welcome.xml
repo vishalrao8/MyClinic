@@ -35,8 +35,9 @@
         android:id="@+id/iv_welcome_medical"
         style="@style/CustomIcon"
         android:src="@drawable/welcome_ic_medical_kit"
+        android:translationX="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/view_welcome_medical"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/view_welcome_medical"
         app:layout_constraintTop_toTopOf="@+id/view_welcome_medical"
         tools:ignore="ContentDescription" />
 
@@ -64,8 +65,9 @@
         android:id="@+id/iv_welcome_stem"
         style="@style/CustomIcon"
         android:src="@drawable/welcome_ic_bank"
+        android:translationX="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_welcome_stem"
-        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/view_welcome_stem"
         app:layout_constraintTop_toTopOf="@+id/tv_welcome_stem"
         tools:ignore="ContentDescription" />
 
@@ -87,19 +89,5 @@
         app:layout_constraintEnd_toEndOf="@id/tv_welcome_stem"
         app:layout_constraintStart_toStartOf="@id/tv_welcome_stem"
         app:layout_constraintTop_toTopOf="@id/tv_welcome_stem" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.37" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.38" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_doctor_profile"
@@ -37,7 +37,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/patient_ic_boy"
+                app:srcCompat="@drawable/all_ic_boy"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -58,25 +58,24 @@
 
     <TextView
         android:id="@+id/tv_patient_name_label"
+        style="@style/ProfileLabelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/all_name"
-        style="@style/ProfileLabelText"
-        android:layout_marginTop="@dimen/default_margin"
         android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/all_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_doctor_profile"/>
+        app:layout_constraintTop_toBottomOf="@id/cv_doctor_profile" />
 
     <TextView
         android:id="@+id/tv_patient_name"
+        style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Vishal"
-        style="@style/TextAppearance.MaterialComponents.Body1"
-        android:layout_marginStart="@dimen/default_margin"
-        app:layout_constraintStart_toEndOf="@id/tv_patient_name_label"
+        app:layout_constraintBottom_toBottomOf="@id/tv_patient_name_label"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@id/tv_patient_name_label"
-        app:layout_constraintBottom_toBottomOf="@id/tv_patient_name_label"/>
+        tools:text="Vishal" />
 
     <TextView
         android:id="@+id/tv_patient_address_label"
@@ -93,9 +92,8 @@
         style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
         app:layout_constraintBottom_toBottomOf="@+id/tv_patient_address_label"
-        app:layout_constraintStart_toEndOf="@+id/tv_patient_address_label"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/tv_patient_address_label"
         tools:text="House No M-15, Andrews Ganj" />
 
@@ -114,9 +112,8 @@
         style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
         app:layout_constraintBottom_toBottomOf="@+id/tv_patient_city_label"
-        app:layout_constraintStart_toEndOf="@+id/tv_patient_city_label"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/tv_patient_city_label"
         tools:text="New Delhi" />
 
@@ -135,9 +132,8 @@
         style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
         app:layout_constraintBottom_toBottomOf="@+id/tv_patient_zip_label"
-        app:layout_constraintStart_toEndOf="@+id/tv_patient_zip_label"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/tv_patient_zip_label"
         tools:text="110049" />
 
@@ -156,23 +152,29 @@
         style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
         app:layout_constraintBottom_toBottomOf="@+id/tv_patient_age_label"
-        app:layout_constraintStart_toEndOf="@+id/tv_patient_age_label"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/tv_patient_age_label"
         tools:text="21" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/patient_logout_button"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin"
         android:text="@string/all_logout"
         android:textColor="?attr/colorPrimary"
-        app:rippleColor="?attr/colorPrimary"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_marginBottom="@dimen/default_margin"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/patient_logout_button"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="?attr/colorPrimary" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="112dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

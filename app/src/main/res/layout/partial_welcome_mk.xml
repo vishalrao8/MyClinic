@@ -32,13 +32,14 @@
         app:layout_constraintTop_toBottomOf="@id/tv_mk_just_a_few" />
 
     <ImageView
-        android:id="@+id/iv_mk_medical"
+        android:id="@+id/iv_mk_doctor"
         style="@style/CustomIcon"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:src="@drawable/mk_ic_doctor"
+        android:translationX="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_mk_doctor"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/view_mk_doctor"
         app:layout_constraintTop_toTopOf="@+id/tv_mk_doctor"
         tools:ignore="ContentDescription" />
 
@@ -67,8 +68,9 @@
         android:id="@+id/iv_mk_stem"
         style="@style/CustomIcon"
         android:src="@drawable/mk_ic_truck"
+        android:translationX="-10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_mk_supplier"
-        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toEndOf="@+id/view_mk_supplier"
         app:layout_constraintTop_toTopOf="@+id/tv_mk_supplier"
         tools:ignore="ContentDescription" />
 
@@ -98,8 +100,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:src="@drawable/mk_ic_patient"
+        android:translationX="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_mk_patient"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/view_mk_patient"
         app:layout_constraintTop_toTopOf="@+id/tv_mk_patient"
         tools:ignore="ContentDescription" />
 
@@ -127,8 +130,9 @@
         android:id="@+id/iv_mk_vendor"
         style="@style/CustomIcon"
         android:src="@drawable/mk_ic_vendor"
+        android:translationX="-12dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_mk_vendor"
-        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toEndOf="@+id/view_mk_vendor"
         app:layout_constraintTop_toTopOf="@+id/tv_mk_vendor"
         tools:ignore="ContentDescription" />
 
@@ -150,19 +154,5 @@
         app:layout_constraintEnd_toEndOf="@id/view_mk_supplier"
         app:layout_constraintStart_toStartOf="@id/tv_mk_vendor"
         app:layout_constraintTop_toTopOf="@id/tv_mk_vendor" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.35" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.72" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

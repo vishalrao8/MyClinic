@@ -57,7 +57,7 @@
     <string name="maps_call">call</string>
     <string name="maps_website">Website</string>
     <string name="maps_visit">Visit</string>
-    <string name="maps_rating_3_5">3.5</string>
+    <string name="maps_rating_0">0</string>
     <string name="maps_rating_5">/5</string>
     <string name="patient_clinic_name">Clinic Name</string>
     <string name="patient_near_me">Near Me</string>
@@ -82,7 +82,11 @@
     <string name="doctor_empty_list">No Appointments Today</string>
     <string name="doctor_qualification">Qualification:</string>
     <string name="doctor_licence">Licence:</string>
-    <string name="ofline_paymet">Scan QR code for Ofline Paymet</string>
+    <string name="offline_payment">Scan QR code for Offline Payment</string>
     <string name="age">Age :</string>
+    <string name="patient_timing">Timing:</string>
+    <string name="patient_hospital_name">Hospital Name</string>
+    <string name="verify_submit">Submit</string>
+    <string name="verify_enter_otp_info">Enter verification code sent to</string>
 
 </resources>

@@ -8,7 +8,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,7 +17,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -34,8 +32,7 @@ import static android.view.View.VISIBLE;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-    String laitude,longitude,name;
+    private String latitude, longitude, name;
 
     @BindView(R.id.fab_maps_pay)
     FloatingActionButton mPayButton;
@@ -58,9 +55,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        name=getIntent().getStringExtra(StringUtils.NAME);
-        laitude=getIntent().getStringExtra(StringUtils.LATITUDE);
-        longitude=getIntent().getStringExtra(StringUtils.LONGITUTE);
+
+        name = getIntent().getStringExtra(StringUtils.NAME);
+        latitude = getIntent().getStringExtra(StringUtils.LATITUDE);
+        longitude = getIntent().getStringExtra(StringUtils.LONGITUTE);
 
         ButterKnife.bind(this);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -91,16 +89,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(Double.parseDouble(laitude), Double.parseDouble(longitude));
-        mMap.addMarker(new MarkerOptions().position(sydney).title(name))
+        LatLng bankPosition = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+        googleMap.addMarker(new MarkerOptions().position(bankPosition).title(name))
                 .setIcon(BitmapDescriptorFactory.fromResource(R.drawable.maps_ic_location));
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bankPosition, 15));
 
-        mMap.setOnMarkerClickListener(marker -> {
+        googleMap.setOnMarkerClickListener(marker -> {
 
             if (bottomSheet.getState() == BottomSheetBehavior.STATE_HIDDEN)
                 bottomSheet.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
@@ -108,7 +105,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return true;
         });
 
-        mMap.setOnMapClickListener(latLng -> bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN));
+        googleMap.setOnMapClickListener(latLng -> bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN));
     }
 
     private void setUpBottomSheet() {

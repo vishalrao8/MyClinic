@@ -4,31 +4,21 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.unitedcreation.myclinic.R;
-import com.unitedcreation.myclinic.ui.Fragments.BankFragment;
-import com.unitedcreation.myclinic.ui.Fragments.ProfileFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.widget.TextView;
-
-import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
-import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
-
 public class StemActivity extends AppCompatActivity {
-
-    private TextView mTextMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        switchTheme(this, getIntent().getIntExtra(PROFILE_EXTRA, 0));
         setContentView(R.layout.activity_stem);
 
         // load the store fragment by default
-        loadFragment(new BankFragment());
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        loadFragment(new BankTabFragment());
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     }
@@ -40,7 +30,7 @@ public class StemActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
 
-                    case R.id.navigation_bank: fragment = new BankFragment(); break;
+                    case R.id.navigation_bank: fragment = new BankTabFragment(); break;
 
                     case R.id.navigation_profile: fragment = new ProfileFragment();
 

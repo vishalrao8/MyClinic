@@ -240,7 +240,7 @@
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/maps_rating_3_5"
+        android:text="@string/maps_rating_0"
         app:layout_constraintBottom_toBottomOf="@id/ratingBar"
         app:layout_constraintTop_toTopOf="@id/ratingBar"
         app:layout_constraintEnd_toStartOf="@+id/tv_maps_rating_total" />
@@ -277,5 +277,69 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_maps_rating" />
+
+    <ImageView
+        android:id="@+id/iv_maps_call_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/all_ic_call"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="@dimen/default_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider1"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_maps_call_small"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_maps_call_small"
+        app:layout_constraintStart_toEndOf="@+id/iv_maps_call_small"
+        app:layout_constraintTop_toTopOf="@id/iv_maps_call_small"
+        android:text="+919778906764" />
+
+    <ImageView
+        android:id="@+id/iv_maps_website_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/maps_ic_web"
+        app:layout_constraintStart_toStartOf="@+id/iv_maps_call_small"
+        app:layout_constraintTop_toBottomOf="@+id/iv_maps_call_small"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_maps_website_small"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_maps_website_small"
+        app:layout_constraintStart_toEndOf="@+id/iv_maps_website_small"
+        app:layout_constraintTop_toTopOf="@+id/iv_maps_website_small"
+        android:text="www.bank.com" />
+
+    <ImageView
+        android:id="@+id/iv_maps_address_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/maps_ic_home"
+        app:layout_constraintStart_toStartOf="@+id/iv_maps_website_small"
+        app:layout_constraintTop_toBottomOf="@+id/iv_maps_website_small"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_maps_address_small"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_maps_address_small"
+        app:layout_constraintStart_toEndOf="@+id/iv_maps_address_small"
+        app:layout_constraintTop_toTopOf="@id/iv_maps_address_small"
+        android:text="Smriti Nagar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

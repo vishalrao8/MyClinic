@@ -74,11 +74,11 @@
         style="@style/InfoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/default_margin"
         android:text="@string/verify_info"
-        app:layout_constraintEnd_toEndOf="@+id/cv_verify_phone"
-        app:layout_constraintStart_toStartOf="@+id/cv_verify_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cv_verify_phone" />
 
     <TextView

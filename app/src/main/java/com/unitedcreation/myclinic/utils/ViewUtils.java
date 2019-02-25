@@ -1,8 +1,10 @@
 package com.unitedcreation.myclinic.utils;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.unitedcreation.myclinic.R;
+import com.unitedcreation.myclinic.ui.WelcomeActivity;
 
 public class ViewUtils {
 
@@ -21,6 +23,13 @@ public class ViewUtils {
             default: context.setTheme(R.style.Green);
 
         }
+    }
+
+    public static void moveToHome (Context context) {
+
+        Intent intent = new Intent(context, WelcomeActivity.class);
+        context.startActivity(intent);
+
     }
 
 }

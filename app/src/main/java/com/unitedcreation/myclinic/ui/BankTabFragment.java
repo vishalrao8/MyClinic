@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui.Fragments;
+package com.unitedcreation.myclinic.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-public class BankFragment extends Fragment {
+public class BankTabFragment extends Fragment {
 
     private String tabTitles[] = {"Government", "Private"};
 
@@ -24,7 +24,7 @@ public class BankFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_bank, container, false);
+        View view = inflater.inflate(R.layout.fragment_bank_tabs, container, false);
         TabLayout tabLayout = view.findViewById(R.id.tabs_patient_bank);
 
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.patient_tab_government)));
@@ -60,7 +60,7 @@ public class BankFragment extends Fragment {
 
         int mNumOfTabs;
 
-        public PagerAdapter(FragmentManager fm, int NumOfTabs) {
+        PagerAdapter (FragmentManager fm, int NumOfTabs) {
             super(fm);
             this.mNumOfTabs = NumOfTabs;
         }
@@ -70,9 +70,9 @@ public class BankFragment extends Fragment {
 
             switch (position) {
 
-                case 0: return new CommonFragment(StringUtils.GOVERNMENT);
+                case 0: return new BankFragment(StringUtils.GOVERNMENT);
 
-                case 1: return new CommonFragment(StringUtils.PRIVATE);
+                case 1: return new BankFragment(StringUtils.PRIVATE);
 
                 default: return null;
 
