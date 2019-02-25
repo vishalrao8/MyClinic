@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/hospital_item"
     android:layout_margin="@dimen/default_margin_half"
     android:layout_height="wrap_content">
 
@@ -11,14 +10,14 @@
         android:id="@+id/imageView2"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/welcome_ic_bank"
+        android:src="@drawable/doctor_ic_doctor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/card_hospital_name"
+        android:id="@+id/patient_doctor_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -28,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RatingBar
-        android:id="@+id/card_rating"
+        android:id="@+id/patient_doctor_rating"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +35,7 @@
         android:isIndicator="true"
         android:numStars="5"
         android:stepSize="0.1"
-        app:layout_constraintStart_toStartOf="@+id/card_hospital_name"
-        app:layout_constraintTop_toBottomOf="@+id/card_hospital_name" />
+        app:layout_constraintStart_toStartOf="@+id/patient_doctor_name"
+        app:layout_constraintTop_toBottomOf="@+id/patient_doctor_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,7 +35,7 @@
     <string name="registration_licence">Licence number</string>
     <string name="registration_variable">Variable</string>
 
-    <!-- PatientActivity -->
+    <!-- StemActivity -->
     <string name="patient_navigation_bank">bank</string>
     <string name="patient_profile">profile</string>
     <string name="patient_tab_government">Government</string>
@@ -79,8 +79,10 @@
     <!-- DoctorActivity -->
     <string name="doctor_today">Today</string>
     <string name="doctor_past">Past</string>
-    <string name="doctor_empty_list">Everyone is fit today</string>
+    <string name="doctor_empty_list">No Appointments Today</string>
     <string name="doctor_qualification">Qualification:</string>
     <string name="doctor_licence">Licence:</string>
+    <string name="ofline_paymet">Scan QR code for Ofline Paymet</string>
+    <string name="age">Age :</string>
 
 </resources>

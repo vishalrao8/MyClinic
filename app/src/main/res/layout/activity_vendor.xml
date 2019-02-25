@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:focusableInTouchMode="true"
-    android:focusedByDefault="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_mpatient_profile"
+        android:id="@+id/cv_vendor_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
@@ -37,7 +30,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/iv_mpatient_profile"
+                android:id="@+id/iv_vendor_profile"
                 android:layout_width="156dp"
                 android:layout_height="156dp"
                 android:layout_marginTop="44dp"
@@ -45,11 +38,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/patient_ic_boy"
+                app:srcCompat="@drawable/pharmacist"
                 tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/tv_mpatient_profile"
+                android:id="@+id/tv_vendor_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -58,33 +51,33 @@
                 android:textColor="@android:color/white"
                 android:textSize="34sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/iv_mpatient_profile" />
+                app:layout_constraintTop_toTopOf="@id/iv_vendor_profile" />
 
 
             <TextView
-                android:id="@+id/tv_mpatient_age_label"
+                android:id="@+id/tv_vendor_licence_label"
                 style="@style/TextAppearance.MaterialComponents.Caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin_half"
-                android:text="@string/age"
+                android:text="@string/doctor_licence"
                 android:textColor="@color/colorPayNow"
-                app:layout_constraintStart_toStartOf="@+id/tv_mpatient_profile"
-                app:layout_constraintTop_toBottomOf="@+id/tv_mpatient_profile" />
+                app:layout_constraintStart_toStartOf="@+id/tv_vendor_profile"
+                app:layout_constraintTop_toBottomOf="@+id/tv_vendor_profile" />
 
             <TextView
-                android:id="@+id/tv_mpatient_age"
+                android:id="@+id/tv_vendor_licence"
                 style="@style/TextAppearance.MaterialComponents.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_margin_half"
                 android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_mpatient_age_label"
-                app:layout_constraintStart_toEndOf="@+id/tv_mpatient_age_label"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_vendor_licence_label"
+                app:layout_constraintStart_toEndOf="@+id/tv_vendor_licence_label"
                 tools:text="1234" />
 
             <ImageButton
-                android:id="@+id/mpatient_logout_button"
+                android:id="@+id/vendor_logout_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -98,14 +91,13 @@
 
     </com.google.android.material.card.MaterialCardView>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/patient_rv"
+        android:id="@+id/vendor_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="false"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cv_mpatient_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/cv_vendor_profile" />
     
 
-</androidx.constraintlayout.widget.ConstraintLayout></ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

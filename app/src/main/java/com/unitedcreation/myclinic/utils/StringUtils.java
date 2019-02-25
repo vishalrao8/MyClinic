@@ -23,6 +23,8 @@ public class StringUtils {
     public static final String AGE = "age";
 
     public static final String BANKS = "banks";
+    public static final String LATITUDE = "latitude";
+    public static final String LONGITUTE = "longitude";
     public static final String PRIVATE = "private";
     public static final String GOVERNMENT = "government";
 

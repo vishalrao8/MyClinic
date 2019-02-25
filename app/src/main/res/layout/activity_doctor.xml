@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,13 +10,17 @@
         android:id="@+id/cv_doctor_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top">
+        android:layout_gravity="top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <View
+                android:id="@+id/view2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/all_gradient_profile"
@@ -25,7 +30,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/iv_patient_profile"
+                android:id="@+id/iv_doctor_profile"
                 android:layout_width="156dp"
                 android:layout_height="156dp"
                 android:layout_marginTop="44dp"
@@ -37,7 +42,7 @@
                 tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/tv_patient_profile"
+                android:id="@+id/tv_doctor_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -46,57 +51,68 @@
                 android:textColor="@android:color/white"
                 android:textSize="34sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/iv_patient_profile" />
+                app:layout_constraintTop_toTopOf="@id/iv_doctor_profile" />
 
 
             <TextView
-                android:id="@+id/tv_patient_qualification_label"
+                android:id="@+id/tv_doctor_qualification_label"
                 style="@style/TextAppearance.MaterialComponents.Caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin_half"
                 android:text="@string/doctor_qualification"
                 android:textColor="@color/colorPayNow"
-                app:layout_constraintStart_toStartOf="@+id/tv_patient_profile"
-                app:layout_constraintTop_toBottomOf="@+id/tv_patient_profile" />
+                app:layout_constraintStart_toStartOf="@+id/tv_doctor_profile"
+                app:layout_constraintTop_toBottomOf="@+id/tv_doctor_profile" />
 
             <TextView
-                android:id="@+id/tv_patient_qualification"
+                android:id="@+id/tv_doctor_qualification"
                 style="@style/TextAppearance.MaterialComponents.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_margin_half"
                 android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_patient_qualification_label"
-                app:layout_constraintStart_toEndOf="@+id/tv_patient_qualification_label"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_doctor_qualification_label"
+                app:layout_constraintStart_toEndOf="@+id/tv_doctor_qualification_label"
                 tools:text="MCom" />
 
             <TextView
-                android:id="@+id/tv_patient_licence_label"
+                android:id="@+id/tv_doctor_licence_label"
                 style="@style/TextAppearance.MaterialComponents.Caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin_half"
                 android:text="@string/doctor_licence"
                 android:textColor="@color/colorPayNow"
-                app:layout_constraintStart_toStartOf="@+id/tv_patient_qualification_label"
-                app:layout_constraintTop_toBottomOf="@+id/tv_patient_qualification_label" />
+                app:layout_constraintStart_toStartOf="@+id/tv_doctor_qualification_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_doctor_qualification_label" />
 
             <TextView
-                android:id="@+id/tv_patient_licence"
+                android:id="@+id/tv_doctor_licence"
                 style="@style/TextAppearance.MaterialComponents.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_margin_half"
                 android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_patient_licence_label"
-                app:layout_constraintStart_toEndOf="@+id/tv_patient_licence_label"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_doctor_licence_label"
+                app:layout_constraintStart_toEndOf="@+id/tv_doctor_licence_label"
                 tools:text="1234" />
+
+            <ImageButton
+                android:id="@+id/doctor_logout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="#0000"
+                android:src="@drawable/signout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
-
+<!--
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs_doctor"
         android:layout_width="wrap_content"
@@ -137,6 +153,15 @@
         android:layout_height="match_parent"
         android:layout_marginTop="200dp"
         app:layout_anchor="@id/cv_doctor_profile"
-        app:layout_anchorGravity="bottom"/>
+        app:layout_anchorGravity="bottom"/>!-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/doctor_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:nestedScrollingEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_doctor_profile" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

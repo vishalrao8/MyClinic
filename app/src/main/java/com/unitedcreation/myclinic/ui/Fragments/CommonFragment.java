@@ -16,7 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class CommonFragment extends Fragment {
     String gov_hospital_names[]={"Jeevan","STM","Cryosave","Stem cyte india"};
+    String gov_hospital_lat[]={"13.116800","28.632430","28.632430","12.930584"};
+    String gov_hospital_long[]={"80.275833","77.218790","77.218790","77.692057"};
     String private_hospital_names[]={"LifeCell","Cryo-Cell International","Relicord","Lifecell Babycord Stem Cells Bank","ReeLabs"};
+    String private_hospital_lat[]={"12.937658","19.40728","43.002701","36.1999","72.833291"};
+    String private_hospital_long[]={"77.627754","-99.271225","-82.802469","-78.7222","18.936011"};
     String text="";
     public CommonFragment(String str){
         text=str;
@@ -30,10 +34,10 @@ public class CommonFragment extends Fragment {
          mRecyclerView = (RecyclerView) view.findViewById(R.id.common_rv);
          switch (text){
              case "government":
-                 hospitalRecyclerAdapter=new HospitalRecyclerAdapter(gov_hospital_names);
+                 hospitalRecyclerAdapter=new HospitalRecyclerAdapter(gov_hospital_names,gov_hospital_lat,gov_hospital_long);
                  break;
              case "private":
-                 hospitalRecyclerAdapter=new HospitalRecyclerAdapter(private_hospital_names);
+                 hospitalRecyclerAdapter=new HospitalRecyclerAdapter(private_hospital_names,private_hospital_lat,private_hospital_long);
          }
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         mRecyclerView.setLayoutManager(mLayoutManager);

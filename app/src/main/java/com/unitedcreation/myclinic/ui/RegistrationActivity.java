@@ -13,11 +13,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.SQLiteDatabase.DataTableHelper;
+import com.unitedcreation.myclinic.model.Supplier;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.AGE;
 import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;
@@ -144,6 +144,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                         mStreet_et.getText().toString(),
                                         mState_et.getText().toString()
                                         ,issue,qualification,licence);
+                                moveToHome();
                                 break;
                             case 1:
                                 myRef.child(mVariable_et.getHint().toString()).setValue(mVariable_et.getText().toString());
@@ -157,6 +158,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                         mStreet_et.getText().toString(),
                                         mState_et.getText().toString()
                                         ,issue,qualification,licence);
+                                moveToDoctorHome();
                                 break;
                             case 2:
                                 myRef.child(mVariable_et.getHint().toString()).setValue(mVariable_et.getText().toString());
@@ -168,6 +170,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                         mStreet_et.getText().toString(),
                                         mState_et.getText().toString()
                                         ,issue,qualification,licence);
+                                moveToPatientHome();
                                 break;
                             case 3:
                                 myRef.child(mVariable_et.getHint().toString()).setValue(mVariable_et.getText().toString());
@@ -179,6 +182,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                         mStreet_et.getText().toString(),
                                         mState_et.getText().toString()
                                         ,issue,qualification,licence);
+                                moveToSupplierHome();
                                 break;
                             case 4:
                                 myRef.child(mVariable_et.getHint().toString()).setValue(mVariable_et.getText().toString());
@@ -190,9 +194,10 @@ public class RegistrationActivity extends AppCompatActivity {
                                         mStreet_et.getText().toString(),
                                         mState_et.getText().toString()
                                         ,issue,qualification,licence);
+                                moveToVendorHome();
 
                         }
-                        moveToHome();
+
                 }
             }
         });
@@ -201,8 +206,40 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
     public void moveToHome(){
-        Intent intent = new Intent(RegistrationActivity.this, PatientActivity.class);
+        Intent intent = new Intent(RegistrationActivity.this, StemActivity.class);
+        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+        finish();
     }
+    public void moveToDoctorHome(){
+        Intent intent = new Intent(RegistrationActivity.this, DoctorActivity.class);
+        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+    public void moveToPatientHome(){
+        Intent intent = new Intent(RegistrationActivity.this, PatientActivity.class);
+        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+    public void moveToVendorHome(){
+        Intent intent = new Intent(RegistrationActivity.this, VendorActivity.class);
+        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+    public void moveToSupplierHome(){
+        Intent intent = new Intent(RegistrationActivity.this, SupplierActivity.class);
+        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
 }
+

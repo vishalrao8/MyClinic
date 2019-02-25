@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.unitedcreation.myclinic.R;
+import com.unitedcreation.myclinic.utils.StringUtils;
 
 import java.util.Objects;
 
@@ -34,6 +35,10 @@ import static android.view.View.VISIBLE;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    String laitude,longitude,name;
+
+    @BindView(R.id.fab_maps_pay)
+    FloatingActionButton mPayButton;
 
     private BottomSheetBehavior<ConstraintLayout> bottomSheet;
 
@@ -49,13 +54,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @BindView(R.id.layout_maps_collapsed)
     ConstraintLayout collapsedTopBar;
 
-    @BindView(R.id.fab_maps_pay)
-    FloatingActionButton payNowButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        name=getIntent().getStringExtra(StringUtils.NAME);
+        laitude=getIntent().getStringExtra(StringUtils.LATITUDE);
+        longitude=getIntent().getStringExtra(StringUtils.LONGITUTE);
 
         ButterKnife.bind(this);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -72,7 +77,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         });
 
-        payNowButton.setOnClickListener(v -> moveToPayment());
+        mPayButton.setOnClickListener(v -> moveToPayment());
     }
 
     /**
@@ -89,8 +94,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title(getString(R.string.maps_bank_name)))
+        LatLng sydney = new LatLng(Double.parseDouble(laitude), Double.parseDouble(longitude));
+        mMap.addMarker(new MarkerOptions().position(sydney).title(name))
                 .setIcon(BitmapDescriptorFactory.fromResource(R.drawable.maps_ic_location));
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
