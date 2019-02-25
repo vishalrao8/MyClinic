@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -26,6 +28,7 @@ import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.utils.StringUtils;
 
 import java.util.Objects;
+import java.util.Random;
 
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
@@ -45,8 +48,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @BindView(R.id.iv_maps_down)
     ImageView downButton;
 
+    @BindView(R.id.tv_maps_collapsed)
+    TextView mBankName;
+
+    @BindView(R.id.ratingBar)
+    RatingBar mRatingBar;
+
     @BindView(R.id.layout_maps_expended)
     ConstraintLayout expendedTopBar;
+
+    @BindView(R.id.tv_maps_rating)
+    TextView mMapsRating;
 
     @BindView(R.id.layout_maps_collapsed)
     ConstraintLayout collapsedTopBar;
@@ -61,6 +73,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         longitude = getIntent().getStringExtra(StringUtils.LONGITUTE);
 
         ButterKnife.bind(this);
+        Random rand = new Random();
+
+        // Obtain a number between [0 - 49].
+        int n = rand.nextInt(5);
+        mBankName.setText(name);
+        mRatingBar.setRating(n+1);
+        mMapsRating.setText(String.valueOf(n+1));
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragment_maps_map);
@@ -169,6 +189,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Intent intent = new Intent(this, PaymentActivity.class);
         startActivity(intent);
+        finish();
 
     }
 }
