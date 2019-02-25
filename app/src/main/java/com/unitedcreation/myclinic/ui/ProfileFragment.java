@@ -55,7 +55,7 @@ public class ProfileFragment extends Fragment {
 
            // FirebaseAuth.getInstance().signOut();
             dataTableHelper.deleteData();
-            Log.i("LOGOUT","LOGOUT");
+          //  Log.i("LOGOUT","LOGOUT");
             moveToHome(getActivity());
             Objects.requireNonNull(getActivity()).finish();
         });

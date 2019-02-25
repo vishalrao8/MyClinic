@@ -115,7 +115,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
         // DataBase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(USERS).child(child).child(getSharedPreferences(USER_ID,MODE_PRIVATE).getString(USER_ID,"O"));
+        DatabaseReference myRef = database.getReference(USERS).
+                child(child).child(getSharedPreferences(USER_ID,MODE_PRIVATE).getString(USER_ID,"O"));
 
         mFill_tv.setOnClickListener(new View.OnClickListener() {
             @Override
