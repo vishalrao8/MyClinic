@@ -24,21 +24,21 @@ public class DoctorActivity extends AppCompatActivity {
     private DataTableHelper dataTableHelper;
 
     @BindView(R.id.doctor_logout_button)
-    ImageButton mLogout;
+    ImageButton logOutButton;
 
     @BindView(R.id.doctor_rv)
-    RecyclerView doctor_rv;
+    RecyclerView doctorRecyclerView;
 
     @BindView(R.id.tv_doctor_profile)
-    TextView mName;
+    TextView doctorName;
 
     @BindView(R.id.tv_doctor_licence)
-    TextView mLicence;
+    TextView doctorLicence;
 
     @BindView(R.id.tv_doctor_qualification)
-    TextView mQualification;
+    TextView doctorQualification;
 
-    private String time_list[]={"10:10", "11:45", "12:15", "13:00", "14:30", "15:00"};
+    private String time_list[] = {"10:10", "11:45", "12:15", "13:00", "14:30", "15:00"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,21 +49,28 @@ public class DoctorActivity extends AppCompatActivity {
 
         dataTableHelper = new DataTableHelper(this);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
-        doctor_rv.setLayoutManager(layoutManager);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        doctorRecyclerView.setLayoutManager(layoutManager);
 
         DoctorRecyclerAdapter adapter = new DoctorRecyclerAdapter(time_list);
-        doctor_rv.setAdapter(adapter);
-        Cursor cursor=dataTableHelper.getAllData();
+        doctorRecyclerView.setAdapter(adapter);
+        Cursor cursor = dataTableHelper.getAllData();
 
-        if(cursor.moveToNext()){
-            mQualification.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_QUALIFICATION)));
-            mLicence.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_LICENCE)));
-            mName.setText("Hi " + cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME)) + ",");
+        /**
+         * Setting value to corresponding TextViews from the database.
+         */
+        if (cursor.moveToNext()) {
+
+            doctorQualification.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_QUALIFICATION)));
+            doctorLicence.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_LICENCE)));
+            doctorName.setText(String.format("Hi %s,", cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME))));
 
         }
 
-        mLogout.setOnClickListener(v -> {
+        /**
+         * Deleting all the user data from the database and Logging out the user on the click of logout button.
+         */
+        logOutButton.setOnClickListener(v -> {
 
             // FirebaseAuth.getInstance().signOut();
             dataTableHelper.deleteData();
@@ -71,6 +78,5 @@ public class DoctorActivity extends AppCompatActivity {
             moveToHome(DoctorActivity.this);
             finish();
         });
-
     }
 }

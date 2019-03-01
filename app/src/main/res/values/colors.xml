@@ -9,8 +9,6 @@
 
     <color name="colorAccentBlue">#2962FF</color>
     <color name="colorAccentBlueGradient">#153180</color>
-    <color name="colorAccentBlueRipple">#502962FF</color>
-    <color name="colorAccentBlueFaded">#752962FF</color>
 
     <color name="colorAccentBrown">#EF6C00</color>
     <color name="colorAccentBrownGradient">#783600</color>

@@ -1,5 +1,6 @@
 package com.unitedcreation.myclinic.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -16,8 +17,8 @@ import com.unitedcreation.myclinic.R;
 
 public class PaymentActivity extends AppCompatActivity {
 
-    TextView mShare;
-    View mPaytmPayment,mBhimPayment;
+    TextView shareTextView;
+    View paytmButton, bhimButton;
     FragmentTransaction ft;
     Fragment prev;
     DialogFragment dialogFragment;
@@ -29,9 +30,9 @@ public class PaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        mBhimPayment = findViewById(R.id.view_payment_bhim);
-        mPaytmPayment = findViewById(R.id.view_payment_paytm);
-        mShare = findViewById(R.id.tv_payment_share);
+        bhimButton = findViewById(R.id.view_payment_bhim);
+        paytmButton = findViewById(R.id.view_payment_paytm);
+        shareTextView = findViewById(R.id.tv_payment_share);
         ft = getFragmentManager().beginTransaction();
         prev = getFragmentManager().findFragmentByTag("dialog");
 
@@ -44,7 +45,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         });
 
-        mBhimPayment.setOnClickListener(v -> {
+        bhimButton.setOnClickListener(v -> {
 
             if (prev != null) {
                 ft.remove(prev);
@@ -55,7 +56,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         });
 
-        mPaytmPayment.setOnClickListener(v -> {
+        paytmButton.setOnClickListener(v -> {
 
             if (prev != null) {
                 ft.remove(prev);
@@ -65,32 +66,31 @@ public class PaymentActivity extends AppCompatActivity {
 
         });
 
-        mShare.setOnClickListener(v -> {
+        shareTextView.setOnClickListener(v -> {
 
             if (prev != null) {
                 ft.remove(prev);
             }
             ft.addToBackStack(null);
 
-            mPaySuccess =dialogFragment.getDialog().findViewById(R.id.tv_payment_sucess);
+            mPaySuccess = dialogFragment.getDialog().findViewById(R.id.tv_payment_sucess);
             mPaySuccess.setText("");
             dialogFragment.show(getSupportFragmentManager(), "dialog");
 
         });
     }
+
     public static class MyCustomDialogFragment extends DialogFragment {
 
         Boolean state = false;
         public MyCustomDialogFragment(){}
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-            View v = inflater.inflate(R.layout.activity_share, container, false);
+        public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
             // Do all the stuff to initialize your custom view
 
-            return v;
+            return inflater.inflate(R.layout.activity_share, container, false);
         }
     }
 }

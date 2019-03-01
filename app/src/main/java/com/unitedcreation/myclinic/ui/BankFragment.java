@@ -16,19 +16,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class BankFragment extends Fragment {
 
-    private String gov_hospital_names[]={"Jeevan","STM","Cryosave","Stem cyte india"};
-    private String gov_hospital_lat[]={"13.116800","28.632430","28.632430","12.930584"};
-    private String gov_hospital_long[]={"80.275833","77.218790","77.218790","77.692057"};
-    private String private_hospital_names[]={"LifeCell","Cryo-Cell International","Relicord","Lifecell Babycord Stem Cells Bank","ReeLabs"};
-    private String private_hospital_lat[]={"12.937658","19.40728","43.002701","36.1999","72.833291"};
-    private String private_hospital_long[]={"77.627754","-99.271225","-82.802469","-78.7222","18.936011"};
-    private String text="";
+    private String gov_hospital_names[] = {"Jeevan", "STM", "Cryosave", "Stem cyte india"};
+    private String gov_hospital_lat[] = {"13.116800", "28.632430", "28.632430", "12.930584"};
+    private String gov_hospital_long[] = {"80.275833", "77.218790", "77.218790", "77.692057"};
+    private String private_hospital_names[] = {"LifeCell", "Cryo-Cell International", "Relicord", "Lifecell Babycord Stem Cells Bank", "ReeLabs"};
+    private String private_hospital_lat[] = {"12.937658", "19.40728", "43.002701", "36.1999", "72.833291"};
+    private String private_hospital_long[] = {"77.627754", "-99.271225", "-82.802469", "-78.7222", "18.936011"};
+    private String text;
 
     BankFragment(String str){
-        text = str;
+        this.text = str;
     }
 
-    private RecyclerView mRecyclerView;
     private BankRecyclerAdapter bankRecyclerAdapter;
 
     @Nullable
@@ -36,7 +35,7 @@ public class BankFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_bank,container,false);
-        mRecyclerView = view.findViewById(R.id.common_rv);
+        RecyclerView mRecyclerView = view.findViewById(R.id.common_rv);
 
         switch (text){
 
@@ -49,7 +48,7 @@ public class BankFragment extends Fragment {
 
         }
 
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(bankRecyclerAdapter);
