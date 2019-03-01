@@ -1,5 +1,7 @@
 package com.unitedcreation.myclinic.ui;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,9 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
+import com.unitedcreation.myclinic.utils.StringUtils;
 
 import java.util.Objects;
 
@@ -25,6 +29,7 @@ public class ProfileFragment extends Fragment {
     private TextView mName,mProfileName,mAge,mAddress,mState;
     Button mLogout;
     DataTableHelper dataTableHelper;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -32,6 +37,7 @@ public class ProfileFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_profile,container,false);
     }
 
+    @SuppressLint("ApplySharedPref")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -53,9 +59,24 @@ public class ProfileFragment extends Fragment {
         }
         mLogout.setOnClickListener(v -> {
 
-           // FirebaseAuth.getInstance().signOut();
-            dataTableHelper.deleteData();
-          //  Log.i("LOGOUT","LOGOUT");
+           try
+           {
+               FirebaseAuth.getInstance().signOut();
+               FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+                   @Override
+                   public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                       firebaseAuth.getUid();
+                   }
+               });
+               Log.i("LOGOUT","LOGOUT");
+               dataTableHelper.deleteData();
+               getActivity().getSharedPreferences(StringUtils.USER_ID, Context.MODE_PRIVATE).edit().putString(StringUtils.USER_ID,null).commit();
+           }
+           catch (Exception e)
+           {
+               e.printStackTrace();
+           }
+
             moveToHome(getActivity());
             Objects.requireNonNull(getActivity()).finish();
         });

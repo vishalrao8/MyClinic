@@ -17,6 +17,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataTableHelper;
+import com.unitedcreation.myclinic.model.Doctor;
+import com.unitedcreation.myclinic.model.Patient;
+import com.unitedcreation.myclinic.model.StemCellUser;
+import com.unitedcreation.myclinic.model.Supplier;
+import com.unitedcreation.myclinic.model.Vendor;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.AGE;
 import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;
@@ -38,7 +43,7 @@ public class RegistrationActivity extends AppCompatActivity {
     static String child="";
     DataTableHelper dataTableHelper;
 
-    //Edit TExts
+    //Edit Texts
 
     @BindView(R.id.et_registration_variable)
     EditText mVariable_et;
@@ -81,42 +86,65 @@ public class RegistrationActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         dataTableHelper=new DataTableHelper(this);
         Log.i("TAG",String.valueOf(getIntent().getIntExtra(PROFILE_EXTRA, 0)));
-        switch (getIntent().getIntExtra(PROFILE_EXTRA, 0)){
+        /**
+         *As we are dealing with multiple users in a same app we are identifying them by single digit id 0-5 to be precise
+         * 0 for Stem
+         * 1 for Doctor
+         * 2 for Patient
+         * 3 for Vendor
+         * 4 for Supplier
+         */
+        switch (getIntent().getIntExtra(PROFILE_EXTRA, 0))
+        {
             case 0:
+                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
                 child= STEM ;
+                //Hiding Issue/Qualification EditText from Registration Activity
                 mVariable_cv.setVisibility(View.GONE);
                 break;
             case 1:
+                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
                 child= DOCTOR ;
-                Log.i("TAG","CALLED");
+                //Showing Issue/Qualification EditText from Registration Activity
                 mVariable_cv.setVisibility(View.VISIBLE);
+                //Renaming Issue/Qualification EditText hint to Qualifications
                 mVariable_et.setHint("Qualifications");
+                //Showing Licence EditText from Registration Activity
                 mLicence_cv.setVisibility(View.VISIBLE);
                 break;
             case 2:
+                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
                 child= PATIENT ;
-                Log.i("TAG","CALLED");
+                //Showing Issue/Qualification EditText from Registration Activity
                 mVariable_cv.setVisibility(View.VISIBLE);
+                //Renaming Issue/Qualification EditText hint to Issue
                 mVariable_et.setHint("Issue");
+                //Hiding Licence EditText from Registration Activity
                 mLicence_cv.setVisibility(View.GONE);
                 break;
             case 3:
+                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
                 child= SUPPLIER ;
+                //Showing Issue/Qualification EditText from Registration Activity
                 mVariable_cv.setVisibility(View.VISIBLE);
+                //Renaming Issue/Qualification EditText hint to Licence
                 mVariable_et.setHint("Licence");
                 break;
             case 4:
+                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
                 child= VENDOR ;
+                //Showing Issue/Qualification EditText from Registration Activity
                 mVariable_cv.setVisibility(View.VISIBLE);
+                //Renaming Issue/Qualification EditText hint to Licence
                 mVariable_et.setHint("Licence");
-
-
         }
 
-        // DataBase
+        // Creating a Firebase Database Instance to root directory
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(USERS).
-                child(child).child(getSharedPreferences(USER_ID,MODE_PRIVATE).getString(USER_ID,"O"));
+        //Changing reference to a fresh leaf node for storing data according to child Variable
+
+            DatabaseReference myRef = database.getReference(USERS).
+                    child(child).child(getSharedPreferences(USER_ID, MODE_PRIVATE).getString(USER_ID, "O"));
 
         mFill_tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,16 +156,14 @@ public class RegistrationActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Enter Al Details",Toast.LENGTH_LONG).show();
                 }
                 else
-                {
-                    String licence=null,issue=null,qualification=null;
-                    myRef.child(NAME).setValue(mName_et.getText().toString());
-                    myRef.child(STATE).setValue(mState_et.getText().toString());
-                    myRef.child(STREET).setValue(mStreet_et.getText().toString());
-                    myRef.child(ZIP).child(mZip_et.getText().toString());
-                    myRef.child(AGE).setValue(mAge.getText().toString());
+                {String licence=null,issue=null,qualification=null;
+
                         switch (getIntent().getIntExtra(PROFILE_EXTRA, 0)){
                             case 0:
                                 //Storing in local Database
+                                StemCellUser stemCellUser=new StemCellUser(mName_et.getText().toString(),mStreet_et.getText().toString(),mState_et.getText().toString()
+                                        ,mCity_et.getText().toString(),mZip_et.getText().toString());
+                                myRef.setValue(stemCellUser);
                                 dataTableHelper.insertItem(mName_et.getText().toString(),
                                         getIntent().getIntExtra(PROFILE_EXTRA, 0),
                                         Integer.parseInt(mAge.getText().toString()),
@@ -147,8 +173,9 @@ public class RegistrationActivity extends AppCompatActivity {
                                 moveToHome();
                                 break;
                             case 1:
-                                myRef.child(mVariable_et.getHint().toString()).setValue(mVariable_et.getText().toString());
-                                myRef.child(mLicence_et.getHint().toString()).setValue(mLicence_et.getText().toString());
+                                Doctor doctor=new Doctor(mName_et.getText().toString(),mStreet_et.getText().toString(),mState_et.getText().toString()
+                                        ,mCity_et.getText().toString(),mZip_et.getText().toString(),mVariable_et.getText().toString(),mLicence_et.getText().toString());
+                                myRef.setValue(doctor);
                                 qualification=mVariable_et.getText().toString();
                                 licence=mLicence_et.getText().toString();
                                 //Storing in local Database
@@ -161,7 +188,9 @@ public class RegistrationActivity extends AppCompatActivity {
                                 moveToDoctorHome();
                                 break;
                             case 2:
-                                myRef.child(mVariable_et.getHint().toString()).setValue(mVariable_et.getText().toString());
+                                Patient patient=new Patient(mName_et.getText().toString(),mStreet_et.getText().toString(),mState_et.getText().toString()
+                                        ,mCity_et.getText().toString(),mZip_et.getText().toString(),mVariable_et.getText().toString());
+                                myRef.setValue(patient);
                                 issue=mVariable_et.getText().toString();
                                 //Storing in local Database
                                 dataTableHelper.insertItem(mName_et.getText().toString(),
@@ -173,7 +202,9 @@ public class RegistrationActivity extends AppCompatActivity {
                                 moveToPatientHome();
                                 break;
                             case 3:
-                                myRef.child(mVariable_et.getHint().toString()).setValue(mVariable_et.getText().toString());
+                                Vendor vendor=new Vendor(mName_et.getText().toString(),mStreet_et.getText().toString(),mState_et.getText().toString()
+                                        ,mCity_et.getText().toString(),mZip_et.getText().toString(),mVariable_et.getText().toString());
+                                myRef.setValue(vendor);
                                 licence=mVariable_et.getText().toString();
                                 //Storing in local Database
                                 dataTableHelper.insertItem(mName_et.getText().toString(),
@@ -185,7 +216,9 @@ public class RegistrationActivity extends AppCompatActivity {
                                 moveToSupplierHome();
                                 break;
                             case 4:
-                                myRef.child(mVariable_et.getHint().toString()).setValue(mVariable_et.getText().toString());
+                                Supplier supplier=new Supplier(mName_et.getText().toString(),mStreet_et.getText().toString(),mState_et.getText().toString()
+                                    ,mCity_et.getText().toString(),mZip_et.getText().toString(),mVariable_et.getText().toString());
+                                myRef.setValue(supplier);
                                 licence=mVariable_et.getText().toString();
                                 //Storing in local Database
                                 dataTableHelper.insertItem(mName_et.getText().toString(),
@@ -195,7 +228,6 @@ public class RegistrationActivity extends AppCompatActivity {
                                         mState_et.getText().toString()
                                         ,issue,qualification,licence);
                                 moveToVendorHome();
-
                         }
 
                 }

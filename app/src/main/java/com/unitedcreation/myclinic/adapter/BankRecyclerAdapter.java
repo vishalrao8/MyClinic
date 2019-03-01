@@ -33,8 +33,9 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         context=parent.getContext();
+        //Inflating Layout item_bank for each entry on database
+        //each entry has their own item_bank layout with unique position for differentiating
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bank,parent,false));
 
     }
