@@ -128,6 +128,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.setOnMapClickListener(latLng -> bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN));
     }
 
+    /**
+     * Method to set up BottomSheetFragment below Maps and callback functions to react to the user actions.
+     */
     private void setUpBottomSheet() {
 
         bottomSheet = BottomSheetBehavior.from(bottomSheetLayout);
@@ -171,6 +174,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    /**
+     * Method to show top bar inside BottomSheet.
+     */
     private void showTopBar() {
 
         expendedTopBar.setVisibility(VISIBLE);
@@ -178,6 +184,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    /**
+     * Method to hide top bar inside BottomSheet.
+     */
     private void hideTopBar() {
 
         expendedTopBar.setVisibility(INVISIBLE);

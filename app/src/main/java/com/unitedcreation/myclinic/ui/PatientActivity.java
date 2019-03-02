@@ -52,13 +52,18 @@ public class PatientActivity extends AppCompatActivity {
 
         Cursor cursor = dataTableHelper.getAllData();
 
+        /**
+         * Setting value to corresponding TextViews from the database.
+         */
         if(cursor.moveToNext()){
-            mName.setText("Hi " + cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME)) + ",");
+            mName.setText(String.format("Hi %s,", cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME))));
             mAge.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_AGE)));
 
         }
 
-
+        /**
+         * Deleting all the user data from the database and Logging out the user on the click of logout button.
+         */
         mLogout.setOnClickListener(v -> {
 
             // FirebaseAuth.getInstance().signOut();
