@@ -25,13 +25,8 @@ public class StringUtils {
 
     public static final String BANKS = "banks";
     public static final String LATITUDE = "latitude";
-    public static final String LONGITUTE = "longitude";
+    public static final String LONGITUDE = "longitude";
     public static final String PRIVATE = "private";
     public static final String GOVERNMENT = "government";
-
-    public static final String ZERO = "0";
-    public static final String ONE = "1";
-    public static final String TWO = "2";
-    public static final String THREE = "3";
 
 }

@@ -1,16 +1,19 @@
 package com.unitedcreation.myclinic.model;
 
 public class Bank {
+
     private String name;
     private int rating;
     private double latitude;
-    private double longtitude;
+    private double longitude;
 
-    public Bank(String name,int rating,double laitude,double longitude){
-        this.name=name;
-        this.rating=rating;
-        this.latitude=laitude;
-        this.longtitude=longitude;
+    public Bank (String name, int rating, double latitude, double longitude) {
+
+        this.name = name;
+        this.rating = rating;
+        this.latitude = latitude;
+        this.longitude = longitude;
+
     }
     public Bank(){}
 
@@ -18,8 +21,8 @@ public class Bank {
         return latitude;
     }
 
-    public double getLongtitude() {
-        return longtitude;
+    public double getLongitude() {
+        return longitude;
     }
 
     public int getRating() {
@@ -34,8 +37,8 @@ public class Bank {
         this.latitude = latitude;
     }
 
-    public void setLongtitude(double longtitude) {
-        this.longtitude = longtitude;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public void setName(String name) {

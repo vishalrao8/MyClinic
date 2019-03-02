@@ -51,7 +51,7 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
             Intent intent = new Intent(context, MapsActivity.class);
             intent.putExtra(StringUtils.NAME,bankList.get(position).getName());
             intent.putExtra(StringUtils.LATITUDE, bankList.get(position).getLatitude());
-            intent.putExtra(StringUtils.LONGITUTE, bankList.get(position).getLongtitude());
+            intent.putExtra(StringUtils.LONGITUDE, bankList.get(position).getLongitude());
             context.startActivity(intent);
 
         });

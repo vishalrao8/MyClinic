@@ -71,7 +71,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         name = getIntent().getStringExtra(StringUtils.NAME);
         latitude = getIntent().getDoubleExtra(StringUtils.LATITUDE,0);
-        longitude = getIntent().getDoubleExtra(StringUtils.LONGITUTE,0);
+        longitude = getIntent().getDoubleExtra(StringUtils.LONGITUDE,0);
 
         ButterKnife.bind(this);
         Random rand = new Random();
