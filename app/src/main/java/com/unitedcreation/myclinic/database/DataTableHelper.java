@@ -91,7 +91,6 @@ public class DataTableHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor= db.rawQuery("select * from " + DataContract.DataTable.TABLE_NAME, null);
-        db.close();
         return cursor;
     }
 

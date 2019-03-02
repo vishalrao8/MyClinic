@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui;
+package com.unitedcreation.myclinic.ui.newuser;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -21,8 +21,14 @@ import com.unitedcreation.myclinic.model.Patient;
 import com.unitedcreation.myclinic.model.StemCellUser;
 import com.unitedcreation.myclinic.model.Supplier;
 import com.unitedcreation.myclinic.model.Vendor;
+import com.unitedcreation.myclinic.ui.doctor.DoctorActivity;
+import com.unitedcreation.myclinic.ui.patient.PatientActivity;
+import com.unitedcreation.myclinic.ui.stemcell.StemActivity;
+import com.unitedcreation.myclinic.ui.supplier.SupplierActivity;
+import com.unitedcreation.myclinic.ui.vendor.VendorActivity;
+import com.unitedcreation.myclinic.utils.FireBaseUtils;
 
-import static com.unitedcreation.myclinic.utils.FireBaseUtils.getDatabaseReference;
+import static com.unitedcreation.myclinic.utils.DatabaseUtils.getDataTableHelper;
 import static com.unitedcreation.myclinic.utils.PreferencesUtils.getUserId;
 import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;
 import static com.unitedcreation.myclinic.utils.StringUtils.PATIENT;
@@ -31,16 +37,15 @@ import static com.unitedcreation.myclinic.utils.StringUtils.STEM;
 import static com.unitedcreation.myclinic.utils.StringUtils.SUPPLIER;
 import static com.unitedcreation.myclinic.utils.StringUtils.USERS;
 import static com.unitedcreation.myclinic.utils.StringUtils.VENDOR;
+import static com.unitedcreation.myclinic.utils.ViewUtils.moveToCorrespondingUi;
 import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private String child;
+    private int position;
+
+    private String type;
     private String uid;
-
-    private int primaryKey;
-
-    private DataTableHelper dataTableHelper;
 
     @BindView(R.id.et_registration_variable)
     AutoCompleteTextView mVariable_et;
@@ -74,6 +79,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     @BindView(R.id.cv_registration_licence)
     CardView mLicence_cv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,35 +89,28 @@ public class RegistrationActivity extends AppCompatActivity {
         // Getting user id from Shared Preferences.
         uid = getUserId(this);
 
-        // Initiating primary key for SQLiteDatabase
-        primaryKey = getIntent().getIntExtra(PROFILE_EXTRA, 0);
+        // Getting user identifier.
+        position = getIntent().getIntExtra(PROFILE_EXTRA, 0);
 
         ButterKnife.bind(this);
-        dataTableHelper = new DataTableHelper(this);
-        Log.i("TAG", String.valueOf(getIntent().getIntExtra(PROFILE_EXTRA, 0)));
-        /**
-         *As we are dealing with multiple users in a same app we are identifying them by single digit id 0-5 to be precise
-         * 0 for Stem
-         * 1 for Doctor
-         * 2 for Patient
-         * 3 for Vendor
-         * 4 for Supplier
+        /*
+          Since we are dealing with multiple users in a same app there4 we are identifying them by a single digit identifier ranging 0-5.
+          0 for Stem
+          1 for Doctor
+          2 for Patient
+          3 for Vendor
+          4 for Supplier
          */
-        switch (getIntent().getIntExtra(PROFILE_EXTRA, 0)) {
+        switch (position) {
 
             case 0:
-                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
-                child = STEM ;
-                //Hiding Issue/Qualification EditText from Registration Activity
+                type = STEM ;
                 mVariable_cv.setVisibility(View.GONE);
                 break;
 
             case 1:
-                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
-                child = DOCTOR ;
-                //Showing Issue/Qualification EditText from Registration Activity
+                type = DOCTOR ;
                 mVariable_cv.setVisibility(View.VISIBLE);
-                //Renaming Issue/Qualification EditText hint to Qualifications
                 mVariable_et.setHint("Qualifications");
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,R.array.doctor_qualification);
                 mVariable_et.setAdapter(adapter);
@@ -120,31 +119,21 @@ public class RegistrationActivity extends AppCompatActivity {
                 break;
 
             case 2:
-                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
-                child = PATIENT ;
-                //Showing Issue/Qualification EditText from Registration Activity
+                type = PATIENT ;
                 mVariable_cv.setVisibility(View.VISIBLE);
-                //Renaming Issue/Qualification EditText hint to Issue
                 mVariable_et.setHint("Issue");
-                //Hiding Licence EditText from Registration Activity
                 mLicence_cv.setVisibility(View.GONE);
                 break;
 
             case 3:
-                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
-                child = SUPPLIER ;
-                //Showing Issue/Qualification EditText from Registration Activity
+                type = SUPPLIER ;
                 mVariable_cv.setVisibility(View.VISIBLE);
-                //Renaming Issue/Qualification EditText hint to Licence
                 mVariable_et.setHint("Licence");
                 break;
 
             case 4:
-                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
-                child = VENDOR ;
-                //Showing Issue/Qualification EditText from Registration Activity
+                type = VENDOR ;
                 mVariable_cv.setVisibility(View.VISIBLE);
-                //Renaming Issue/Qualification EditText hint to Licence
                 mVariable_et.setHint("Licence");
 
         }
@@ -162,21 +151,22 @@ public class RegistrationActivity extends AppCompatActivity {
             } else {
 
                 String licence = null, issue = null, qualification = null;
+                Object object = null;
+                Class nextActivity = null;
 
                 switch (getIntent().getIntExtra(PROFILE_EXTRA, 0)) {
 
                     case 0:
-                        StemCellUser stemCellUser = new StemCellUser(mName_et.getText().toString(),
+                        object = new StemCellUser(mName_et.getText().toString(),
                                 mStreet_et.getText().toString(),
                                 mState_et.getText().toString(),
                                 mCity_et.getText().toString(),
                                 mZip_et.getText().toString());
-                        insertData(licence, issue, qualification, stemCellUser);
-                        moveToStemHome();
+                        nextActivity = StemActivity.class;
                         break;
 
                     case 1:
-                        Doctor doctor = new Doctor(mName_et.getText().toString(),
+                        object = new Doctor(mName_et.getText().toString(),
                                 mStreet_et.getText().toString(),
                                 mState_et.getText().toString(),
                                 mCity_et.getText().toString(),
@@ -185,103 +175,63 @@ public class RegistrationActivity extends AppCompatActivity {
                                 mLicence_et.getText().toString());
                         qualification = mVariable_et.getText().toString();
                         licence = mLicence_et.getText().toString();
-                        insertData(licence, issue, qualification, doctor);
-                        moveToDoctorHome();
+                        nextActivity = DoctorActivity.class;
                         break;
 
                     case 2:
-                        Patient patient = new Patient(mName_et.getText().toString(),
+                        object = new Patient(mName_et.getText().toString(),
                                 mStreet_et.getText().toString(),
                                 mState_et.getText().toString(),
                                 mCity_et.getText().toString(),
                                 mZip_et.getText().toString(),
                                 mVariable_et.getText().toString());
                         issue = mVariable_et.getText().toString();
-                        insertData(licence, issue, qualification, patient);
-                        moveToPatientHome();
+                        nextActivity = PatientActivity.class;
                         break;
 
                     case 3:
-                        Vendor vendor = new Vendor(mName_et.getText().toString(),
+                        object = new Vendor(mName_et.getText().toString(),
                                 mStreet_et.getText().toString(),
                                 mState_et.getText().toString(),
                                 mCity_et.getText().toString(),
                                 mZip_et.getText().toString(),
                                 mVariable_et.getText().toString());
                         licence = mVariable_et.getText().toString();
-                        insertData(licence, issue, qualification, vendor);
-                        moveToSupplierHome();
+                        nextActivity = VendorActivity.class;
                         break;
 
                     case 4:
-                        Supplier supplier = new Supplier(mName_et.getText().toString(),
+                        object = new Supplier(mName_et.getText().toString(),
                                 mStreet_et.getText().toString(),
                                 mState_et.getText().toString(),
                                 mCity_et.getText().toString(),
                                 mZip_et.getText().toString(),
                                 mVariable_et.getText().toString());
                         licence = mVariable_et.getText().toString();
-                        //Storing in local Database
-                        insertData(licence, issue, qualification, supplier);
-                        moveToVendorHome();
+                        nextActivity = SupplierActivity.class;
 
                 }
+
+                insertData(licence, issue, qualification, object);
+                moveToCorrespondingUi(this, nextActivity, position);
             }
         });
     }
 
-    private void insertData(String licence, String issue, String qualification, Object user) {
+    private void insertData(String licence, String issue, String qualification, Object object) {
 
-        getDatabaseReference().child(USERS).child(child).child(uid).setValue(user);
+        if (object != null) {
 
-        dataTableHelper.insertItem(mName_et.getText().toString(),
-                primaryKey,
-                Integer.parseInt(mAge.getText().toString()),
-                mStreet_et.getText().toString(),
-                mState_et.getText().toString(),
-                issue,
-                qualification,
-                licence);
+            new FireBaseUtils().getDatabaseReference().child(USERS).child(type).child(uid).setValue(object);
 
-    }
-
-    public void moveToStemHome(){
-        Intent intent = new Intent(RegistrationActivity.this, StemActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-
-    public void moveToDoctorHome(){
-        Intent intent = new Intent(RegistrationActivity.this, DoctorActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-
-    public void moveToPatientHome(){
-        Intent intent = new Intent(RegistrationActivity.this, PatientActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-
-    public void moveToVendorHome(){
-        Intent intent = new Intent(RegistrationActivity.this, VendorActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-
-    public void moveToSupplierHome(){
-        Intent intent = new Intent(RegistrationActivity.this, SupplierActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+            getDataTableHelper(this).insertItem(mName_et.getText().toString(),
+                    position,
+                    Integer.parseInt(mAge.getText().toString()),
+                    mStreet_et.getText().toString(),
+                    mState_et.getText().toString(),
+                    issue,
+                    qualification,
+                    licence);
+        }
     }
 }

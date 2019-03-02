@@ -17,23 +17,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".ui.ShareActivity">
+        <activity android:name=".ui.stemcell.ShareActivity">
         </activity>
         <activity
-            android:name=".ui.SupplierActivity"
+            android:name=".ui.supplier.SupplierActivity"
             android:theme="@style/Green" />
         <activity
-            android:name=".ui.VendorActivity"
+            android:name=".ui.vendor.VendorActivity"
             android:theme="@style/Brown" />
         <activity
-            android:name=".ui.PatientActivity"
+            android:name=".ui.patient.PatientActivity"
             android:theme="@style/Blue" />
         <activity
-            android:name=".ui.DoctorActivity"
+            android:name=".ui.doctor.DoctorActivity"
             android:theme="@style/Red" />
-        <activity android:name=".ui.PaymentActivity" />
+        <activity android:name=".ui.stemcell.PaymentActivity" />
         <activity
-            android:name=".ui.StemActivity"
+            android:name=".ui.stemcell.StemActivity"
             android:theme="@style/Green" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -48,11 +48,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ui.MapsActivity"
+            android:name=".ui.stemcell.MapsActivity"
             android:label="@string/maps_title_activity" />
-        <activity android:name=".ui.VerifyActivity" />
-        <activity android:name=".ui.RegistrationActivity" />
-        <activity android:name=".ui.WelcomeActivity">
+        <activity android:name=".ui.newuser.VerifyActivity" />
+        <activity android:name=".ui.newuser.RegistrationActivity" />
+        <activity android:name=".ui.newuser.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui;
+package com.unitedcreation.myclinic.ui.stemcell;
 
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
@@ -37,11 +37,6 @@ public class ShareActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        mClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        mClose.setOnClickListener(v -> finish());
     }
 }

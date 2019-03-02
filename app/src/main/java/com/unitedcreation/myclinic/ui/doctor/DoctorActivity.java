@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui;
+package com.unitedcreation.myclinic.ui.doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,21 +8,17 @@ import butterknife.ButterKnife;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.unitedcreation.myclinic.adapter.DoctorRecyclerAdapter;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
-import com.unitedcreation.myclinic.database.DataTableHelper;
 
+import static com.unitedcreation.myclinic.utils.DatabaseUtils.getCursor;
 import static com.unitedcreation.myclinic.utils.FireBaseUtils.SignOut;
-import static com.unitedcreation.myclinic.utils.ViewUtils.moveToHome;
 
 public class DoctorActivity extends AppCompatActivity {
-
-    private DataTableHelper dataTableHelper;
 
     @BindView(R.id.doctor_logout_button)
     ImageButton logOutButton;
@@ -48,18 +44,15 @@ public class DoctorActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        dataTableHelper = new DataTableHelper(this);
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         doctorRecyclerView.setLayoutManager(layoutManager);
 
         DoctorRecyclerAdapter adapter = new DoctorRecyclerAdapter(time_list);
         doctorRecyclerView.setAdapter(adapter);
-        Cursor cursor = dataTableHelper.getAllData();
 
-        /**
-         * Setting value to corresponding TextViews from the database.
-         */
+        Cursor cursor = getCursor(this);
+
+        // Setting value to corresponding TextViews from the database.
         if (cursor.moveToNext()) {
 
             doctorQualification.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_QUALIFICATION)));
@@ -67,10 +60,9 @@ public class DoctorActivity extends AppCompatActivity {
             doctorName.setText(String.format("Hi %s,", cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME))));
 
         }
+        cursor.close();
 
-        /**
-         * Deleting all the user data from the database and Logging out the user on the click of logout button.
-         */
-        logOutButton.setOnClickListener(v -> SignOut(dataTableHelper, this));
+        // Deleting all the user data from the database and Logging out the user on the click of logout button.
+        logOutButton.setOnClickListener(v -> SignOut(this));
     }
 }

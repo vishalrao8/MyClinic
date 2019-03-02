@@ -21,8 +21,8 @@
 
     <ImageView
         android:id="@+id/iv_payment_paytm"
-        android:layout_width="70dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:elevation="1dp"
         android:src="@drawable/payment_ic_paytm"

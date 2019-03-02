@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui;
+package com.unitedcreation.myclinic.ui.newuser;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,20 +32,29 @@ import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
 
 public class VerifyActivity extends AppCompatActivity{
 
-    private boolean numberConfirmed;
     private static final String NAME = VerifyActivity.class.getSimpleName();
 
-    EditText user_number_et;
+    private String verificationId;
+
+    private boolean numberConfirmed;
+
+    @BindView(R.id.et_verify_phone)
+    EditText mobileNumberEditText;
+
+    @BindView(R.id.otp_view)
     OtpView user_otp;
+
+    @BindView(R.id.tv_verify_confirm)
     TextView confirmTv;
 
     @BindView(R.id.view_verify_confirm)
     View confirmButton;
 
-    private String verificationId;
-
     @BindView(R.id.tv_verify_info)
     TextView infoTextView;
+
+    @BindView(R.id.pb_verify_progress)
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +64,7 @@ public class VerifyActivity extends AppCompatActivity{
 
         ButterKnife.bind(this);
 
-        Log.i("STRING", String.valueOf(getIntent().getIntExtra(PROFILE_EXTRA, 0)));
-        confirmTv = findViewById(R.id.tv_verify_confirm);
-        user_number_et = findViewById(R.id.et_verify_phone);
-        user_otp = findViewById(R.id.otp_view);
-        user_number_et.setSelection(3);
+        mobileNumberEditText.setSelection(3);
 
         FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
@@ -70,21 +76,17 @@ public class VerifyActivity extends AppCompatActivity{
             }
         });
 
-        //Be sure for View visibility
-        user_number_et.setVisibility(View.VISIBLE);
-        user_otp.setVisibility(View.GONE);
-
         confirmButton.setOnClickListener(v -> {
 
-            String userMobileNumber = user_number_et.getText().toString();
+            String userMobileNumber = mobileNumberEditText.getText().toString();
 
             if (!numberConfirmed) {
 
-                if (!user_number_et.getText().toString().equals("") && user_otp.getVisibility() != View.VISIBLE) {
+                if (userMobileNumber.length() == 13) {
 
                     sendVerificationCode(userMobileNumber);
 
-                    user_number_et.setVisibility(View.GONE);
+                    mobileNumberEditText.setVisibility(View.GONE);
                     user_otp.setVisibility(View.VISIBLE);
 
                     user_otp.requestFocus();
@@ -111,6 +113,8 @@ public class VerifyActivity extends AppCompatActivity{
      */
     private void sendVerificationCode(String mobile) {
 
+        progressBar.setVisibility(View.VISIBLE);
+
         Log.d(NAME, "Sending verification code to " + mobile);
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 mobile,
@@ -133,9 +137,9 @@ public class VerifyActivity extends AppCompatActivity{
             String code = phoneAuthCredential.getSmsCode();
             Log.d(NAME, "Verification code is " + code);
 
-            /**
-             * Sometime the verification code is not detected automatically.
-             * In that case the code will be null and the user has to manually enter the code.
+            /*
+              Sometime the verification code is not detected automatically.
+              In that case the code will be null and the user has to manually enter the code.
              */
             if (code != null) {
 
@@ -144,6 +148,8 @@ public class VerifyActivity extends AppCompatActivity{
                 //verifying the code
                 verifyVerificationCode(code);
 
+            }else{
+                moveToRegistration();
             }
         }
 
@@ -159,6 +165,7 @@ public class VerifyActivity extends AppCompatActivity{
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
 
+            progressBar.setVisibility(View.GONE);
             Log.d(NAME, "Code sent successfully");
             //Keeping the verification id sent to the user.
             verificationId = s;
@@ -171,6 +178,7 @@ public class VerifyActivity extends AppCompatActivity{
      * @param code Authentication code generated and sent to the user.
      */
     void verifyVerificationCode(String code) {
+
         //creating the credential
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
         signInWithPhoneAuthCredential(credential);
@@ -197,11 +205,8 @@ public class VerifyActivity extends AppCompatActivity{
                         }
 
                         Snackbar snackbar = Snackbar.make(findViewById(R.id.parent), message, Snackbar.LENGTH_LONG);
-                        snackbar.setAction("Dismiss", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
+                        snackbar.setAction("Dismiss", v -> {
 
-                            }
                         });
                         snackbar.show();
 
@@ -217,6 +222,5 @@ public class VerifyActivity extends AppCompatActivity{
         intent.putExtra(PROFILE_EXTRA, getIntent().getIntExtra(PROFILE_EXTRA, 0));
 
         startActivity(intent);
-        finish();
     }
 }

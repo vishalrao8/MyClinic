@@ -20,7 +20,7 @@ public class PreferencesUtils {
     }
 
     public static String getUserId (Context context) {
-        return getPreferences(context).getString(USER_ID, null);
+        return getPreferences(context).getString(USER_ID, "0");
     }
 
 }

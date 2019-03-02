@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui;
+package com.unitedcreation.myclinic.ui.newuser;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,12 +12,25 @@ import android.util.Log;
 import android.view.View;
 
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
+import com.unitedcreation.myclinic.model.Bank;
+import com.unitedcreation.myclinic.ui.doctor.DoctorActivity;
+import com.unitedcreation.myclinic.ui.patient.PatientActivity;
+import com.unitedcreation.myclinic.ui.stemcell.StemActivity;
+import com.unitedcreation.myclinic.ui.supplier.SupplierActivity;
+import com.unitedcreation.myclinic.ui.vendor.VendorActivity;
+import com.unitedcreation.myclinic.utils.FireBaseUtils;
+import com.unitedcreation.myclinic.utils.StringUtils;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
+import static com.unitedcreation.myclinic.utils.ViewUtils.moveToCorrespondingUi;
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,33 +68,36 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
         ButterKnife.bind(this);
 
-        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-            Log.d("USER", "USER");
-        Log.d("USER", FirebaseAuth.getInstance().getCurrentUser().getUid());}
-        else
-            Log.d("USER", "NO USER");
-        DataTableHelper dataTableHelper=new DataTableHelper(this);
-        Cursor cursor=dataTableHelper.getAllData();
-        if(cursor.getCount()!=0){
+        DataTableHelper dataTableHelper = new DataTableHelper(this);
+        Cursor cursor = dataTableHelper.getAllData();
+
+        if (cursor.getCount() != 0) {
+
             cursor.moveToNext();
-            switch (cursor.getInt(cursor.getColumnIndex(DataContract.DataTable.P_ID))){
+            Class nextActivity = null;
+            int position = cursor.getInt(cursor.getColumnIndex(DataContract.DataTable.P_ID));
+
+            switch (position) {
+
                 case 0:
-                   moveToHome();
+                    nextActivity = StemActivity.class;
                     break;
                 case 1:
-                    moveToDoctorHome();
+                    nextActivity = DoctorActivity.class;
                     break;
                 case 2:
-                    moveToPatientHome();
+                    nextActivity = PatientActivity.class;
                     break;
                 case 3:
-                    moveToSupplierHome();
+                    nextActivity = SupplierActivity.class;
                     break;
                 case 4:
-                    moveToVendorHome();
-            }
+                    nextActivity = VendorActivity.class;
 
+            }
+            moveToCorrespondingUi(this, nextActivity, position);
         }
+        cursor.close();
 
         medicalKitButton.setOnClickListener(v -> flipLayouts());
 
@@ -151,40 +167,5 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             default: moveToVerification(0);
 
         }
-    }
-    public void moveToHome(){
-        Intent intent = new Intent(WelcomeActivity.this, StemActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-    public void moveToDoctorHome(){
-        Intent intent = new Intent(WelcomeActivity.this, DoctorActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-    public void moveToPatientHome(){
-        Intent intent = new Intent(WelcomeActivity.this, PatientActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-    public void moveToVendorHome(){
-        Intent intent = new Intent(WelcomeActivity.this, VendorActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-    public void moveToSupplierHome(){
-        Intent intent = new Intent(WelcomeActivity.this, SupplierActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
     }
 }

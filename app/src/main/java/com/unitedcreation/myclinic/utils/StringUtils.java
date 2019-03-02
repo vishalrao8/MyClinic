@@ -2,8 +2,8 @@ package com.unitedcreation.myclinic.utils;
 
 public class StringUtils {
 
-    public static final String INT_EXTRA = "intent_int_extra";
-    public static final String STRING_EXTRA = "intent_string_extra";
+    public static final String INT_EXTRA = "int_extra";
+    public static final String STRING_EXTRA = "string_extra";
 
     public static final String PROFILE_EXTRA = "profile_extra";
     public static final String SHARED_PREFERENCES = "shared_preferences";
