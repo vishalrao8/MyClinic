@@ -10,6 +10,8 @@ public class Doctor {
     private String qualification;
     private String licence;
 
+    public Doctor(){}
+
     public Doctor (String name, String streetAddress, String city, String state, String zipCode, String qualification, String licence) {
 
         this.name = name;

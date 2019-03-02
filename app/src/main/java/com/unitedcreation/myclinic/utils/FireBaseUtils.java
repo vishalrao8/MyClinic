@@ -15,7 +15,7 @@ import static com.unitedcreation.myclinic.utils.ViewUtils.moveToHome;
 public class FireBaseUtils {
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private final DatabaseReference databaseReference = firebaseDatabase.getReference();
 
     public static void SignOut (Context context) {
 

@@ -52,6 +52,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @BindView(R.id.tv_maps_collapsed)
     TextView mBankName;
 
+    @BindView(R.id.tv_maps_expended)
+    TextView mBankName2;
+
     @BindView(R.id.ratingBar)
     RatingBar mRatingBar;
 
@@ -79,6 +82,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Obtain a number between [0 - 49].
         int n = rand.nextInt(5);
         mBankName.setText(name);
+        mBankName2.setText(name);
         mRatingBar.setRating(n+1);
         mMapsRating.setText(String.valueOf(n+1));
 

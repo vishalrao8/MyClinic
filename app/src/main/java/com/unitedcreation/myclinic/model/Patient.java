@@ -9,6 +9,8 @@ public class Patient {
     private String zipCode;
     private String issue;
 
+    public  Patient(){}
+
     public Patient (String name, String streetAddress, String city, String state, String zipCode, String issue) {
 
         this.name = name;

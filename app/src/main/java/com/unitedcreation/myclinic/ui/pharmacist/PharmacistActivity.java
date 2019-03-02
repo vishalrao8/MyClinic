@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui.vendor;
+package com.unitedcreation.myclinic.ui.pharmacist;
 
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
@@ -15,7 +15,7 @@ import com.unitedcreation.myclinic.database.DataContract;
 import static com.unitedcreation.myclinic.utils.DatabaseUtils.getCursor;
 import static com.unitedcreation.myclinic.utils.FireBaseUtils.SignOut;
 
-public class VendorActivity extends AppCompatActivity {
+public class PharmacistActivity extends AppCompatActivity {
 
     @BindView(R.id.vendor_logout_button)
     ImageButton logOutButton;
@@ -29,7 +29,7 @@ public class VendorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vendor);
+        setContentView(R.layout.activity_pharmacist);
 
         ButterKnife.bind(this);
 

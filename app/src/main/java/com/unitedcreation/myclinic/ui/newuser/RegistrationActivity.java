@@ -5,9 +5,7 @@ import androidx.cardview.widget.CardView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -15,17 +13,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.unitedcreation.myclinic.R;
-import com.unitedcreation.myclinic.database.DataTableHelper;
 import com.unitedcreation.myclinic.model.Doctor;
 import com.unitedcreation.myclinic.model.Patient;
+import com.unitedcreation.myclinic.model.Pharmacist;
+import com.unitedcreation.myclinic.model.Retailer;
 import com.unitedcreation.myclinic.model.StemCellUser;
-import com.unitedcreation.myclinic.model.Supplier;
-import com.unitedcreation.myclinic.model.Vendor;
 import com.unitedcreation.myclinic.ui.doctor.DoctorActivity;
 import com.unitedcreation.myclinic.ui.patient.PatientActivity;
 import com.unitedcreation.myclinic.ui.stemcell.StemActivity;
-import com.unitedcreation.myclinic.ui.supplier.SupplierActivity;
-import com.unitedcreation.myclinic.ui.vendor.VendorActivity;
+import com.unitedcreation.myclinic.ui.retailer.RetailerActivity;
+import com.unitedcreation.myclinic.ui.pharmacist.PharmacistActivity;
 import com.unitedcreation.myclinic.utils.FireBaseUtils;
 
 import static com.unitedcreation.myclinic.utils.DatabaseUtils.getDataTableHelper;
@@ -34,9 +31,9 @@ import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;
 import static com.unitedcreation.myclinic.utils.StringUtils.PATIENT;
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
 import static com.unitedcreation.myclinic.utils.StringUtils.STEM;
-import static com.unitedcreation.myclinic.utils.StringUtils.SUPPLIER;
+import static com.unitedcreation.myclinic.utils.StringUtils.RETAILER;
 import static com.unitedcreation.myclinic.utils.StringUtils.USERS;
-import static com.unitedcreation.myclinic.utils.StringUtils.VENDOR;
+import static com.unitedcreation.myclinic.utils.StringUtils.PHARMACIST;
 import static com.unitedcreation.myclinic.utils.ViewUtils.moveToCorrespondingUi;
 import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
 
@@ -98,8 +95,8 @@ public class RegistrationActivity extends AppCompatActivity {
           0 for Stem
           1 for Doctor
           2 for Patient
-          3 for Vendor
-          4 for Supplier
+          3 for Pharmacist
+          4 for Retailer
          */
         switch (position) {
 
@@ -124,17 +121,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 mVariable_et.setHint("Issue");
                 mLicence_cv.setVisibility(View.GONE);
                 break;
-
-            case 3:
-                type = SUPPLIER ;
-                mVariable_cv.setVisibility(View.VISIBLE);
-                mVariable_et.setHint("Licence");
-                break;
-
-            case 4:
-                type = VENDOR ;
-                mVariable_cv.setVisibility(View.VISIBLE);
-                mVariable_et.setHint("Licence");
 
         }
 
@@ -189,27 +175,6 @@ public class RegistrationActivity extends AppCompatActivity {
                         nextActivity = PatientActivity.class;
                         break;
 
-                    case 3:
-                        object = new Vendor(mName_et.getText().toString(),
-                                mStreet_et.getText().toString(),
-                                mState_et.getText().toString(),
-                                mCity_et.getText().toString(),
-                                mZip_et.getText().toString(),
-                                mVariable_et.getText().toString());
-                        licence = mVariable_et.getText().toString();
-                        nextActivity = VendorActivity.class;
-                        break;
-
-                    case 4:
-                        object = new Supplier(mName_et.getText().toString(),
-                                mStreet_et.getText().toString(),
-                                mState_et.getText().toString(),
-                                mCity_et.getText().toString(),
-                                mZip_et.getText().toString(),
-                                mVariable_et.getText().toString());
-                        licence = mVariable_et.getText().toString();
-                        nextActivity = SupplierActivity.class;
-
                 }
 
                 insertData(licence, issue, qualification, object);
@@ -228,7 +193,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     position,
                     Integer.parseInt(mAge.getText().toString()),
                     mStreet_et.getText().toString(),
-                    mState_et.getText().toString(),
+                    mCity_et.getText().toString(),
                     issue,
                     qualification,
                     licence);

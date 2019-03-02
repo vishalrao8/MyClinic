@@ -1,6 +1,6 @@
 package com.unitedcreation.myclinic.model;
 
-public class Vendor {
+public class Retailer {
 
     private String name;
     private String streetAddress;
@@ -9,7 +9,7 @@ public class Vendor {
     private String zipCode;
     private String licence;
 
-    public Vendor (String name, String streetAddress, String city, String state, String zipCode,String licence) {
+    public Retailer(String name, String streetAddress, String city, String state, String zipCode, String licence) {
 
         this.name = name;
         this.streetAddress = streetAddress;
