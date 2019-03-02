@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.unitedcreation.myclinic.R;
-import com.unitedcreation.myclinic.ui.WelcomeActivity;
+import com.unitedcreation.myclinic.ui.newuser.WelcomeActivity;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
 
@@ -27,7 +27,7 @@ public class ViewUtils {
         }
     }
 
-    public static void moveToHome (Context context) {
+    static void moveToHome(Context context) {
 
         Intent intent = new Intent(context, WelcomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -44,5 +44,4 @@ public class ViewUtils {
 
         context.startActivity(intent);
     }
-
 }

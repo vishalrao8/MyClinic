@@ -9,7 +9,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.unitedcreation.myclinic.R;
-import com.unitedcreation.myclinic.ui.MapsActivity;
+import com.unitedcreation.myclinic.ui.stemcell.MapsActivity;
 import com.unitedcreation.myclinic.utils.StringUtils;
 
 import androidx.annotation.NonNull;
