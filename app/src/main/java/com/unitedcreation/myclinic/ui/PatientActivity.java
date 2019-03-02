@@ -17,12 +17,13 @@ import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
 
+import static com.unitedcreation.myclinic.utils.FireBaseUtils.SignOut;
 import static com.unitedcreation.myclinic.utils.ViewUtils.moveToHome;
 
 public class PatientActivity extends AppCompatActivity {
 
     @BindView(R.id.mpatient_logout_button)
-    ImageButton mLogout;
+    ImageButton logOutButton;
 
     @BindView(R.id.tv_mpatient_profile)
     TextView mName;
@@ -64,13 +65,6 @@ public class PatientActivity extends AppCompatActivity {
         /**
          * Deleting all the user data from the database and Logging out the user on the click of logout button.
          */
-        mLogout.setOnClickListener(v -> {
-
-            // FirebaseAuth.getInstance().signOut();
-            dataTableHelper.deleteData();
-            Log.i("LOGOUT","LOGOUT");
-            moveToHome(PatientActivity.this);
-            finish();
-        });
+        logOutButton.setOnClickListener(v -> SignOut(dataTableHelper, this));
     }
 }

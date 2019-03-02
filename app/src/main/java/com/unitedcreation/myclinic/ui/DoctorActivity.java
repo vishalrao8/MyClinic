@@ -17,6 +17,7 @@ import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
 
+import static com.unitedcreation.myclinic.utils.FireBaseUtils.SignOut;
 import static com.unitedcreation.myclinic.utils.ViewUtils.moveToHome;
 
 public class DoctorActivity extends AppCompatActivity {
@@ -70,13 +71,6 @@ public class DoctorActivity extends AppCompatActivity {
         /**
          * Deleting all the user data from the database and Logging out the user on the click of logout button.
          */
-        logOutButton.setOnClickListener(v -> {
-
-            // FirebaseAuth.getInstance().signOut();
-            dataTableHelper.deleteData();
-            Log.i("LOGOUT","LOGOUT");
-            moveToHome(DoctorActivity.this);
-            finish();
-        });
+        logOutButton.setOnClickListener(v -> SignOut(dataTableHelper, this));
     }
 }

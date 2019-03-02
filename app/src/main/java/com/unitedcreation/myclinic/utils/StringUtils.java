@@ -6,6 +6,7 @@ public class StringUtils {
     public static final String STRING_EXTRA = "intent_string_extra";
 
     public static final String PROFILE_EXTRA = "profile_extra";
+    public static final String SHARED_PREFERENCES = "shared_preferences";
 
     public static final String USERS = "users";
     public static final String USER_ID = "user_id";
