@@ -1,6 +1,5 @@
 package com.unitedcreation.myclinic.ui;
 
-import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,33 +16,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import static com.unitedcreation.myclinic.utils.DatabaseUtils.getCursor;
 import static com.unitedcreation.myclinic.utils.FireBaseUtils.SignOut;
 
 public class ProfileFragment extends Fragment {
 
-    private TextView mName,mProfileName,mAge,mAddress,mState;
-    Button louOutButton;
-    DataTableHelper dataTableHelper;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        dataTableHelper=new DataTableHelper(getContext());
         return inflater.inflate(R.layout.fragment_profile,container,false);
     }
 
-    @SuppressLint("ApplySharedPref")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mAddress = view.findViewById(R.id.tv_patient_address);
-        mAge = view.findViewById(R.id.tv_patient_age);
-        mName = view.findViewById(R.id.tv_patient_name);
-        mProfileName = view.findViewById(R.id.tv_patient_profile);
-        mState = view.findViewById(R.id.tv_patient_city);
-        louOutButton = view.findViewById(R.id.patient_logout_button);
 
-        Cursor cursor=dataTableHelper.getAllData();
+        TextView mAddress = view.findViewById(R.id.tv_patient_address);
+        TextView mAge = view.findViewById(R.id.tv_patient_age);
+        TextView mName = view.findViewById(R.id.tv_patient_name);
+        TextView mProfileName = view.findViewById(R.id.tv_patient_profile);
+        TextView mState = view.findViewById(R.id.tv_patient_city);
+        Button louOutButton = view.findViewById(R.id.patient_logout_button);
+
+        Cursor cursor = getCursor(getActivity());
 
         if (cursor.moveToNext()) {
 
@@ -54,7 +50,8 @@ public class ProfileFragment extends Fragment {
             mAddress.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_ADDRESS)));
 
         }
+        cursor.close();
 
-        louOutButton.setOnClickListener(v -> SignOut(dataTableHelper, getActivity()));
+        louOutButton.setOnClickListener(v -> SignOut(getActivity()));
     }
 }

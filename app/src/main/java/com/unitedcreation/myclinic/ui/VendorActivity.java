@@ -13,11 +13,10 @@ import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
 
+import static com.unitedcreation.myclinic.utils.DatabaseUtils.getCursor;
 import static com.unitedcreation.myclinic.utils.FireBaseUtils.SignOut;
 
 public class VendorActivity extends AppCompatActivity {
-
-    DataTableHelper dataTableHelper;
 
     @BindView(R.id.vendor_logout_button)
     ImageButton logOutButton;
@@ -35,17 +34,17 @@ public class VendorActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        dataTableHelper = new DataTableHelper(this);
-
-        Cursor cursor=dataTableHelper.getAllData();
+        Cursor cursor = getCursor(this);
 
         if(cursor.moveToNext()){
+
             mName.setText(String.format("Hi %s,", cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME))));
             mLicence.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_LICENCE)));
 
         }
+        cursor.close();
 
-        logOutButton.setOnClickListener(v -> SignOut(dataTableHelper, this));
+        logOutButton.setOnClickListener(v -> SignOut(this));
 
     }
 }

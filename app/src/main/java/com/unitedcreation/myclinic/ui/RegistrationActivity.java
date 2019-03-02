@@ -19,8 +19,8 @@ import com.unitedcreation.myclinic.model.Patient;
 import com.unitedcreation.myclinic.model.StemCellUser;
 import com.unitedcreation.myclinic.model.Supplier;
 import com.unitedcreation.myclinic.model.Vendor;
+import com.unitedcreation.myclinic.utils.FireBaseUtils;
 
-import static com.unitedcreation.myclinic.utils.FireBaseUtils.getDatabaseReference;
 import static com.unitedcreation.myclinic.utils.PreferencesUtils.getUserId;
 import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;
 import static com.unitedcreation.myclinic.utils.StringUtils.PATIENT;
@@ -33,7 +33,7 @@ import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private String child;
+    private String type;
     private String uid;
 
     private int primaryKey;
@@ -88,7 +88,7 @@ public class RegistrationActivity extends AppCompatActivity {
         dataTableHelper = new DataTableHelper(this);
         Log.i("TAG", String.valueOf(getIntent().getIntExtra(PROFILE_EXTRA, 0)));
         /**
-         *As we are dealing with multiple users in a same app we are identifying them by single digit id 0-5 to be precise
+         * Since we are dealing with multiple users in a same app there4 we are identifying them by a single digit identifier ranging 0-5.
          * 0 for Stem
          * 1 for Doctor
          * 2 for Patient
@@ -98,49 +98,33 @@ public class RegistrationActivity extends AppCompatActivity {
         switch (getIntent().getIntExtra(PROFILE_EXTRA, 0)) {
 
             case 0:
-                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
-                child = STEM ;
-                //Hiding Issue/Qualification EditText from Registration Activity
+                type = STEM ;
                 mVariable_cv.setVisibility(View.GONE);
                 break;
 
             case 1:
-                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
-                child = DOCTOR ;
-                //Showing Issue/Qualification EditText from Registration Activity
+                type = DOCTOR ;
                 mVariable_cv.setVisibility(View.VISIBLE);
-                //Renaming Issue/Qualification EditText hint to Qualifications
                 mVariable_et.setHint("Qualifications");
-                //Showing Licence EditText from Registration Activity
                 mLicence_cv.setVisibility(View.VISIBLE);
                 break;
 
             case 2:
-                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
-                child = PATIENT ;
-                //Showing Issue/Qualification EditText from Registration Activity
+                type = PATIENT ;
                 mVariable_cv.setVisibility(View.VISIBLE);
-                //Renaming Issue/Qualification EditText hint to Issue
                 mVariable_et.setHint("Issue");
-                //Hiding Licence EditText from Registration Activity
                 mLicence_cv.setVisibility(View.GONE);
                 break;
 
             case 3:
-                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
-                child = SUPPLIER ;
-                //Showing Issue/Qualification EditText from Registration Activity
+                type = SUPPLIER ;
                 mVariable_cv.setVisibility(View.VISIBLE);
-                //Renaming Issue/Qualification EditText hint to Licence
                 mVariable_et.setHint("Licence");
                 break;
 
             case 4:
-                // Setting child variable ,which decides branch of the user according to the key valued passed from previous activities
-                child = VENDOR ;
-                //Showing Issue/Qualification EditText from Registration Activity
+                type = VENDOR ;
                 mVariable_cv.setVisibility(View.VISIBLE);
-                //Renaming Issue/Qualification EditText hint to Licence
                 mVariable_et.setHint("Licence");
 
         }
@@ -228,7 +212,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void insertData(String licence, String issue, String qualification, Object user) {
 
-        getDatabaseReference().child(USERS).child(child).child(uid).setValue(user);
+        new FireBaseUtils().getDatabaseReference().child(USERS).child(type).child(uid).setValue(user);
 
         dataTableHelper.insertItem(mName_et.getText().toString(),
                 primaryKey,
@@ -250,30 +234,37 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void moveToDoctorHome(){
+
         Intent intent = new Intent(RegistrationActivity.this, DoctorActivity.class);
         intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+
     }
 
     public void moveToPatientHome(){
+
         Intent intent = new Intent(RegistrationActivity.this, PatientActivity.class);
         intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+
     }
 
     public void moveToVendorHome(){
+
         Intent intent = new Intent(RegistrationActivity.this, VendorActivity.class);
         intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+
     }
 
     public void moveToSupplierHome(){
+
         Intent intent = new Intent(RegistrationActivity.this, SupplierActivity.class);
         intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

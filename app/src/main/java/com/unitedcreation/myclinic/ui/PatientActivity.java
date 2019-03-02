@@ -17,6 +17,7 @@ import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
 
+import static com.unitedcreation.myclinic.utils.DatabaseUtils.getCursor;
 import static com.unitedcreation.myclinic.utils.FireBaseUtils.SignOut;
 import static com.unitedcreation.myclinic.utils.ViewUtils.moveToHome;
 
@@ -34,8 +35,6 @@ public class PatientActivity extends AppCompatActivity {
     @BindView(R.id.patient_rv)
     RecyclerView patient_rv;
 
-    DataTableHelper dataTableHelper;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,28 +42,27 @@ public class PatientActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        dataTableHelper = new DataTableHelper(this);
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         patient_rv.setLayoutManager(layoutManager);
 
         PatientRecyclerAdapter adapter = new PatientRecyclerAdapter();
         patient_rv.setAdapter(adapter);
 
-        Cursor cursor = dataTableHelper.getAllData();
-
+        Cursor cursor = getCursor(this);
         /**
          * Setting value to corresponding TextViews from the database.
          */
         if(cursor.moveToNext()){
+
             mName.setText(String.format("Hi %s,", cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME))));
             mAge.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_AGE)));
 
         }
+        cursor.close();
 
         /**
          * Deleting all the user data from the database and Logging out the user on the click of logout button.
          */
-        logOutButton.setOnClickListener(v -> SignOut(dataTableHelper, this));
+        logOutButton.setOnClickListener(v -> SignOut(this));
     }
 }

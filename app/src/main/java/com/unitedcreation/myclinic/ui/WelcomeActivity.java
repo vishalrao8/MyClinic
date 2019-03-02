@@ -8,11 +8,9 @@ import butterknife.ButterKnife;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
@@ -55,33 +53,32 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
         ButterKnife.bind(this);
 
-        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-            Log.d("USER", "USER");
-        Log.d("USER", FirebaseAuth.getInstance().getCurrentUser().getUid());}
-        else
-            Log.d("USER", "NO USER");
-        DataTableHelper dataTableHelper=new DataTableHelper(this);
-        Cursor cursor=dataTableHelper.getAllData();
-        if(cursor.getCount()!=0){
+        DataTableHelper dataTableHelper = new DataTableHelper(this);
+        Cursor cursor = dataTableHelper.getAllData();
+
+        if (cursor.getCount() != 0) {
+
             cursor.moveToNext();
             switch (cursor.getInt(cursor.getColumnIndex(DataContract.DataTable.P_ID))){
+
                 case 0:
-                   moveToHome();
+                    comingBackUserIntent(StemActivity.class);
                     break;
                 case 1:
-                    moveToDoctorHome();
+                    comingBackUserIntent(DoctorActivity.class);
                     break;
                 case 2:
-                    moveToPatientHome();
+                    comingBackUserIntent(PatientActivity.class);
                     break;
                 case 3:
-                    moveToSupplierHome();
+                    comingBackUserIntent(SupplierActivity.class);
                     break;
                 case 4:
-                    moveToVendorHome();
-            }
+                    comingBackUserIntent(VendorActivity.class);
 
+            }
         }
+        cursor.close();
 
         medicalKitButton.setOnClickListener(v -> flipLayouts());
 
@@ -152,38 +149,13 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
         }
     }
-    public void moveToHome(){
-        Intent intent = new Intent(WelcomeActivity.this, StemActivity.class);
+    public void comingBackUserIntent(Class activityClass) {
+
+        Intent intent = new Intent(WelcomeActivity.this, activityClass);
+
         intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-    public void moveToDoctorHome(){
-        Intent intent = new Intent(WelcomeActivity.this, DoctorActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-    public void moveToPatientHome(){
-        Intent intent = new Intent(WelcomeActivity.this, PatientActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-    public void moveToVendorHome(){
-        Intent intent = new Intent(WelcomeActivity.this, VendorActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-    public void moveToSupplierHome(){
-        Intent intent = new Intent(WelcomeActivity.this, SupplierActivity.class);
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
         startActivity(intent);
         finish();
     }

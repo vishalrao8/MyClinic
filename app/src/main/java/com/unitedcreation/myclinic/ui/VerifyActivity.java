@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,9 @@ public class VerifyActivity extends AppCompatActivity{
     @BindView(R.id.tv_verify_info)
     TextView infoTextView;
 
+    @BindView(R.id.pb_verify_progress)
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +64,7 @@ public class VerifyActivity extends AppCompatActivity{
         user_otp = findViewById(R.id.otp_view);
         user_number_et.setSelection(3);
 
-        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+        /*FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
@@ -68,7 +72,7 @@ public class VerifyActivity extends AppCompatActivity{
                 addUser(getApplicationContext(), firebaseAuth.getUid());
 
             }
-        });
+        });*/
 
         //Be sure for View visibility
         user_number_et.setVisibility(View.VISIBLE);
@@ -111,6 +115,8 @@ public class VerifyActivity extends AppCompatActivity{
      */
     private void sendVerificationCode(String mobile) {
 
+        progressBar.setVisibility(View.VISIBLE);
+
         Log.d(NAME, "Sending verification code to " + mobile);
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 mobile,
@@ -128,6 +134,7 @@ public class VerifyActivity extends AppCompatActivity{
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
 
             Log.d (NAME, "Verification Complete");
+            addUser(getApplicationContext(), FirebaseAuth.getInstance().getUid());
 
             //Getting the code sent by SMS
             String code = phoneAuthCredential.getSmsCode();
@@ -144,7 +151,8 @@ public class VerifyActivity extends AppCompatActivity{
                 //verifying the code
                 verifyVerificationCode(code);
 
-            }
+            } else
+                moveToRegistration();
         }
 
         @Override
@@ -159,6 +167,7 @@ public class VerifyActivity extends AppCompatActivity{
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
 
+            progressBar.setVisibility(View.GONE);
             Log.d(NAME, "Code sent successfully");
             //Keeping the verification id sent to the user.
             verificationId = s;
@@ -171,6 +180,7 @@ public class VerifyActivity extends AppCompatActivity{
      * @param code Authentication code generated and sent to the user.
      */
     void verifyVerificationCode(String code) {
+
         //creating the credential
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
         signInWithPhoneAuthCredential(credential);
