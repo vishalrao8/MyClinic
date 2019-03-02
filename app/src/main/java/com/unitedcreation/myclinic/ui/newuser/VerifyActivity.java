@@ -148,6 +148,8 @@ public class VerifyActivity extends AppCompatActivity{
                 //verifying the code
                 verifyVerificationCode(code);
 
+            }else{
+                moveToRegistration();
             }
         }
 

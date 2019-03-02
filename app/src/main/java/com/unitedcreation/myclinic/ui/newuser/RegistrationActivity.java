@@ -5,12 +5,17 @@ import androidx.cardview.widget.CardView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.unitedcreation.myclinic.R;
+import com.unitedcreation.myclinic.database.DataTableHelper;
 import com.unitedcreation.myclinic.model.Doctor;
 import com.unitedcreation.myclinic.model.Patient;
 import com.unitedcreation.myclinic.model.StemCellUser;
@@ -43,7 +48,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private String uid;
 
     @BindView(R.id.et_registration_variable)
-    EditText mVariable_et;
+    AutoCompleteTextView mVariable_et;
 
     @BindView(R.id.et_registration_licence)
     EditText mLicence_et;
@@ -107,6 +112,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 type = DOCTOR ;
                 mVariable_cv.setVisibility(View.VISIBLE);
                 mVariable_et.setHint("Qualifications");
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,R.array.doctor_qualification);
+                mVariable_et.setAdapter(adapter);
+                //Showing Licence EditText from Registration Activity
                 mLicence_cv.setVisibility(View.VISIBLE);
                 break;
 

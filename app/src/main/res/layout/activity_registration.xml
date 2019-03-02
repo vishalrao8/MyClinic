@@ -183,7 +183,7 @@
 
         <View style="@style/CardBorder" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/et_registration_variable"
             style="@style/InputEditText"
             android:layout_width="match_parent"

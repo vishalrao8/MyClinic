@@ -34,7 +34,9 @@ import static android.view.View.VISIBLE;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private String latitude, longitude, name;
+    private String name;
+
+    private double latitude, longitude;
 
     @BindView(R.id.fab_maps_pay)
     FloatingActionButton mPayButton;
@@ -68,8 +70,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
         name = getIntent().getStringExtra(StringUtils.NAME);
-        latitude = getIntent().getStringExtra(StringUtils.LATITUDE);
-        longitude = getIntent().getStringExtra(StringUtils.LONGITUTE);
+        latitude = getIntent().getDoubleExtra(StringUtils.LATITUDE,0);
+        longitude = getIntent().getDoubleExtra(StringUtils.LONGITUTE,0);
 
         ButterKnife.bind(this);
         Random rand = new Random();
@@ -110,7 +112,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
         // Add a marker in Sydney and move the camera
-        LatLng bankPosition = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+        LatLng bankPosition = new LatLng(latitude,longitude);
         googleMap.addMarker(new MarkerOptions().position(bankPosition).title(name))
                 .setIcon(BitmapDescriptorFactory.fromResource(R.drawable.maps_ic_location));
 

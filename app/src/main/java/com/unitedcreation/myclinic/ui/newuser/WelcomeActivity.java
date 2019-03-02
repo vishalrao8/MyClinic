@@ -8,17 +8,26 @@ import butterknife.ButterKnife;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
+import com.unitedcreation.myclinic.model.Bank;
 import com.unitedcreation.myclinic.ui.doctor.DoctorActivity;
 import com.unitedcreation.myclinic.ui.patient.PatientActivity;
 import com.unitedcreation.myclinic.ui.stemcell.StemActivity;
 import com.unitedcreation.myclinic.ui.supplier.SupplierActivity;
 import com.unitedcreation.myclinic.ui.vendor.VendorActivity;
+import com.unitedcreation.myclinic.utils.FireBaseUtils;
+import com.unitedcreation.myclinic.utils.StringUtils;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
 import static com.unitedcreation.myclinic.utils.ViewUtils.moveToCorrespondingUi;

@@ -90,8 +90,8 @@ public class DataTableHelper extends SQLiteOpenHelper {
     public Cursor getAllData() {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.rawQuery("select * from " + DataContract.DataTable.TABLE_NAME, null);
-
+        Cursor cursor= db.rawQuery("select * from " + DataContract.DataTable.TABLE_NAME, null);
+        return cursor;
     }
 
     /**

@@ -9,8 +9,11 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.unitedcreation.myclinic.R;
+import com.unitedcreation.myclinic.model.Bank;
 import com.unitedcreation.myclinic.ui.stemcell.MapsActivity;
 import com.unitedcreation.myclinic.utils.StringUtils;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,19 +21,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapter.ViewHolder> {
 
-    private String hospital_list[];
-    private String lats[];
-    private String[] longs;
     private Context context;
+    private List<Bank> bankList=null;
 
-    public BankRecyclerAdapter(String[] array1, String[] array2, String[] array3){
-
-        hospital_list = array1;
-        lats = array2;
-        longs = array3;
-
+    public BankRecyclerAdapter(List<Bank> bankList)
+    {
+        this.bankList=bankList;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,19 +41,27 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        holder.mHospitalName.setText(hospital_list[position]);
-        holder.mRatingBar.setRating(5 - position);
+/**
+ * here we are binding values to each view defined below in ViewHolder class
+ */
+        holder.mHospitalName.setText(bankList.get(position).getName());
+        holder.mRatingBar.setRating(bankList.get(position).getRating());
         holder.mHospitalCard.setOnClickListener(v -> {
 
             Intent intent = new Intent(context, MapsActivity.class);
-            intent.putExtra(StringUtils.NAME, hospital_list[position]);
-            intent.putExtra(StringUtils.LATITUDE, lats[position]);
-            intent.putExtra(StringUtils.LONGITUTE, longs[position]);
+            intent.putExtra(StringUtils.NAME,bankList.get(position).getName());
+            intent.putExtra(StringUtils.LATITUDE, bankList.get(position).getLatitude());
+            intent.putExtra(StringUtils.LONGITUTE, bankList.get(position).getLongtitude());
             context.startActivity(intent);
 
         });
     }
+
+    /**
+     * here we are creating a class to handle layout events for each item_bank view
+     *
+     * We are defining Hospital Name ,Card of Hospital and its Rating bar
+     */
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -65,7 +70,9 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
         RatingBar mRatingBar;
 
         ViewHolder(@NonNull View itemView) {
-
+/**
+ * here we are linking each variables with appropriate views in item_bank layout
+ */
             super(itemView);
             mHospitalName=itemView.findViewById(R.id.card_hospital_name);
             mRatingBar=itemView.findViewById(R.id.card_rating);
@@ -76,6 +83,9 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
 
     @Override
     public int getItemCount() {
-        return hospital_list.length;
+        /**
+         * this returns number of views to be displayed
+         */
+        return bankList.size();
     }
 }

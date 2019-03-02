@@ -89,4 +89,28 @@
     <string name="verify_submit">Submit</string>
     <string name="verify_enter_otp_info">Enter verification code sent to</string>
 
+    <!-- Doctor Qualification List -->
+    <string-array name="doctor_qualification">
+        MBBS – Bachelor of Medicine, Bachelor of Surgery,
+        BDS – Bachelor of Dental Surgery,
+        BAMS – Bachelor of Ayurvedic Medicine and Surgery,
+        BUMS – Bachelor of Unani Medicine and Surgery,
+        BHMS – Bachelor of Homeopathy Medicine and Surgery,
+        Bachelor of Occupational Therapy,
+        Bachelor of Science in Biotechnology,
+        Bachelor of Technology in Biomedical Engineering,
+        Bachelor of Science in Microbiology (Non-Clinical),
+        MD Specialty - Anaesthesiology,
+        MD Specialty - Biochemistry,
+        MD Specialty - Dermatology,
+        MD Specialty - Field Epidemiology,
+        MD Specialty - Microbiology,
+        MD Specialty - Paediatrics,
+        MD Specialty - Pathology,
+        MD Specialty - Pharmacology,
+        MD Specialty - Physiology,
+        MD Specialty - Microbiology,
+        MD Specialty - Psychiatry,
+        MD Specialty - Obstetric and Gynecology,
+    </string-array>
 </resources>

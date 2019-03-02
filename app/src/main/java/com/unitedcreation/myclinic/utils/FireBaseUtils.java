@@ -19,6 +19,7 @@ public class FireBaseUtils {
 
     public static void SignOut (Context context) {
 
+
         try {
 
             FirebaseAuth.getInstance().signOut();
