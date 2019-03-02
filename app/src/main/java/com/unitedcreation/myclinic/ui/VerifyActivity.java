@@ -32,17 +32,23 @@ import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
 
 public class VerifyActivity extends AppCompatActivity{
 
-    private boolean numberConfirmed;
     private static final String NAME = VerifyActivity.class.getSimpleName();
 
-    EditText user_number_et;
+    private String verificationId;
+
+    private boolean numberConfirmed;
+
+    @BindView(R.id.et_verify_phone)
+    EditText mobileNumberEditText;
+
+    @BindView(R.id.otp_view)
     OtpView user_otp;
+
+    @BindView(R.id.tv_verify_confirm)
     TextView confirmTv;
 
     @BindView(R.id.view_verify_confirm)
     View confirmButton;
-
-    private String verificationId;
 
     @BindView(R.id.tv_verify_info)
     TextView infoTextView;
@@ -58,13 +64,9 @@ public class VerifyActivity extends AppCompatActivity{
 
         ButterKnife.bind(this);
 
-        Log.i("STRING", String.valueOf(getIntent().getIntExtra(PROFILE_EXTRA, 0)));
-        confirmTv = findViewById(R.id.tv_verify_confirm);
-        user_number_et = findViewById(R.id.et_verify_phone);
-        user_otp = findViewById(R.id.otp_view);
-        user_number_et.setSelection(3);
+        mobileNumberEditText.setSelection(3);
 
-        /*FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
@@ -72,23 +74,19 @@ public class VerifyActivity extends AppCompatActivity{
                 addUser(getApplicationContext(), firebaseAuth.getUid());
 
             }
-        });*/
-
-        //Be sure for View visibility
-        user_number_et.setVisibility(View.VISIBLE);
-        user_otp.setVisibility(View.GONE);
+        });
 
         confirmButton.setOnClickListener(v -> {
 
-            String userMobileNumber = user_number_et.getText().toString();
+            String userMobileNumber = mobileNumberEditText.getText().toString();
 
             if (!numberConfirmed) {
 
-                if (!user_number_et.getText().toString().equals("") && user_otp.getVisibility() != View.VISIBLE) {
+                if (userMobileNumber.length() == 13) {
 
                     sendVerificationCode(userMobileNumber);
 
-                    user_number_et.setVisibility(View.GONE);
+                    mobileNumberEditText.setVisibility(View.GONE);
                     user_otp.setVisibility(View.VISIBLE);
 
                     user_otp.requestFocus();
@@ -134,7 +132,6 @@ public class VerifyActivity extends AppCompatActivity{
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
 
             Log.d (NAME, "Verification Complete");
-            addUser(getApplicationContext(), FirebaseAuth.getInstance().getUid());
 
             //Getting the code sent by SMS
             String code = phoneAuthCredential.getSmsCode();
@@ -151,8 +148,7 @@ public class VerifyActivity extends AppCompatActivity{
                 //verifying the code
                 verifyVerificationCode(code);
 
-            } else
-                moveToRegistration();
+            }
         }
 
         @Override
