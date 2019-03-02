@@ -28,6 +28,7 @@ public class ViewUtils {
     public static void moveToHome (Context context) {
 
         Intent intent = new Intent(context, WelcomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
 
     }
