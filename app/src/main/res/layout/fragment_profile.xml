@@ -118,34 +118,14 @@
         tools:text="New Delhi" />
 
     <TextView
-        android:id="@+id/tv_patient_zip_label"
-        style="@style/ProfileLabelText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
-        android:text="@string/all_zip_code"
-        app:layout_constraintStart_toStartOf="@+id/tv_patient_city_label"
-        app:layout_constraintTop_toBottomOf="@+id/tv_patient_city_label" />
-
-    <TextView
-        android:id="@+id/tv_patient_zip"
-        style="@style/TextAppearance.MaterialComponents.Body1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_patient_zip_label"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/tv_patient_zip_label"
-        tools:text="110049" />
-
-    <TextView
         android:id="@+id/tv_patient_age_label"
         style="@style/ProfileLabelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin"
         android:text="@string/all_age"
-        app:layout_constraintStart_toStartOf="@+id/tv_patient_zip_label"
-        app:layout_constraintTop_toBottomOf="@+id/tv_patient_zip_label" />
+        app:layout_constraintStart_toStartOf="@+id/tv_patient_city_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_patient_city_label" />
 
     <TextView
         android:id="@+id/tv_patient_age"

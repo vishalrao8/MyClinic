@@ -42,7 +42,9 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+/**
+ * here we are binding values to each view defined below in ViewHolder class
+ */
         holder.mHospitalName.setText(hospital_list[position]);
         holder.mRatingBar.setRating(5 - position);
         holder.mHospitalCard.setOnClickListener(v -> {
@@ -55,6 +57,12 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
 
         });
     }
+
+    /**
+     * here we are creating a class to handle layout events for each item_bank view
+     *
+     * We are defining Hospital Name ,Card of Hospital and its Rating bar
+     */
     class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView mHospitalName;
@@ -62,7 +70,9 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
         RatingBar mRatingBar;
 
         ViewHolder(@NonNull View itemView) {
-
+/**
+ * here we are linking each variables with appropriate views in item_bank layout
+ */
             super(itemView);
             mHospitalName=itemView.findViewById(R.id.card_hospital_name);
             mRatingBar=itemView.findViewById(R.id.card_rating);
@@ -73,6 +83,9 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
 
     @Override
     public int getItemCount() {
+        /**
+         * this returns number of views to be displayed
+         */
         return hospital_list.length;
     }
 }

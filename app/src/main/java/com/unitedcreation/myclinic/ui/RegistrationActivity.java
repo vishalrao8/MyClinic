@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +48,7 @@ public class RegistrationActivity extends AppCompatActivity {
     //Edit Texts
 
     @BindView(R.id.et_registration_variable)
-    EditText mVariable_et;
+    AutoCompleteTextView mVariable_et;
 
     @BindView(R.id.et_registration_licence)
     EditText mLicence_et;
@@ -62,6 +64,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     @BindView(R.id.et_registration_age)
     EditText mAge;
+
     @BindView(R.id.et_registration_street)
     EditText mStreet_et;
 
@@ -109,6 +112,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 mVariable_cv.setVisibility(View.VISIBLE);
                 //Renaming Issue/Qualification EditText hint to Qualifications
                 mVariable_et.setHint("Qualifications");
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,R.array.doctor_qualification);
+                mVariable_et.setAdapter(adapter);
                 //Showing Licence EditText from Registration Activity
                 mLicence_cv.setVisibility(View.VISIBLE);
                 break;
