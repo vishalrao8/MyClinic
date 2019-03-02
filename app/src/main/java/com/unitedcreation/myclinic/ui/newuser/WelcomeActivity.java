@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui;
+package com.unitedcreation.myclinic.ui.newuser;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -14,6 +14,11 @@ import android.view.View;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
+import com.unitedcreation.myclinic.ui.doctor.DoctorActivity;
+import com.unitedcreation.myclinic.ui.patient.PatientActivity;
+import com.unitedcreation.myclinic.ui.stemcell.StemActivity;
+import com.unitedcreation.myclinic.ui.supplier.SupplierActivity;
+import com.unitedcreation.myclinic.ui.vendor.VendorActivity;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
 import static com.unitedcreation.myclinic.utils.ViewUtils.moveToCorrespondingUi;

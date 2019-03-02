@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui;
+package com.unitedcreation.myclinic.ui.patient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,9 +46,8 @@ public class PatientActivity extends AppCompatActivity {
         patient_rv.setAdapter(adapter);
 
         Cursor cursor = getCursor(this);
-        /*
-          Setting value to corresponding TextViews from the database.
-         */
+
+        // Setting value to corresponding TextViews from the database.
         if(cursor.moveToNext()){
 
             mName.setText(String.format("Hi %s,", cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_NAME))));
@@ -57,9 +56,7 @@ public class PatientActivity extends AppCompatActivity {
         }
         cursor.close();
 
-        /*
-          Deleting all the user data from the database and Logging out the user on the click of logout button.
-         */
+        // Deleting all the user data from the database and Logging out the user on the click of logout button.
         logOutButton.setOnClickListener(v -> SignOut(this));
     }
 }

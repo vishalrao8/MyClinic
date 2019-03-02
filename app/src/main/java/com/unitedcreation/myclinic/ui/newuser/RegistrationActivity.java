@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui;
+package com.unitedcreation.myclinic.ui.newuser;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -16,6 +16,11 @@ import com.unitedcreation.myclinic.model.Patient;
 import com.unitedcreation.myclinic.model.StemCellUser;
 import com.unitedcreation.myclinic.model.Supplier;
 import com.unitedcreation.myclinic.model.Vendor;
+import com.unitedcreation.myclinic.ui.doctor.DoctorActivity;
+import com.unitedcreation.myclinic.ui.patient.PatientActivity;
+import com.unitedcreation.myclinic.ui.stemcell.StemActivity;
+import com.unitedcreation.myclinic.ui.supplier.SupplierActivity;
+import com.unitedcreation.myclinic.ui.vendor.VendorActivity;
 import com.unitedcreation.myclinic.utils.FireBaseUtils;
 
 import static com.unitedcreation.myclinic.utils.DatabaseUtils.getDataTableHelper;

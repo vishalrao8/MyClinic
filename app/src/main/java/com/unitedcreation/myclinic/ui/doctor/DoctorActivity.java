@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui;
+package com.unitedcreation.myclinic.ui.doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -51,9 +51,8 @@ public class DoctorActivity extends AppCompatActivity {
         doctorRecyclerView.setAdapter(adapter);
 
         Cursor cursor = getCursor(this);
-        /*
-          Setting value to corresponding TextViews from the database.
-         */
+
+        // Setting value to corresponding TextViews from the database.
         if (cursor.moveToNext()) {
 
             doctorQualification.setText(cursor.getString(cursor.getColumnIndex(DataContract.DataTable.P_QUALIFICATION)));
@@ -63,9 +62,7 @@ public class DoctorActivity extends AppCompatActivity {
         }
         cursor.close();
 
-        /*
-          Deleting all the user data from the database and Logging out the user on the click of logout button.
-         */
+        // Deleting all the user data from the database and Logging out the user on the click of logout button.
         logOutButton.setOnClickListener(v -> SignOut(this));
     }
 }

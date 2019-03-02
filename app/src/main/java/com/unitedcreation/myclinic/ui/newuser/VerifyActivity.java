@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui;
+package com.unitedcreation.myclinic.ui.newuser;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

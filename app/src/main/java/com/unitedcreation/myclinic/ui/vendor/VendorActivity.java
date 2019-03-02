@@ -1,4 +1,4 @@
-package com.unitedcreation.myclinic.ui;
+package com.unitedcreation.myclinic.ui.vendor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
