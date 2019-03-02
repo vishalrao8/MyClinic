@@ -8,9 +8,11 @@ import butterknife.ButterKnife;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
@@ -52,6 +54,12 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_welcome);
 
         ButterKnife.bind(this);
+
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+            Log.d("USER", "USER");
+        Log.d("USER", FirebaseAuth.getInstance().getCurrentUser().getUid());}
+        else
+            Log.d("USER", "NO USER");
         DataTableHelper dataTableHelper=new DataTableHelper(this);
         Cursor cursor=dataTableHelper.getAllData();
         if(cursor.getCount()!=0){

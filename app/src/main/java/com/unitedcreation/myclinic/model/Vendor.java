@@ -7,15 +7,25 @@ public class Vendor {
     private String city;
     private String state;
     private String zipCode;
+    private String licence;
 
-    public Vendor (String name, String streetAddress, String city, String state, String zipCode) {
+    public Vendor (String name, String streetAddress, String city, String state, String zipCode,String licence) {
 
         this.name = name;
         this.streetAddress = streetAddress;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
+        this.licence=licence;
 
+    }
+
+    public String getLicence() {
+        return licence;
+    }
+
+    public void setLicence(String licence) {
+        this.licence = licence;
     }
 
     public String getName() {
