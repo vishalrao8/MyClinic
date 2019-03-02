@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
 import com.unitedcreation.myclinic.R;
-import com.unitedcreation.myclinic.utils.StringUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,9 +15,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import static com.unitedcreation.myclinic.utils.StringUtils.INT_EXTRA;
+
 public class BankTabFragment extends Fragment {
 
+    private Bundle bundle = new Bundle();
     private String tabTitles[] = {"Government", "Private"};
+
 
     @Nullable
     @Override
@@ -31,7 +34,7 @@ public class BankTabFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.patient_tab_private)));
 
         final ViewPager viewPager = view.findViewById(R.id.viewpager_patient_bank);
-        viewPager.setAdapter(new PagerAdapter(getFragmentManager(), tabLayout.getTabCount()));
+        viewPager.setAdapter(new PagerAdapter(getFragmentManager()));
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         tabLayout.setupWithViewPager(viewPager);
@@ -58,11 +61,13 @@ public class BankTabFragment extends Fragment {
 
     public class PagerAdapter extends FragmentStatePagerAdapter {
 
-        int mNumOfTabs;
+        int tabSize;
 
-        PagerAdapter (FragmentManager fm, int NumOfTabs) {
+        PagerAdapter(FragmentManager fm) {
+
             super(fm);
-            this.mNumOfTabs = NumOfTabs;
+            this.tabSize = 2;
+
         }
 
         @Override
@@ -70,18 +75,21 @@ public class BankTabFragment extends Fragment {
 
             switch (position) {
 
-                case 0: return new BankFragment(StringUtils.GOVERNMENT);
+                case 0: bundle.putInt(INT_EXTRA, 0);
 
-                case 1: return new BankFragment(StringUtils.PRIVATE);
-
-                default: return null;
+                case 1: bundle.putInt(INT_EXTRA, 1);
 
             }
+
+            BankFragment bankFragment = new BankFragment();
+            bankFragment.setArguments(bundle);
+            return bankFragment;
+
         }
 
         @Override
         public int getCount() {
-            return mNumOfTabs;
+            return tabSize;
         }
         // overriding getPageTitle()
 

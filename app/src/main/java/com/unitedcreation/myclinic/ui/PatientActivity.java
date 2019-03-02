@@ -8,18 +8,15 @@ import butterknife.ButterKnife;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.unitedcreation.myclinic.adapter.PatientRecyclerAdapter;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
-import com.unitedcreation.myclinic.database.DataTableHelper;
 
 import static com.unitedcreation.myclinic.utils.DatabaseUtils.getCursor;
 import static com.unitedcreation.myclinic.utils.FireBaseUtils.SignOut;
-import static com.unitedcreation.myclinic.utils.ViewUtils.moveToHome;
 
 public class PatientActivity extends AppCompatActivity {
 
@@ -49,8 +46,8 @@ public class PatientActivity extends AppCompatActivity {
         patient_rv.setAdapter(adapter);
 
         Cursor cursor = getCursor(this);
-        /**
-         * Setting value to corresponding TextViews from the database.
+        /*
+          Setting value to corresponding TextViews from the database.
          */
         if(cursor.moveToNext()){
 
@@ -60,8 +57,8 @@ public class PatientActivity extends AppCompatActivity {
         }
         cursor.close();
 
-        /**
-         * Deleting all the user data from the database and Logging out the user on the click of logout button.
+        /*
+          Deleting all the user data from the database and Logging out the user on the click of logout button.
          */
         logOutButton.setOnClickListener(v -> SignOut(this));
     }

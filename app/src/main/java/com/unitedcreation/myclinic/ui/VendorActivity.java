@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
-import com.unitedcreation.myclinic.database.DataTableHelper;
 
 import static com.unitedcreation.myclinic.utils.DatabaseUtils.getCursor;
 import static com.unitedcreation.myclinic.utils.FireBaseUtils.SignOut;

@@ -37,11 +37,6 @@ public class ShareActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        mClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        mClose.setOnClickListener(v -> finish());
     }
 }

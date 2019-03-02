@@ -18,9 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapter.ViewHolder> {
 
-    private String hospital_list[] = null;
-    private String lats[] = null;
-    private String[] longs = null;
+    private String hospital_list[];
+    private String lats[];
+    private String[] longs;
     private Context context;
 
     public BankRecyclerAdapter(String[] array1, String[] array2, String[] array3){
@@ -30,10 +30,12 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
         longs = array3;
 
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context=parent.getContext();
+
+        context = parent.getContext();
         //Inflating Layout item_bank for each entry on database
         //each entry has their own item_bank layout with unique position for differentiating
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bank,parent,false));
@@ -55,6 +57,7 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
 
         });
     }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView mHospitalName;

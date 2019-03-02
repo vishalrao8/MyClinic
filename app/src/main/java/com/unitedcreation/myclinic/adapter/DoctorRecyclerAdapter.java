@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DoctorRecyclerAdapter extends RecyclerView.Adapter <DoctorRecyclerAdapter.ViewHolder> {
-    String time[]=null;
+    String time[];
     public DoctorRecyclerAdapter(String[] t_array){
         time=t_array;
     }

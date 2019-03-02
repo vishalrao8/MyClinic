@@ -137,9 +137,9 @@ public class VerifyActivity extends AppCompatActivity{
             String code = phoneAuthCredential.getSmsCode();
             Log.d(NAME, "Verification code is " + code);
 
-            /**
-             * Sometime the verification code is not detected automatically.
-             * In that case the code will be null and the user has to manually enter the code.
+            /*
+              Sometime the verification code is not detected automatically.
+              In that case the code will be null and the user has to manually enter the code.
              */
             if (code != null) {
 
@@ -203,11 +203,8 @@ public class VerifyActivity extends AppCompatActivity{
                         }
 
                         Snackbar snackbar = Snackbar.make(findViewById(R.id.parent), message, Snackbar.LENGTH_LONG);
-                        snackbar.setAction("Dismiss", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
+                        snackbar.setAction("Dismiss", v -> {
 
-                            }
                         });
                         snackbar.show();
 
@@ -223,6 +220,5 @@ public class VerifyActivity extends AppCompatActivity{
         intent.putExtra(PROFILE_EXTRA, getIntent().getIntExtra(PROFILE_EXTRA, 0));
 
         startActivity(intent);
-        finish();
     }
 }

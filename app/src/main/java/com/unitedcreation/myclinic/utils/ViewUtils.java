@@ -6,6 +6,8 @@ import android.content.Intent;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.ui.WelcomeActivity;
 
+import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
+
 public class ViewUtils {
 
     public static void switchTheme(Context context, int position) {
@@ -31,6 +33,16 @@ public class ViewUtils {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
 
+    }
+
+    public static void moveToCorrespondingUi (Context context, Class activityClass, int position) {
+
+        Intent intent = new Intent(context, activityClass);
+
+        intent.putExtra(PROFILE_EXTRA, position);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        context.startActivity(intent);
     }
 
 }

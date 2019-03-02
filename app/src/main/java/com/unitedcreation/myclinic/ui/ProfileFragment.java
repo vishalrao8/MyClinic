@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
-import com.unitedcreation.myclinic.database.DataTableHelper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

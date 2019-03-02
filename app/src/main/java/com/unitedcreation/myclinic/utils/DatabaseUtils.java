@@ -9,7 +9,7 @@ public class DatabaseUtils {
 
     private static DataTableHelper sInstance;
 
-    private static DataTableHelper getDataTableHelper (Context context) {
+    public static DataTableHelper getDataTableHelper (Context context) {
 
         if (sInstance == null) {
             synchronized (new Object()) {

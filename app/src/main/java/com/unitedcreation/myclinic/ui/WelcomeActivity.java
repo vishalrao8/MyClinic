@@ -16,6 +16,7 @@ import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
+import static com.unitedcreation.myclinic.utils.ViewUtils.moveToCorrespondingUi;
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -59,24 +60,28 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         if (cursor.getCount() != 0) {
 
             cursor.moveToNext();
-            switch (cursor.getInt(cursor.getColumnIndex(DataContract.DataTable.P_ID))){
+            Class nextActivity = null;
+            int position = cursor.getInt(cursor.getColumnIndex(DataContract.DataTable.P_ID));
+
+            switch (position) {
 
                 case 0:
-                    comingBackUserIntent(StemActivity.class);
+                    nextActivity = StemActivity.class;
                     break;
                 case 1:
-                    comingBackUserIntent(DoctorActivity.class);
+                    nextActivity = DoctorActivity.class;
                     break;
                 case 2:
-                    comingBackUserIntent(PatientActivity.class);
+                    nextActivity = PatientActivity.class;
                     break;
                 case 3:
-                    comingBackUserIntent(SupplierActivity.class);
+                    nextActivity = SupplierActivity.class;
                     break;
                 case 4:
-                    comingBackUserIntent(VendorActivity.class);
+                    nextActivity = VendorActivity.class;
 
             }
+            moveToCorrespondingUi(this, nextActivity, position);
         }
         cursor.close();
 
@@ -148,15 +153,5 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             default: moveToVerification(0);
 
         }
-    }
-    public void comingBackUserIntent(Class activityClass) {
-
-        Intent intent = new Intent(WelcomeActivity.this, activityClass);
-
-        intent.putExtra(PROFILE_EXTRA,getIntent().getIntExtra(PROFILE_EXTRA, 0));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-        startActivity(intent);
-        finish();
     }
 }

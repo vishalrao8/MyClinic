@@ -6,17 +6,14 @@ import butterknife.ButterKnife;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
-import com.unitedcreation.myclinic.database.DataTableHelper;
 
 import static com.unitedcreation.myclinic.utils.DatabaseUtils.getCursor;
 import static com.unitedcreation.myclinic.utils.FireBaseUtils.SignOut;
-import static com.unitedcreation.myclinic.utils.ViewUtils.moveToHome;
 
 public class SupplierActivity extends AppCompatActivity {
 
