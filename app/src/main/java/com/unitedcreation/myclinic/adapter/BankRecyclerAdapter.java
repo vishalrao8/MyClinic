@@ -14,6 +14,8 @@ import com.unitedcreation.myclinic.model.Bank;
 import com.unitedcreation.myclinic.ui.stemcell.MapsActivity;
 import com.unitedcreation.myclinic.utils.StringUtils;
 
+import java.text.NumberFormat;
+import java.util.Currency;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -46,6 +48,29 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
  * here we are binding values to each view defined below in ViewHolder class
  */
         holder.mHospitalName.setText(bankList.get(position).getName());
+        NumberFormat currencyformat=NumberFormat.getCurrencyInstance();
+        currencyformat.setCurrency(Currency.getInstance("INR"));
+        currencyformat.setMinimumFractionDigits(0);
+        currencyformat.setMaximumFractionDigits(0);
+
+        if(bankList.get(position).getName().equals("Jeevan"))
+            holder.mInitialPrice.setText(currencyformat.format
+                    (300000));
+
+        else if(bankList.get(position).getName().equals("LifeCell"))
+            holder.mInitialPrice.setText(currencyformat.format
+                    (16990)+" + "+currencyformat.format
+                    (4000));
+
+        else if(bankList.get(position).getName().equals("Cryo-Cell International"))
+            holder.mInitialPrice.setText(currencyformat.format
+                    (250000));
+
+        else if(bankList.get(position).getName().equals("ReeLabs"))
+            holder.mInitialPrice.setText(currencyformat.format
+                    (75000));
+        else
+            holder.mInitialPrice.setText("NIL");
         holder.mRatingBar.setRating(bankList.get(position).getRating());
         holder.mHospitalCard.setOnClickListener(v -> {
 
@@ -66,7 +91,7 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mHospitalName;
+        TextView mHospitalName,mInitialPrice;
         ConstraintLayout mHospitalCard;
         RatingBar mRatingBar;
 
@@ -78,6 +103,7 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
             mHospitalName=itemView.findViewById(R.id.card_hospital_name);
             mRatingBar=itemView.findViewById(R.id.card_rating);
             mHospitalCard=itemView.findViewById(R.id.hospital_item);
+            mInitialPrice=itemView.findViewById(R.id.tv_initial_price);
 
         }
     }

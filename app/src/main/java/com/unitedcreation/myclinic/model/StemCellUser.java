@@ -9,6 +9,7 @@ public class StemCellUser {
     private String zipCode;
     private int mAge;
 
+    public  StemCellUser(){}
     public StemCellUser (String name, String streetAddress, String city, String state, String zipCode,int mAge) {
 
         this.name = name;

@@ -41,6 +41,8 @@ public class BankFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
 
+    private ArrayList<String> mPriceList=new ArrayList<String>();
+
     private LinearLayoutManager mLayoutManager;
 
     @Nullable
