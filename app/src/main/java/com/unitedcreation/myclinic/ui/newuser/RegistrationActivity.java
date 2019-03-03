@@ -138,7 +138,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 String licence = null, issue = null, qualification = null;
                 Object object = null;
-                Class nextActivity = null;
 
                 switch (getIntent().getIntExtra(PROFILE_EXTRA, 0)) {
 
@@ -148,7 +147,6 @@ public class RegistrationActivity extends AppCompatActivity {
                                 mState_et.getText().toString(),
                                 mCity_et.getText().toString(),
                                 mZip_et.getText().toString());
-                        nextActivity = StemActivity.class;
                         break;
 
                     case 1:
@@ -161,7 +159,6 @@ public class RegistrationActivity extends AppCompatActivity {
                                 mLicence_et.getText().toString());
                         qualification = mVariable_et.getText().toString();
                         licence = mLicence_et.getText().toString();
-                        nextActivity = DoctorActivity.class;
                         break;
 
                     case 2:
@@ -172,13 +169,12 @@ public class RegistrationActivity extends AppCompatActivity {
                                 mZip_et.getText().toString(),
                                 mVariable_et.getText().toString());
                         issue = mVariable_et.getText().toString();
-                        nextActivity = PatientActivity.class;
                         break;
 
                 }
 
                 insertData(licence, issue, qualification, object);
-                moveToCorrespondingUi(this, nextActivity, position);
+                moveToCorrespondingUi(this, position);
             }
         });
     }

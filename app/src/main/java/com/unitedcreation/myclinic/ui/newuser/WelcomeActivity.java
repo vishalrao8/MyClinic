@@ -59,28 +59,9 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         if (cursor.getCount() != 0) {
 
             cursor.moveToNext();
-            Class nextActivity = null;
             int position = cursor.getInt(cursor.getColumnIndex(DataContract.DataTable.P_ID));
+            moveToCorrespondingUi(this, position);
 
-            switch (position) {
-
-                case 0:
-                    nextActivity = StemActivity.class;
-                    break;
-                case 1:
-                    nextActivity = DoctorActivity.class;
-                    break;
-                case 2:
-                    nextActivity = PatientActivity.class;
-                    break;
-                case 3:
-                    nextActivity = RetailerActivity.class;
-                    break;
-                case 4:
-                    nextActivity = PharmacistActivity.class;
-
-            }
-            moveToCorrespondingUi(this, nextActivity, position);
         }
         cursor.close();
 

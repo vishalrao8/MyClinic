@@ -20,19 +20,37 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.mukesh.OtpView;
 import com.unitedcreation.myclinic.R;
+import com.unitedcreation.myclinic.model.Doctor;
+import com.unitedcreation.myclinic.model.Patient;
+import com.unitedcreation.myclinic.model.StemCellUser;
+import com.unitedcreation.myclinic.utils.FireBaseUtils;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+import static com.unitedcreation.myclinic.utils.DatabaseUtils.getDataTableHelper;
 import static com.unitedcreation.myclinic.utils.PreferencesUtils.addUser;
+import static com.unitedcreation.myclinic.utils.PreferencesUtils.getUserId;
+import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;
+import static com.unitedcreation.myclinic.utils.StringUtils.PATIENT;
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
+import static com.unitedcreation.myclinic.utils.StringUtils.STEM;
+import static com.unitedcreation.myclinic.utils.StringUtils.USERS;
+import static com.unitedcreation.myclinic.utils.ViewUtils.moveToCorrespondingUi;
 import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
 
 public class VerifyActivity extends AppCompatActivity{
 
     private static final String NAME = VerifyActivity.class.getSimpleName();
+
+    private int position;
+
+    private final String uid = getUserId(this);
 
     private String verificationId;
 
@@ -63,6 +81,8 @@ public class VerifyActivity extends AppCompatActivity{
         setContentView(R.layout.activity_verify);
 
         ButterKnife.bind(this);
+
+        position = getIntent().getIntExtra(PROFILE_EXTRA, 0);
 
         mobileNumberEditText.setSelection(3);
 
@@ -149,7 +169,7 @@ public class VerifyActivity extends AppCompatActivity{
                 verifyVerificationCode(code);
 
             }else{
-                moveToRegistration();
+                checkIfUserExists();
             }
         }
 
@@ -193,7 +213,7 @@ public class VerifyActivity extends AppCompatActivity{
                     if (task.isSuccessful()) {
 
                         Log.d(NAME, "Singing in successful");
-                        moveToRegistration();
+                        checkIfUserExists();
 
                     } else {
 
@@ -214,13 +234,102 @@ public class VerifyActivity extends AppCompatActivity{
                 });
     }
 
-    public void moveToRegistration () {
+    public void checkIfUserExists() {
+
+        new FireBaseUtils().getDatabaseReference().child(USERS).child(Objects.requireNonNull(getType())).child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+
+                    moveToCorrespondingUi(VerifyActivity.this, position);
+                    fillDatabase(dataSnapshot);
+
+                }
+                else
+                    moveToRegistration();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                databaseError.getDetails();
+            }
+        });
+
+    }
+
+    private void fillDatabase(DataSnapshot dataSnapshot) {
+
+        String licence = null, issue = null, qualification = null;
+
+        switch (position) {
+
+            case 0:
+                StemCellUser stemCellUser = dataSnapshot.getValue(StemCellUser.class);
+                getDataTableHelper(this).insertItem(stemCellUser.getName(),
+                        position,
+                        Integer.parseInt(mAge.getText().toString()),
+                        mStreet_et.getText().toString(),
+                        mCity_et.getText().toString(),
+                        issue,
+                        qualification,
+                        licence);
+                break;
+
+            case 1:
+                Doctor doctor = dataSnapshot.getValue(Doctor.class);
+                qualification = Objects.requireNonNull(doctor).getQualification();
+                licence = doctor.getLicence();
+                getDataTableHelper(this).insertItem(object.getName(),
+                    position,
+                    Integer.parseInt(mAge.getText().toString()),
+                    mStreet_et.getText().toString(),
+                    mCity_et.getText().toString(),
+                    issue,
+                    qualification,
+                    licence);
+                break;
+
+            case 2:
+                Patient patient = dataSnapshot.getValue(Patient.class);
+                issue = Objects.requireNonNull(patient).getIssue();
+                getDataTableHelper(this).insertItem(object.getName(),
+                        position,
+                        Integer.parseInt(mAge.getText().toString()),
+                        mStreet_et.getText().toString(),
+                        mCity_et.getText().toString(),
+                        issue,
+                        qualification,
+                        licence);
+                break;
+
+        }
+
+    }
+
+    private void moveToRegistration () {
 
         Intent intent = new Intent(VerifyActivity.this, RegistrationActivity.class);
 
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra(PROFILE_EXTRA, getIntent().getIntExtra(PROFILE_EXTRA, 0));
+        intent.putExtra(PROFILE_EXTRA, position);
 
         startActivity(intent);
+    }
+
+    private String getType() {
+
+        switch (position) {
+            case 0:
+                return STEM ;
+
+            case 1:
+                return DOCTOR ;
+
+            case 2:
+                return PATIENT ;
+        }
+        return null;
     }
 }

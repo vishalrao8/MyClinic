@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.unitedcreation.myclinic.R;
+import com.unitedcreation.myclinic.ui.doctor.DoctorActivity;
 import com.unitedcreation.myclinic.ui.newuser.WelcomeActivity;
+import com.unitedcreation.myclinic.ui.patient.PatientActivity;
+import com.unitedcreation.myclinic.ui.stemcell.StemActivity;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
 
@@ -35,7 +38,17 @@ public class ViewUtils {
 
     }
 
-    public static void moveToCorrespondingUi (Context context, Class activityClass, int position) {
+    public static void moveToCorrespondingUi (Context context, int position) {
+
+        Class activityClass = null;
+
+        switch (position) {
+            case 0: activityClass = StemActivity.class;
+
+            case 1: activityClass = DoctorActivity.class;
+
+            case 2: activityClass = PatientActivity.class;
+        }
 
         Intent intent = new Intent(context, activityClass);
 
