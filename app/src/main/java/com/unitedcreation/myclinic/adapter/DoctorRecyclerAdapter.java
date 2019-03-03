@@ -6,38 +6,49 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.unitedcreation.myclinic.R;
+import com.unitedcreation.myclinic.model.Appointment;
+
+import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DoctorRecyclerAdapter extends RecyclerView.Adapter <DoctorRecyclerAdapter.ViewHolder> {
-    String time[];
-    public DoctorRecyclerAdapter(String[] t_array){
-        time=t_array;
+
+    private ArrayList<Appointment> appointments;
+
+    public DoctorRecyclerAdapter(ArrayList<Appointment> appointments){
+        this.appointments = appointments;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_doctor,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_doctor, parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.mHospitalName.setText("Patient "+position);
-       holder.mTime.setText(time[position]);
+
+        holder.nameTv.setText(appointments.get(position).getName());
+        holder.timeTv.setText(appointments.get(position).getTime());
 
     }
+
     class ViewHolder extends RecyclerView.ViewHolder{
-        TextView mHospitalName,mTime;
-        public ViewHolder(@NonNull View itemView) {
+
+        TextView nameTv, timeTv;
+        ViewHolder(@NonNull View itemView) {
+
             super(itemView);
-            mHospitalName=itemView.findViewById(R.id.doctor_patient_name);
-            mTime=itemView.findViewById(R.id.doctor_patient_time);
+            nameTv = itemView.findViewById(R.id.doctor_patient_name);
+            timeTv = itemView.findViewById(R.id.doctor_patient_time);
+
         }
     }
 
     @Override
     public int getItemCount() {
-        return time.length;
+        return appointments.size();
     }
 }

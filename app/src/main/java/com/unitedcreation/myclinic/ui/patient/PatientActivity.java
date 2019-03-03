@@ -20,18 +20,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.unitedcreation.myclinic.adapter.PatientRecyclerAdapter;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
-import com.unitedcreation.myclinic.model.Bank;
 import com.unitedcreation.myclinic.model.Doctor;
 import com.unitedcreation.myclinic.utils.FireBaseUtils;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import static com.unitedcreation.myclinic.utils.DatabaseUtils.getCursor;
 import static com.unitedcreation.myclinic.utils.FireBaseUtils.SignOut;
-import static com.unitedcreation.myclinic.utils.StringUtils.BANKS;
 import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;
-import static com.unitedcreation.myclinic.utils.StringUtils.GOVERNMENT;
 import static com.unitedcreation.myclinic.utils.StringUtils.USERS;
 
 public class PatientActivity extends AppCompatActivity {
@@ -46,7 +42,7 @@ public class PatientActivity extends AppCompatActivity {
 
     private ArrayList<Doctor> doctorList = new ArrayList<>();
 
-    private ArrayList<String> doctorKeyList = new ArrayList<>();
+    private ArrayList<String> doctorUid = new ArrayList<>();
 
     @BindView(R.id.tv_mpatient_age)
     TextView mAge;
@@ -81,20 +77,22 @@ public class PatientActivity extends AppCompatActivity {
         }
         cursor.close();
 
-        PatientRecyclerAdapter adapter = new PatientRecyclerAdapter(this,doctorList,doctorKeyList,mUserName);
+        PatientRecyclerAdapter adapter = new PatientRecyclerAdapter(this,doctorList, doctorUid,mUserName);
         patient_rv.setAdapter(adapter);
+
         // Attaching a listener to read the data at returned database reference.
         new FireBaseUtils().getDatabaseReference().child(USERS).child(DOCTOR).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Doctor doctor=snapshot.getValue(Doctor.class);
+
+                    Doctor doctor = snapshot.getValue(Doctor.class);
                     doctorList.add(doctor);
-                    doctorKeyList.add(snapshot.getKey());
+                    doctorUid.add(snapshot.getKey());
+
                 }
                 adapter.notifyDataSetChanged();
-
             }
 
             @Override

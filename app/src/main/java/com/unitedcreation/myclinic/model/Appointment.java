@@ -7,8 +7,10 @@ public class Appointment {
     public Appointment(){}
 
     public Appointment(String name,String time){
+
         this.name=name;
         this.time=time;
+
     }
 
     public String getName() {

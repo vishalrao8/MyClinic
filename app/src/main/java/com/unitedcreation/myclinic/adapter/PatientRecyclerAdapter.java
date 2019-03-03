@@ -32,15 +32,16 @@ import static com.unitedcreation.myclinic.utils.StringUtils.USERS;
 public class PatientRecyclerAdapter extends RecyclerView.Adapter <PatientRecyclerAdapter.ViewHolder> {
     private Context context;
     private List<Doctor> doctorList;
-    List<String> doctorKeyList;
-    String mUserName;
+    private List<String> doctorKeyList;
+    private String mUserName;
 
-    public PatientRecyclerAdapter(Context context,List<Doctor> doctorList,List<String> doctorKeyList,String mUserName)
-    {
-        this.mUserName=mUserName;
-        this.context=context;
-        this.doctorList=doctorList;
-        this.doctorKeyList=doctorKeyList;
+    public PatientRecyclerAdapter(Context context,List<Doctor> doctorList,List<String> doctorKeyList,String mUserName) {
+
+        this.mUserName = mUserName;
+        this.context = context;
+        this.doctorList = doctorList;
+        this.doctorKeyList = doctorKeyList;
+
     }
     @NonNull
     @Override
@@ -50,43 +51,43 @@ public class PatientRecyclerAdapter extends RecyclerView.Adapter <PatientRecycle
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.mDoctorName.setText("Dr. "+ doctorList.get(position).getName());
+
+        holder.mDoctorName.setText(String.format("Dr. %s", doctorList.get(position).getName()));
         holder.mRatingBar.setRating(Math.abs(5-position));
-        holder.mPatientLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.mPatientLayout.setOnClickListener(v -> {
 
-                // Get Current Time
-                final Calendar c = Calendar.getInstance();
-                int mHour = c.get(Calendar.HOUR_OF_DAY);
-                int mMinute = c.get(Calendar.MINUTE);
+            // Get Current Time
+            final Calendar c = Calendar.getInstance();
+            int mHour = c.get(Calendar.HOUR_OF_DAY);
+            int mMinute = c.get(Calendar.MINUTE);
 
-                // Launch Time Picker Dialog
-                TimePickerDialog timePickerDialog = new TimePickerDialog(context,
-                        new TimePickerDialog.OnTimeSetListener() {
+            // Launch Time Picker Dialog
+            TimePickerDialog timePickerDialog = new TimePickerDialog(context,
+                    (view, hourOfDay, minute) -> {
 
-                            @Override
-                            public void onTimeSet(TimePicker view, int hourOfDay,
-                                                  int minute) {
-                                Appointment appointment=new Appointment(mUserName,String.valueOf(hourOfDay)+" : "+String.valueOf(minute));
-                                new FireBaseUtils().getDatabaseReference().child(USERS).child(DOCTOR).child(doctorKeyList.get(position)).child(APPOINTMENTS).
-                                        push().setValue(appointment);
-                            }
+                        Appointment appointment = new Appointment(mUserName,String.valueOf(hourOfDay)+" : "+String.valueOf(minute));
+                        new FireBaseUtils().getDatabaseReference().child(USERS).child(DOCTOR).child(doctorKeyList.get(position)).child(APPOINTMENTS).
+                                push().setValue(appointment);
+
                         }, mHour, mMinute, false);
-                timePickerDialog.show();
-            }
-        });
 
+            timePickerDialog.show();
+        });
     }
+
     class ViewHolder extends RecyclerView.ViewHolder{
+
         TextView mDoctorName;
         RatingBar mRatingBar;
         ConstraintLayout mPatientLayout;
-        public ViewHolder(@NonNull View itemView) {
+
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             mDoctorName=itemView.findViewById(R.id.patient_doctor_name);
             mRatingBar=itemView.findViewById(R.id.patient_doctor_rating);
             mPatientLayout=itemView.findViewById(R.id.patient_layout);
+
         }
     }
 

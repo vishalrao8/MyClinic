@@ -85,7 +85,7 @@
     <string name="offline_payment">Scan QR code for Offline Payment</string>
     <string name="age">Age :</string>
     <string name="patient_timing">Timing:</string>
-    <string name="patient_hospital_name">Hospital Name</string>
+    <string name="doctor_patient_name">Hospital Name</string>
     <string name="verify_submit">Submit</string>
     <string name="verify_enter_otp_info">Enter verification code sent to</string>
 
