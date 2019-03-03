@@ -2,6 +2,7 @@ package com.unitedcreation.myclinic.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapter.ViewHolder> {
 
     private Context context;
-    private List<Bank> bankList=null;
+    private List<Bank> bankList;
 
     public BankRecyclerAdapter(List<Bank> bankList)
     {
@@ -51,7 +52,7 @@ public class BankRecyclerAdapter extends RecyclerView.Adapter <BankRecyclerAdapt
             Intent intent = new Intent(context, MapsActivity.class);
             intent.putExtra(StringUtils.NAME,bankList.get(position).getName());
             intent.putExtra(StringUtils.LATITUDE, bankList.get(position).getLatitude());
-            intent.putExtra(StringUtils.LONGITUDE, bankList.get(position).getLongitude());
+            intent.putExtra(StringUtils.LONGITUDE, bankList.get(position).getLongtitude());
             context.startActivity(intent);
 
         });

@@ -20,10 +20,10 @@
         <activity android:name=".ui.stemcell.ShareActivity">
         </activity>
         <activity
-            android:name=".ui.supplier.SupplierActivity"
+            android:name=".ui.retailer.RetailerActivity"
             android:theme="@style/Green" />
         <activity
-            android:name=".ui.vendor.VendorActivity"
+            android:name=".ui.pharmacist.PharmacistActivity"
             android:theme="@style/Brown" />
         <activity
             android:name=".ui.patient.PatientActivity"

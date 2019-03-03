@@ -12,9 +12,10 @@ public class StringUtils {
     public static final String USER_ID = "user_id";
     public static final String PATIENT = "patient";
     public static final String DOCTOR = "doctor";
-    public static final String SUPPLIER = "supplier";
-    public static final String VENDOR = "vendor";
+    public static final String RETAILER = "retailer";
+    public static final String PHARMACIST = "pharmacist";
     public static final String STEM = "stem";
+    public static final String APPOINTMENTS = "appointments";
 
     public static final String NAME = "name";
     public static final String STREET = "street";

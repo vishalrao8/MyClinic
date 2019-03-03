@@ -1,5 +1,6 @@
 package com.unitedcreation.myclinic.ui.stemcell;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,17 +39,23 @@ public class BankFragment extends Fragment {
 
     private BankRecyclerAdapter bankRecyclerAdapter;
 
+    private RecyclerView mRecyclerView;
+
+    private LinearLayoutManager mLayoutManager;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_bank,container,false);
-
-        RecyclerView mRecyclerView = view.findViewById(R.id.common_rv);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView = view.findViewById(R.id.common_rv);
 
         int tabPosition = Objects.requireNonNull(getArguments()).getInt(INT_EXTRA, 0);
+
+        mLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        bankRecyclerAdapter = new BankRecyclerAdapter(bankList);
+        mRecyclerView.setAdapter(bankRecyclerAdapter);
 
         // Attaching a listener to read the data at returned database reference.
         Objects.requireNonNull(getReference(tabPosition)).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -56,14 +63,11 @@ public class BankFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                
                     Bank bank = snapshot.getValue(Bank.class);
                     bankList.add(bank);
-
                 }
 
-                bankRecyclerAdapter = new BankRecyclerAdapter(bankList);
-                mRecyclerView.setAdapter(bankRecyclerAdapter);
+                bankRecyclerAdapter.notifyDataSetChanged();
 
             }
 
@@ -96,4 +100,12 @@ public class BankFragment extends Fragment {
                 return null;
         }
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+
 }

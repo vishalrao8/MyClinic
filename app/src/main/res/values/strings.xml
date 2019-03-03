@@ -11,9 +11,9 @@
     <!-- MedicalKitActivity -->
     <string name="mk_just_a_few">Just few steps away</string>
     <string name="mk_doctor">I\'m a Doctor</string>
-    <string name="mk_supplier">I\'m a Supplier</string>
+    <string name="mk_retailer">I\'m a Retailer</string>
     <string name="mk_patient">I\'m a Patient</string>
-    <string name="mk_vendor">I\'m a Vendor</string>
+    <string name="mk_pharmacist">I\'m a Pharmacist</string>
     <string name="mk_let_us_know">Let us know about yourself</string>
 
     <!-- VerifyActivity -->

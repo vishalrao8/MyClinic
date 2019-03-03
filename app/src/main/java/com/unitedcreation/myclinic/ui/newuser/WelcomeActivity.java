@@ -8,26 +8,17 @@ import butterknife.ButterKnife;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.database.DataContract;
 import com.unitedcreation.myclinic.database.DataTableHelper;
-import com.unitedcreation.myclinic.model.Bank;
 import com.unitedcreation.myclinic.ui.doctor.DoctorActivity;
 import com.unitedcreation.myclinic.ui.patient.PatientActivity;
 import com.unitedcreation.myclinic.ui.stemcell.StemActivity;
-import com.unitedcreation.myclinic.ui.supplier.SupplierActivity;
-import com.unitedcreation.myclinic.ui.vendor.VendorActivity;
-import com.unitedcreation.myclinic.utils.FireBaseUtils;
-import com.unitedcreation.myclinic.utils.StringUtils;
+import com.unitedcreation.myclinic.ui.retailer.RetailerActivity;
+import com.unitedcreation.myclinic.ui.pharmacist.PharmacistActivity;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
 import static com.unitedcreation.myclinic.utils.ViewUtils.moveToCorrespondingUi;
@@ -47,12 +38,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
     @BindView(R.id.view_mk_patient)
     View patientButton;
-
-    @BindView(R.id.view_mk_supplier)
-    View supplierButton;
-
-    @BindView(R.id.view_mk_vendor)
-    View vendorButton;
 
     @BindView(R.id.layout_welcome_one)
     ConstraintLayout layoutOne;
@@ -89,10 +74,10 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
                     nextActivity = PatientActivity.class;
                     break;
                 case 3:
-                    nextActivity = SupplierActivity.class;
+                    nextActivity = RetailerActivity.class;
                     break;
                 case 4:
-                    nextActivity = VendorActivity.class;
+                    nextActivity = PharmacistActivity.class;
 
             }
             moveToCorrespondingUi(this, nextActivity, position);
@@ -104,9 +89,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         stemButton.setOnClickListener(this);
         doctorButton.setOnClickListener(this);
         patientButton.setOnClickListener(this);
-        supplierButton.setOnClickListener(this);
-        vendorButton.setOnClickListener(this);
-
     }
 
     public void flipLayouts () {
@@ -159,10 +141,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.view_mk_doctor: moveToVerification(1); break;
 
             case R.id.view_mk_patient: moveToVerification(2); break;
-
-            case R.id.view_mk_supplier: moveToVerification(3); break;
-
-            case R.id.view_mk_vendor: moveToVerification(4); break;
 
             default: moveToVerification(0);
 

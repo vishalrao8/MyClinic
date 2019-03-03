@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:alpha="0">
+    android:alpha="0.9">
 
     <TextView
         android:id="@+id/tv_mk_just_a_few"
@@ -64,35 +64,6 @@
         app:layout_constraintStart_toStartOf="@id/tv_mk_doctor"
         app:layout_constraintTop_toTopOf="@id/tv_mk_doctor" />
 
-    <ImageView
-        android:id="@+id/iv_mk_stem"
-        style="@style/CustomIcon"
-        android:src="@drawable/mk_ic_truck"
-        android:translationX="-10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_mk_supplier"
-        app:layout_constraintStart_toEndOf="@+id/view_mk_supplier"
-        app:layout_constraintTop_toTopOf="@+id/tv_mk_supplier"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/tv_mk_supplier"
-        style="@style/CustomButtonText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@string/mk_supplier"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_mk_doctor" />
-
-    <View
-        android:id="@+id/view_mk_supplier"
-        style="@style/CustomButton"
-        android:background="@drawable/all_ripple_green"
-        app:layout_constraintBottom_toBottomOf="@id/tv_mk_supplier"
-        app:layout_constraintEnd_toEndOf="@id/tv_mk_supplier"
-        app:layout_constraintStart_toStartOf="@id/tv_mk_supplier"
-        app:layout_constraintTop_toTopOf="@id/tv_mk_supplier" />
 
     <ImageView
         android:id="@+id/iv_mk_patient"
@@ -115,7 +86,7 @@
         android:text="@string/mk_patient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_mk_supplier" />
+        app:layout_constraintTop_toBottomOf="@id/tv_mk_doctor" />
 
     <View
         android:id="@+id/view_mk_patient"
@@ -126,33 +97,5 @@
         app:layout_constraintStart_toStartOf="@id/tv_mk_patient"
         app:layout_constraintTop_toTopOf="@id/tv_mk_patient" />
 
-    <ImageView
-        android:id="@+id/iv_mk_vendor"
-        style="@style/CustomIcon"
-        android:src="@drawable/mk_ic_vendor"
-        android:translationX="-12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_mk_vendor"
-        app:layout_constraintStart_toEndOf="@+id/view_mk_vendor"
-        app:layout_constraintTop_toTopOf="@+id/tv_mk_vendor"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/tv_mk_vendor"
-        style="@style/CustomButtonText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mk_vendor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_mk_patient" />
-
-    <View
-        android:id="@+id/view_mk_vendor"
-        style="@style/CustomButton"
-        android:background="@drawable/all_ripple_brown"
-        app:layout_constraintBottom_toBottomOf="@id/tv_mk_vendor"
-        app:layout_constraintEnd_toEndOf="@id/view_mk_supplier"
-        app:layout_constraintStart_toStartOf="@id/tv_mk_vendor"
-        app:layout_constraintTop_toTopOf="@id/tv_mk_vendor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

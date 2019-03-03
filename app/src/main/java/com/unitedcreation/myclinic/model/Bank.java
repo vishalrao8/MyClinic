@@ -5,14 +5,14 @@ public class Bank {
     private String name;
     private int rating;
     private double latitude;
-    private double longitude;
+    private double longtitude;
 
-    public Bank (String name, int rating, double latitude, double longitude) {
+    public Bank (String name, int rating, double latitude, double longtitude) {
 
         this.name = name;
         this.rating = rating;
         this.latitude = latitude;
-        this.longitude = longitude;
+        this.longtitude = longtitude;
 
     }
     public Bank(){}
@@ -21,8 +21,8 @@ public class Bank {
         return latitude;
     }
 
-    public double getLongitude() {
-        return longitude;
+    public double getLongtitude() {
+        return longtitude;
     }
 
     public int getRating() {
@@ -37,8 +37,8 @@ public class Bank {
         this.latitude = latitude;
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setLongtitude(double longtitude) {
+        this.longtitude = longtitude;
     }
 
     public void setName(String name) {

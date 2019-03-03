@@ -19,7 +19,7 @@ import static com.unitedcreation.myclinic.utils.StringUtils.INT_EXTRA;
 
 public class BankTabFragment extends Fragment {
 
-    private Bundle bundle = new Bundle();
+    private Bundle bundle;
     private String tabTitles[] = {"Government", "Private"};
 
 
@@ -72,10 +72,11 @@ public class BankTabFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-
+            bundle = new Bundle();
             switch (position) {
 
                 case 0: bundle.putInt(INT_EXTRA, 0);
+                        break;
 
                 case 1: bundle.putInt(INT_EXTRA, 1);
 
