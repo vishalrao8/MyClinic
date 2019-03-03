@@ -34,7 +34,7 @@ import static com.unitedcreation.myclinic.utils.StringUtils.USERS;
 public class DoctorActivity extends AppCompatActivity {
 
     private ArrayList<Appointment> appointments = new ArrayList<>();
-    private final String uid = getUserId(this);
+    private String uid;
 
     @BindView(R.id.doctor_logout_button)
     ImageButton logOutButton;
@@ -55,7 +55,7 @@ public class DoctorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor);
-
+        uid = getUserId(this);
         ButterKnife.bind(this);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);

@@ -15,6 +15,7 @@ public class StringUtils {
     public static final String RETAILER = "retailer";
     public static final String PHARMACIST = "pharmacist";
     public static final String STEM = "stem";
+    public static final String PHONE = "phone";
     public static final String APPOINTMENTS = "appointments";
 
     public static final String NAME = "name";

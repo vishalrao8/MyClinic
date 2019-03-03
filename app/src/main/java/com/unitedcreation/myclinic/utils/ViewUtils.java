@@ -9,6 +9,8 @@ import com.unitedcreation.myclinic.ui.newuser.WelcomeActivity;
 import com.unitedcreation.myclinic.ui.patient.PatientActivity;
 import com.unitedcreation.myclinic.ui.stemcell.StemActivity;
 
+import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;
+import static com.unitedcreation.myclinic.utils.StringUtils.PATIENT;
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
 
 public class ViewUtils {
@@ -44,10 +46,33 @@ public class ViewUtils {
 
         switch (position) {
             case 0: activityClass = StemActivity.class;
+            break;
 
             case 1: activityClass = DoctorActivity.class;
+            break;
 
             case 2: activityClass = PatientActivity.class;
+        }
+
+        Intent intent = new Intent(context, activityClass);
+
+        intent.putExtra(PROFILE_EXTRA, position);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        context.startActivity(intent);
+    }
+
+    public static void moveToCorrespondingUi (Context context, String type) {
+
+        Class activityClass = null;
+        int position=0;
+
+        switch (type) {
+            case StringUtils.STEM: activityClass = StemActivity.class;
+
+            case DOCTOR: activityClass = DoctorActivity.class;
+
+            case PATIENT: activityClass = PatientActivity.class;
         }
 
         Intent intent = new Intent(context, activityClass);

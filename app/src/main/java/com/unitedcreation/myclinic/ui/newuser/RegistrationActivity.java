@@ -15,14 +15,7 @@ import android.widget.Toast;
 import com.unitedcreation.myclinic.R;
 import com.unitedcreation.myclinic.model.Doctor;
 import com.unitedcreation.myclinic.model.Patient;
-import com.unitedcreation.myclinic.model.Pharmacist;
-import com.unitedcreation.myclinic.model.Retailer;
 import com.unitedcreation.myclinic.model.StemCellUser;
-import com.unitedcreation.myclinic.ui.doctor.DoctorActivity;
-import com.unitedcreation.myclinic.ui.patient.PatientActivity;
-import com.unitedcreation.myclinic.ui.stemcell.StemActivity;
-import com.unitedcreation.myclinic.ui.retailer.RetailerActivity;
-import com.unitedcreation.myclinic.ui.pharmacist.PharmacistActivity;
 import com.unitedcreation.myclinic.utils.FireBaseUtils;
 
 import static com.unitedcreation.myclinic.utils.DatabaseUtils.getDataTableHelper;
@@ -31,9 +24,7 @@ import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;
 import static com.unitedcreation.myclinic.utils.StringUtils.PATIENT;
 import static com.unitedcreation.myclinic.utils.StringUtils.PROFILE_EXTRA;
 import static com.unitedcreation.myclinic.utils.StringUtils.STEM;
-import static com.unitedcreation.myclinic.utils.StringUtils.RETAILER;
 import static com.unitedcreation.myclinic.utils.StringUtils.USERS;
-import static com.unitedcreation.myclinic.utils.StringUtils.PHARMACIST;
 import static com.unitedcreation.myclinic.utils.ViewUtils.moveToCorrespondingUi;
 import static com.unitedcreation.myclinic.utils.ViewUtils.switchTheme;
 
@@ -146,7 +137,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 mStreet_et.getText().toString(),
                                 mState_et.getText().toString(),
                                 mCity_et.getText().toString(),
-                                mZip_et.getText().toString());
+                                mZip_et.getText().toString(),Integer.parseInt(mAge.getText().toString()));
                         break;
 
                     case 1:
@@ -156,7 +147,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 mCity_et.getText().toString(),
                                 mZip_et.getText().toString(),
                                 mVariable_et.getText().toString(),
-                                mLicence_et.getText().toString());
+                                mLicence_et.getText().toString(),Integer.parseInt(mAge.getText().toString()));
                         qualification = mVariable_et.getText().toString();
                         licence = mLicence_et.getText().toString();
                         break;
@@ -167,7 +158,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 mState_et.getText().toString(),
                                 mCity_et.getText().toString(),
                                 mZip_et.getText().toString(),
-                                mVariable_et.getText().toString());
+                                mVariable_et.getText().toString(),Integer.parseInt(mAge.getText().toString()));
                         issue = mVariable_et.getText().toString();
                         break;
 

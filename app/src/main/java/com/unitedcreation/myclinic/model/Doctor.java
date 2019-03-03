@@ -9,10 +9,11 @@ public class Doctor {
     private String zipCode;
     private String qualification;
     private String licence;
+    private int mAge;
 
     public Doctor(){}
 
-    public Doctor (String name, String streetAddress, String city, String state, String zipCode, String qualification, String licence) {
+    public Doctor (String name, String streetAddress, String city, String state, String zipCode, String qualification, String licence ,int mAge) {
 
         this.name = name;
         this.streetAddress = streetAddress;
@@ -21,7 +22,15 @@ public class Doctor {
         this.zipCode = zipCode;
         this.qualification = qualification;
         this.licence = licence;
+        this.mAge=mAge;
 
+    }
+    public int getmAge() {
+        return mAge;
+    }
+
+    public void setmAge(int mAge) {
+        this.mAge = mAge;
     }
 
     public String getName() {

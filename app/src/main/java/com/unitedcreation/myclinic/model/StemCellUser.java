@@ -7,16 +7,28 @@ public class StemCellUser {
     private String city;
     private String state;
     private String zipCode;
+    private int mAge;
 
-    public StemCellUser (String name, String streetAddress, String city, String state, String zipCode) {
+    public  StemCellUser(){}
+    public StemCellUser (String name, String streetAddress, String city, String state, String zipCode,int mAge) {
 
         this.name = name;
         this.streetAddress = streetAddress;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
+        this.mAge=mAge;
 
     }
+
+    public int getmAge() {
+        return mAge;
+    }
+
+    public void setmAge(int mAge) {
+        this.mAge = mAge;
+    }
+
 
     public String getName() {
         return name;

@@ -55,4 +55,8 @@ public class StemActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        finishAndRemoveTask();
+    }
 }
