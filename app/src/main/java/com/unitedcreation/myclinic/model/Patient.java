@@ -8,10 +8,11 @@ public class Patient {
     private String state;
     private String zipCode;
     private String issue;
+    private int mAge;
 
     public  Patient(){}
 
-    public Patient (String name, String streetAddress, String city, String state, String zipCode, String issue) {
+    public Patient (String name, String streetAddress, String city, String state, String zipCode, String issue ,int mAge) {
 
         this.name = name;
         this.streetAddress = streetAddress;
@@ -19,7 +20,16 @@ public class Patient {
         this.state = state;
         this.zipCode = zipCode;
         this.issue = issue;
+        this.mAge=mAge;
 
+    }
+
+    public int getmAge() {
+        return mAge;
+    }
+
+    public void setmAge(int mAge) {
+        this.mAge = mAge;
     }
 
     public String getName() {

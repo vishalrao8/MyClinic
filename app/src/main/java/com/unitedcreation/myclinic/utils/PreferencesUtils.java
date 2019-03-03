@@ -2,13 +2,15 @@ package com.unitedcreation.myclinic.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import static com.unitedcreation.myclinic.utils.StringUtils.USER_ID;
 
 public class PreferencesUtils {
 
     private static SharedPreferences getPreferences (Context context) {
-        return context.getSharedPreferences(StringUtils.SHARED_PREFERENCES, Context.MODE_PRIVATE);
+        return PreferenceManager
+                .getDefaultSharedPreferences(context);
     }
 
     public static void addUser (Context context, String uid) {

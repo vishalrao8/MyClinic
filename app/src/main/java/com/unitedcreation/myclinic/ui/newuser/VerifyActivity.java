@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
@@ -50,7 +51,7 @@ public class VerifyActivity extends AppCompatActivity{
 
     private int position;
 
-    private final String uid = getUserId(this);
+    private String uid ;
 
     private String verificationId;
 
@@ -79,6 +80,7 @@ public class VerifyActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         switchTheme(this, getIntent().getIntExtra(PROFILE_EXTRA, 0));
         setContentView(R.layout.activity_verify);
+        uid=getUserId(VerifyActivity.this);
 
         ButterKnife.bind(this);
 
@@ -269,9 +271,9 @@ public class VerifyActivity extends AppCompatActivity{
                 StemCellUser stemCellUser = dataSnapshot.getValue(StemCellUser.class);
                 getDataTableHelper(this).insertItem(stemCellUser.getName(),
                         position,
-                        Integer.parseInt(mAge.getText().toString()),
-                        mStreet_et.getText().toString(),
-                        mCity_et.getText().toString(),
+                        stemCellUser.getmAge(),
+                        stemCellUser.getState(),
+                        stemCellUser.getCity(),
                         issue,
                         qualification,
                         licence);
@@ -281,11 +283,11 @@ public class VerifyActivity extends AppCompatActivity{
                 Doctor doctor = dataSnapshot.getValue(Doctor.class);
                 qualification = Objects.requireNonNull(doctor).getQualification();
                 licence = doctor.getLicence();
-                getDataTableHelper(this).insertItem(object.getName(),
+                getDataTableHelper(this).insertItem(doctor.getName(),
                     position,
-                    Integer.parseInt(mAge.getText().toString()),
-                    mStreet_et.getText().toString(),
-                    mCity_et.getText().toString(),
+                    doctor.getmAge(),
+                    doctor.getState(),
+                    doctor.getCity(),
                     issue,
                     qualification,
                     licence);
@@ -294,11 +296,11 @@ public class VerifyActivity extends AppCompatActivity{
             case 2:
                 Patient patient = dataSnapshot.getValue(Patient.class);
                 issue = Objects.requireNonNull(patient).getIssue();
-                getDataTableHelper(this).insertItem(object.getName(),
+                getDataTableHelper(this).insertItem(patient.getName(),
                         position,
-                        Integer.parseInt(mAge.getText().toString()),
-                        mStreet_et.getText().toString(),
-                        mCity_et.getText().toString(),
+                        patient.getmAge(),
+                        patient.getState(),
+                        patient.getCity(),
                         issue,
                         qualification,
                         licence);
