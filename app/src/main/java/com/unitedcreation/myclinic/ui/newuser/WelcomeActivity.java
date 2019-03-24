@@ -7,6 +7,7 @@ import butterknife.ButterKnife;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -126,5 +127,11 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             default: moveToVerification(0);
 
         }
+    }
+    public  void emergency_call(View view)
+    {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:0123456789"));
+        startActivity(intent);
     }
 }
