@@ -6,6 +6,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -333,5 +334,11 @@ public class VerifyActivity extends AppCompatActivity{
                 return PATIENT ;
         }
         return null;
+    }
+    public  void emergency_call(View view)
+    {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:0123456789"));
+        startActivity(intent);
     }
 }
