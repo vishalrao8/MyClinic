@@ -81,7 +81,6 @@ public class VerifyActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         switchTheme(this, getIntent().getIntExtra(PROFILE_EXTRA, 0));
         setContentView(R.layout.activity_verify);
-        uid=getUserId(VerifyActivity.this);
 
         ButterKnife.bind(this);
 
@@ -98,6 +97,7 @@ public class VerifyActivity extends AppCompatActivity{
 
             }
         });
+        uid=getUserId(VerifyActivity.this);
 
         confirmButton.setOnClickListener(v -> {
 
