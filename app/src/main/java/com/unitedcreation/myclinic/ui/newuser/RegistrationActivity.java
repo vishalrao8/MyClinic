@@ -100,7 +100,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 type = DOCTOR ;
                 mVariable_cv.setVisibility(View.VISIBLE);
                 mVariable_et.setHint("Qualifications");
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,R.array.doctor_qualification);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.doctor_qualification));
                 mVariable_et.setAdapter(adapter);
                 //Showing Licence EditText from Registration Activity
                 mLicence_cv.setVisibility(View.VISIBLE);
@@ -173,8 +173,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private void insertData(String licence, String issue, String qualification, Object object) {
 
         if (object != null) {
-
-            new FireBaseUtils().getDatabaseReference().child(USERS).child(type).child(uid).setValue(object);
+           new FireBaseUtils().getDatabaseReference().child(USERS).child(type).child(uid).setValue(object);
 
             getDataTableHelper(this).insertItem(mName_et.getText().toString(),
                     position,
