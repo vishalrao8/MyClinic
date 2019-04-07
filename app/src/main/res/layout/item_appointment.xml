@@ -23,7 +23,7 @@
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/doctor_patient_name"
+        android:id="@+id/appointment_patient_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -34,40 +34,40 @@
         tools:text="Patient Name" />
 
     <TextView
-        android:id="@+id/doctor_patient_time_label"
+        android:id="@+id/appointment_patient_time_label"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/patient_timing"
-        app:layout_constraintStart_toStartOf="@+id/doctor_patient_name"
-        app:layout_constraintTop_toBottomOf="@+id/doctor_patient_name" />
+        app:layout_constraintStart_toStartOf="@+id/appointment_patient_name"
+        app:layout_constraintTop_toBottomOf="@+id/appointment_patient_name" />
 
     <TextView
-        android:id="@+id/doctor_patient_time"
+        android:id="@+id/appointment_patient_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margin_half"
         android:layout_marginTop="4dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
         android:textColor="@android:color/black"
-        app:layout_constraintStart_toEndOf="@id/doctor_patient_time_label"
-        app:layout_constraintTop_toBottomOf="@+id/doctor_patient_name"
+        app:layout_constraintStart_toEndOf="@id/appointment_patient_time_label"
+        app:layout_constraintTop_toBottomOf="@+id/appointment_patient_name"
         tools:text="12:00 - 5:50 PM" />
 
     <TextView
-        android:id="@+id/doctor_patient_date_label"
+        android:id="@+id/appointment_patient_date_label"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:text="@string/date"
-        app:layout_constraintEnd_toStartOf="@+id/doctor_patient_date"
+        app:layout_constraintEnd_toStartOf="@+id/appointment_patient_date"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/doctor_patient_date"
+        android:id="@+id/appointment_patient_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -78,59 +78,14 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="12/12/1997" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:id="@+id/appointment_status_label"
         android:layout_marginTop="4dp"
-        android:id="@+id/selection_layout"
-        android:visibility="gone"
-        android:layout_marginBottom="4dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctor_patient_time_label"
-        tools:layout_editor_absoluteX="0dp">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:id="@+id/reject_cv"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="2dp"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:id="@+id/reject_iv"
-                android:layout_margin="8dp"
-                android:layout_gravity="center"
-                android:src="@drawable/reject" />
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:id="@+id/accept_cv"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="2dp"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:id="@+id/accept_iv"
-                android:layout_margin="8dp"
-                android:layout_gravity="center"
-                android:src="@drawable/accept" />
-        </androidx.cardview.widget.CardView>
-
-
-
-    </LinearLayout>
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/accept"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appointment_patient_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
