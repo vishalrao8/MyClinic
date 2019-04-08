@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,6 +37,9 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import static com.unitedcreation.myclinic.utils.DatabaseUtils.getDataTableHelper;
+import static com.unitedcreation.myclinic.utils.PreferencesUtils.addDoctorData;
+import static com.unitedcreation.myclinic.utils.PreferencesUtils.addPatientData;
+import static com.unitedcreation.myclinic.utils.PreferencesUtils.addStemUserData;
 import static com.unitedcreation.myclinic.utils.PreferencesUtils.addUser;
 import static com.unitedcreation.myclinic.utils.PreferencesUtils.getUserId;
 import static com.unitedcreation.myclinic.utils.StringUtils.DOCTOR;
@@ -55,6 +59,7 @@ public class VerifyActivity extends AppCompatActivity{
     private String uid ;
 
     private String verificationId;
+    private ProgressDialog progressDialog;
 
     private boolean numberConfirmed;
 
@@ -83,6 +88,9 @@ public class VerifyActivity extends AppCompatActivity{
         setContentView(R.layout.activity_verify);
 
         ButterKnife.bind(this);
+
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setMessage("Verifying User ...");
 
         position = getIntent().getIntExtra(PROFILE_EXTRA, 0);
 
@@ -189,6 +197,7 @@ public class VerifyActivity extends AppCompatActivity{
             super.onCodeSent(s, forceResendingToken);
 
             progressBar.setVisibility(View.GONE);
+            progressDialog.show();
             Log.d(NAME, "Code sent successfully");
             //Keeping the verification id sent to the user.
             verificationId = s;
@@ -243,6 +252,8 @@ public class VerifyActivity extends AppCompatActivity{
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                progressDialog.dismiss();
+
                 if (dataSnapshot.exists()) {
 
                     moveToCorrespondingUi(VerifyActivity.this, position);
@@ -270,41 +281,17 @@ public class VerifyActivity extends AppCompatActivity{
 
             case 0:
                 StemCellUser stemCellUser = dataSnapshot.getValue(StemCellUser.class);
-                getDataTableHelper(this).insertItem(stemCellUser.getName(),
-                        position,
-                        stemCellUser.getmAge(),
-                        stemCellUser.getState(),
-                        stemCellUser.getCity(),
-                        issue,
-                        qualification,
-                        licence);
+                addStemUserData(this,stemCellUser);
                 break;
 
             case 1:
                 Doctor doctor = dataSnapshot.getValue(Doctor.class);
-                qualification = Objects.requireNonNull(doctor).getQualification();
-                licence = doctor.getLicence();
-                getDataTableHelper(this).insertItem(doctor.getName(),
-                    position,
-                    doctor.getmAge(),
-                    doctor.getState(),
-                    doctor.getCity(),
-                    issue,
-                    qualification,
-                    licence);
+                addDoctorData(this,doctor);
                 break;
 
             case 2:
                 Patient patient = dataSnapshot.getValue(Patient.class);
-                issue = Objects.requireNonNull(patient).getIssue();
-                getDataTableHelper(this).insertItem(patient.getName(),
-                        position,
-                        patient.getmAge(),
-                        patient.getState(),
-                        patient.getCity(),
-                        issue,
-                        qualification,
-                        licence);
+                addPatientData(this,patient);
                 break;
 
         }

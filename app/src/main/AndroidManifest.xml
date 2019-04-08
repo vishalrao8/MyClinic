@@ -27,10 +27,14 @@
             android:theme="@style/Brown" />
         <activity
             android:name=".ui.patient.PatientActivity"
-            android:theme="@style/Blue" />
+            android:theme="@style/Blue" >
+
+        </activity>
         <activity
             android:name=".ui.doctor.DoctorActivity"
-            android:theme="@style/Red" />
+            android:theme="@style/Red" >
+
+        </activity>
         <activity android:name=".ui.stemcell.PaymentActivity" />
         <activity
             android:name=".ui.stemcell.StemActivity"

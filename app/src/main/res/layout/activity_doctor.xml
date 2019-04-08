@@ -121,11 +121,11 @@
         android:layout_height="40dp"
         android:elevation="4dp"
         android:background="@drawable/doctor_background_tabs"
-        app:layout_anchor="@id/cv_doctor_profile"
+
         app:tabIndicatorFullWidth="false"
         android:minHeight="?actionBarSize"
         app:tabMode="fixed"
-        app:layout_anchorGravity="bottom|center">
+        >
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/item_doctor_today"
@@ -155,14 +155,34 @@
         android:layout_height="match_parent"
         android:layout_marginTop="200dp"
         app:layout_anchor="@id/cv_doctor_profile"
-        app:layout_anchorGravity="bottom"/>!-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/doctor_rv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        app:layout_anchorGravity="bottom"/> !-->
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs_doctor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:minHeight="?actionBarSize"
+        android:theme="@style/Widget.Design.TabLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_doctor_profile"
+        app:tabGravity="fill"
+        app:tabIndicatorFullWidth="false"
+        app:tabMode="fixed" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_doctor"
+        android:layout_width="match_parent"
+        android:layout_marginTop="260dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cv_doctor_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/tabs_doctor" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -88,6 +88,7 @@
     <string name="doctor_patient_name">Hospital Name</string>
     <string name="verify_submit">Submit</string>
     <string name="verify_enter_otp_info">Enter verification code sent to</string>
+    <string name="date">Date</string>
 
     <!-- Doctor Qualification List -->
     <string-array name="doctor_qualification">
