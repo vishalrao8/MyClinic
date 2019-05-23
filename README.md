@@ -1,7 +1,19 @@
 # MyClinic
-An app to discover nearby stem cell banks and connect with doctors to resolve any health issues. The main purpose of this app is to connect stem cell banks with donars to preserve the stem cell so that it can be used to cure diseases in future.
+An app to discover nearby stem cell banks and connect with doctors to resolve any health issues.The main purpose of this app is to connect stem cell banks with donars to preserve their stem cell so that it can be used to cure diseases in future.
 
-It also contains a mini hospital inside medical kit where you can connect with doctors, vendors and equipment suppliers to get yourself treated at your comfort within a single app.
+It also contains a mini hospital inside medical kit where you can connect with doctors, medical vendors and equipment suppliers to get yourself treated at your comfort within a single app.
+
+#### Why this app?
+
+It has been developed to spread awareness and importance of stem cell and there use in curing and treamtment, it acts as a bridge between stem cell banks and potential donars.
+
+#### Does it solve any problem?
+
+It makes people aware of preservation of stem cell and it's importance in the future to cure crucial diseases. It helps people locate and preserve their cell in the nearby bank.
+
+#### Intended User
+
+Doctors, patients, stem cell bank organisations, medical vendors, stem cell donars and all the neccesary staffs required to carry out a health treatment are intended users of this application.
 
 # Index
 
