@@ -40,11 +40,14 @@ Doctors, patients, stem cell bank organisations, medical vendors, stem cell dona
 
 <img src="https://drive.google.com/uc?export=view&id=1-QvePLeVRc_NGBtvMuFdudfRWRyf3-sj" width="150">&nbsp; &nbsp; &nbsp;<img src="https://drive.google.com/uc?export=view&id=1-WRmVoBh7le9oiFXhxGyEffxNR2Gzrig" width="150">
 
+
 #### Doctor
 <img src="https://drive.google.com/uc?export=view&id=1-hHQ8Lq3ZhbwEKjZSHPuuuF_B9B-g3HC" width="150">&nbsp; &nbsp; &nbsp;<img src="https://drive.google.com/uc?export=view&id=1-mPghAk3I1qzoBlypsBDsb6OXoXHJ5HP" width="150">&nbsp; &nbsp; &nbsp;<img src="https://drive.google.com/uc?export=view&id=1-ijEHGdqqz_sSMu5rS1XErCy5qKk_Cyc" width="150">
 
+
 #### Patient
 <img src="https://drive.google.com/uc?export=view&id=1-Z8dD0Ttq75q9rnQTcWmgpkwhafRY-Ho" width="150">&nbsp; &nbsp; &nbsp;<img src="https://drive.google.com/uc?export=view&id=1-dn-EeEz5Sk660JS26CGbB81skO8EImO" width="150">&nbsp; &nbsp; &nbsp;<img src="https://drive.google.com/uc?export=view&id=1-dDH_0mJRl2lspoHPOUAW1hywhDsIrQA" width="150">
+
 
 #### Stem Cell
 <img src="https://drive.google.com/uc?export=view&id=1-r3m3GHCj7xhiSmI9cYcLihZgv80e0Mo" width="150">&nbsp; &nbsp; &nbsp;<img src="https://drive.google.com/uc?export=view&id=1-z24tlR25r3dKjTCEBd2x9swBKLqucM0" width="150">&nbsp; &nbsp; &nbsp;<img src="https://drive.google.com/uc?export=view&id=10Fidf93YoFh-RUowyTPqfMzE3cwaoeBr" width="150">&nbsp; &nbsp; &nbsp;<img src="https://drive.google.com/uc?export=view&id=1-qZANE-v_XLwa6dqFB_1KmRs3DpJ2-eH" width="150">&nbsp; &nbsp; &nbsp;<img src="https://drive.google.com/uc?export=view&id=105rqEYbWzxB_GXvd-jp-pYPK18HxgNlA" width="150">&nbsp; &nbsp; &nbsp;<img src="https://drive.google.com/uc?export=view&id=1092A66thRR9m0GgLHZn19tn-BUDWs7hv" width="150">&nbsp; &nbsp; &nbsp;<img src="https://drive.google.com/uc?export=view&id=1-v5bQKzzDFaeQkDOo0hQtMyf5TzvBuNL" width="150">
