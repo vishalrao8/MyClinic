@@ -5,7 +5,7 @@ It also contains a mini hospital inside medical kit where you can connect with d
 
 #### Why this app?
 
-It has been developed to spread awareness and importance of stem cell and there use in curing and treamtment, it acts as a bridge between stem cell banks and potential donars.
+It has been developed to spread awareness and importance of stem cell and there use in curing and treatment, it acts as a bridge between stem cell banks and potential donars.
 
 #### Does it solve any problem?
 
